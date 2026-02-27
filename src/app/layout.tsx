@@ -26,7 +26,22 @@ export const metadata: Metadata = {
     "session history",
     "semantic search",
     "claude code",
+    "developer tools",
+    "ai agent",
+    "code context",
+    "vector search",
+    "bm25",
+    "duckdb",
+    "git hooks",
+    "append-only",
+    "coding assistant",
+    "llm memory",
+    "ai pair programming",
+    "institutional memory",
   ],
+  alternates: {
+    canonical: "https://rekal.dev",
+  },
   openGraph: {
     title: "Rekal — Git-anchored intent ledger with built-in RAG",
     description:
@@ -50,6 +65,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Rekal",
+              applicationCategory: "DeveloperApplication",
+              operatingSystem: "macOS, Linux",
+              description:
+                "Git-anchored intent ledger with built-in RAG. Gives your AI coding agent memory of prior sessions — who changed what, why, and when.",
+              url: "https://rekal.dev",
+              license: "https://opensource.org/licenses/Apache-2.0",
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              sourceOrganization: {
+                "@type": "Organization",
+                name: "Rekal",
+                url: "https://github.com/rekal-dev",
+              },
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
