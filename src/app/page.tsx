@@ -17,6 +17,14 @@ function Nav() {
             Install
           </a>
           <a
+            href="https://discord.gg/eNNabp4b"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
+          >
+            Discord
+          </a>
+          <a
             href="https://github.com/rekal-dev/rekal-cli"
             target="_blank"
             rel="noopener noreferrer"
@@ -151,71 +159,81 @@ function HowItWorks() {
             How it works
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 tracking-tight">
-            Commit. Push. Recall.
+            Two personas, one flow
           </h2>
           <p className="text-muted text-center max-w-xl mx-auto mb-16">
-            Git hooks handle capture and transport automatically. You just commit and push as normal.
+            You commit and push as normal. Your agent recalls what it needs.
           </p>
         </FadeIn>
 
-        <div className="space-y-6">
-          <FadeIn delay={0.1}>
-            <div className="rounded-xl border border-border bg-card p-6 flex gap-6 items-start">
-              <div className="w-10 h-10 rounded-lg bg-green/10 flex items-center justify-center shrink-0 mt-1">
-                <span className="text-green font-mono text-sm font-bold">01</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">git commit</h3>
-                <p className="text-sm text-muted">
-                  Post-commit hook runs <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">rekal checkpoint</code> — snapshots your active AI session into an append-only local database. Turns, tool calls, file changes.
-                </p>
-                <p className="text-xs text-muted mt-2 font-mono">Automatic · post-commit hook</p>
-              </div>
+        {/* Developer touchpoints */}
+        <FadeIn delay={0.1}>
+          <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-lg bg-green/10 flex items-center justify-center">
+              <span className="text-green text-sm">&#9654;</span>
+            </span>
+            Developer touchpoints
+          </h3>
+        </FadeIn>
+        <div className="space-y-4 mb-12">
+          <FadeIn delay={0.15}>
+            <div className="rounded-xl border border-border bg-card p-5 flex gap-5 items-start">
+              <code className="text-accent text-xs bg-accent/10 px-2 py-1 rounded shrink-0 mt-0.5">git commit</code>
+              <p className="text-sm text-muted">
+                Post-commit hook runs <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">rekal checkpoint</code> — snapshots your active AI session into an append-only local database.
+              </p>
             </div>
           </FadeIn>
-
           <FadeIn delay={0.2}>
-            <div className="rounded-xl border border-border bg-card p-6 flex gap-6 items-start">
-              <div className="w-10 h-10 rounded-lg bg-green/10 flex items-center justify-center shrink-0 mt-1">
-                <span className="text-green font-mono text-sm font-bold">02</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">git push</h3>
-                <p className="text-sm text-muted">
-                  Pre-push hook runs <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">rekal push</code> — encodes only your data into a compact wire format (zstd + string interning) and pushes to your personal orphan branch.
-                </p>
-                <p className="text-xs text-muted mt-2 font-mono">Automatic · pre-push hook · only your data</p>
-              </div>
+            <div className="rounded-xl border border-border bg-card p-5 flex gap-5 items-start">
+              <code className="text-accent text-xs bg-accent/10 px-2 py-1 rounded shrink-0 mt-0.5">git push</code>
+              <p className="text-sm text-muted">
+                Pre-push hook runs <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">rekal push</code> — encodes only your data into compact wire format (zstd + string interning) and pushes to your orphan branch.
+              </p>
             </div>
           </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <div className="rounded-xl border border-border bg-card p-6 flex gap-6 items-start">
-              <div className="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center shrink-0 mt-1">
-                <span className="text-amber font-mono text-sm font-bold">03</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">rekal sync</h3>
-                <p className="text-sm text-muted">
-                  Pull your team&apos;s session data from remote. Intentionally manual — you decide when to import team context.
-                </p>
-                <p className="text-xs text-muted mt-2 font-mono">Manual · deliberate · team data import</p>
-              </div>
+          <FadeIn delay={0.25}>
+            <div className="rounded-xl border border-border bg-card p-5 flex gap-5 items-start">
+              <code className="text-accent text-xs bg-accent/10 px-2 py-1 rounded shrink-0 mt-0.5">rekal sync</code>
+              <p className="text-sm text-muted">
+                Pull your team&apos;s session data from remote. Intentionally manual — you decide when to import team context.
+              </p>
             </div>
           </FadeIn>
+        </div>
 
+        {/* Agent touchpoints */}
+        <FadeIn delay={0.3}>
+          <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+              <span className="text-accent text-sm">&#9654;</span>
+            </span>
+            Agent touchpoints
+          </h3>
+        </FadeIn>
+        <div className="space-y-4">
+          <FadeIn delay={0.35}>
+            <div className="rounded-xl border border-border bg-card p-5 flex gap-5 items-start">
+              <code className="text-accent text-xs bg-accent/10 px-2 py-1 rounded shrink-0 mt-0.5 whitespace-nowrap">rekal &quot;query&quot;</code>
+              <p className="text-sm text-muted">
+                Three-signal hybrid search (BM25 + LSA + Nomic). Returns scored JSON with the best-matching turn index for progressive drill-down.
+              </p>
+            </div>
+          </FadeIn>
           <FadeIn delay={0.4}>
-            <div className="rounded-xl border border-border bg-card p-6 flex gap-6 items-start">
-              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-1">
-                <span className="text-accent font-mono text-sm font-bold">04</span>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1">rekal &quot;query&quot;</h3>
-                <p className="text-sm text-muted">
-                  Three-signal hybrid search (BM25 + LSA + Nomic deep embeddings). Returns scored results with turn indices for progressive drill-down. The agent controls how much context it loads.
-                </p>
-                <p className="text-xs text-muted mt-2 font-mono">Agent-driven · progressive loading · minimal tokens</p>
-              </div>
+            <div className="rounded-xl border border-border bg-card p-5 flex gap-5 items-start">
+              <code className="text-accent text-xs bg-accent/10 px-2 py-1 rounded shrink-0 mt-0.5 whitespace-nowrap">rekal query</code>
+              <p className="text-sm text-muted">
+                Drill into a session with <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">--offset</code> and <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">--limit</code> for pagination, or <code className="text-accent text-xs bg-accent/10 px-1.5 py-0.5 rounded">--role human</code> for intent only. Full session when needed.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.45}>
+            <div className="rounded-xl border border-border bg-card p-5 flex gap-5 items-start">
+              <code className="text-accent text-xs bg-accent/10 px-2 py-1 rounded shrink-0 mt-0.5 whitespace-nowrap">rekal --file</code>
+              <p className="text-sm text-muted">
+                Scoped search filtered by file path. The agent controls how much context it loads — minimal tokens by default.
+              </p>
             </div>
           </FadeIn>
         </div>
@@ -295,25 +313,13 @@ function Enterprise() {
       <div className="max-w-3xl mx-auto text-center">
         <FadeIn>
           <div className="rounded-xl border border-border bg-card p-12">
-            <p className="text-sm font-mono text-accent mb-4 tracking-wider uppercase">
-              Coming soon
-            </p>
             <h2 className="text-3xl font-bold mb-4 tracking-tight">
-              Rekal Enterprise
+              The CLI is free and local — forever.
             </h2>
-            <p className="text-muted max-w-lg mx-auto mb-6 leading-relaxed">
-              Team analytics. Session dashboards. Cross-repo intent search.
-              Compliance-ready audit trails. The CLI stays free and local — forever.
+            <p className="text-muted max-w-lg mx-auto leading-relaxed">
+              No plans for enterprise yet. If Rekal gets adoption and teams need dashboards,
+              analytics, or cross-repo search — we&apos;ll build it. Until then, the CLI is the product.
             </p>
-            <a
-              href="mailto:enterprise@rekal.dev"
-              className="inline-flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/5 px-6 py-3 text-sm font-medium text-accent transition-all hover:bg-accent/10 hover:border-accent/50"
-            >
-              Get early access
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
           </div>
         </FadeIn>
       </div>
@@ -332,6 +338,9 @@ function Footer() {
         <div className="flex items-center gap-6 text-sm text-muted">
           <a href="https://github.com/rekal-dev/rekal-cli" className="hover:text-foreground transition-colors">
             GitHub
+          </a>
+          <a href="https://discord.gg/eNNabp4b" className="hover:text-foreground transition-colors">
+            Discord
           </a>
           <a href="https://github.com/rekal-dev/rekal-cli/issues" className="hover:text-foreground transition-colors">
             Issues
