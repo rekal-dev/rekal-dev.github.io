@@ -48,7 +48,7 @@ function Hero() {
       <div className="relative z-10 text-center max-w-3xl mx-auto mb-12">
         <FadeIn>
           <p className="text-sm font-mono text-accent mb-4 tracking-wider uppercase">
-            Open Source · Apache 2.0
+            Beta · Claude Code · More agents coming · Open Source
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
