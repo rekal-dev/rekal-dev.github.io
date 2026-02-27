@@ -50,19 +50,19 @@ function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-accent-dim)_0%,_transparent_70%)] opacity-[0.07]" />
       <div className="relative z-10 text-center max-w-3xl mx-auto mb-12">
         <FadeIn>
-          <p className="text-sm font-mono text-amber mb-4 tracking-wider uppercase">
-            Beta release — Claude Code only, more agents coming
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
             The <span className="text-accent">why</span> behind every
             <br />line of code
           </h1>
         </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="text-lg text-muted max-w-xl mx-auto mb-8">
+        <FadeIn delay={0.1}>
+          <p className="text-lg text-muted max-w-xl mx-auto mb-4">
             Git-anchored intent ledger with built-in RAG. Your agent starts every session knowing exactly why — with minimal token cost.
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.2}>
+          <p className="text-sm font-mono text-amber mb-8 tracking-wider">
+            Beta — Claude Code today. Cursor, Codex, Windsurf, Copilot coming.
           </p>
         </FadeIn>
         <FadeIn delay={0.3}>
