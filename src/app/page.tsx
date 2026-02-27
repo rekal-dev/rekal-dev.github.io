@@ -16,6 +16,9 @@ function Nav() {
           <a href="#install" className="text-sm text-muted hover:text-foreground transition-colors">
             Install
           </a>
+          <a href="#enterprise" className="text-sm text-muted hover:text-foreground transition-colors">
+            Enterprise
+          </a>
           <a
             href="https://discord.gg/eNNabp4b"
             target="_blank"
@@ -309,7 +312,7 @@ function Install() {
 
 function Enterprise() {
   return (
-    <section className="py-32 px-6">
+    <section id="enterprise" className="py-32 px-6">
       <div className="max-w-3xl mx-auto text-center">
         <FadeIn>
           <div className="rounded-xl border border-border bg-card p-12">

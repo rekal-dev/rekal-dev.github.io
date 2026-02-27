@@ -4,32 +4,33 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const lines = [
-  { cmd: "curl -fsSL https://rekal.dev/install.sh | bash", delay: 0 },
-  { out: "", delay: 800 },
-  { out: "  ┌─────────────────────────────────┐", delay: 900 },
-  { out: "  │         rekal installer          │", delay: 950 },
-  { out: "  └─────────────────────────────────┘", delay: 1000 },
-  { out: "", delay: 1050 },
-  { out: "  \u001b[32m✓\u001b[0m Platform: darwin/arm64", delay: 1200 },
-  { out: "  \u001b[32m✓\u001b[0m Version: v0.2.2", delay: 1600 },
-  { out: "  \u001b[32m✓\u001b[0m Installed to ~/.local/bin/rekal", delay: 2400 },
-  { cmd: "rekal init", delay: 3200 },
-  { out: "rekal: initialized .rekal/ with data.db", delay: 3800 },
-  { out: "rekal: installed post-commit hook", delay: 4000 },
-  { out: "rekal: installed pre-push hook", delay: 4200 },
-  { out: 'rekal: wrote skill file to .claude/skills/rekal/', delay: 4400 },
-  { cmd: 'rekal "JWT token expiry"', delay: 5200 },
-  { out: '{"session_id":"01JNQX...","score":0.87,"snippet":"Fix JWT expiry to use refresh token rotation...","snippet_turn_index":12}', delay: 6000 },
+  { comment: 'agent is adding semantic search — why was Ollama rejected?', delay: 0 },
+  { cmd: 'rekal "embedding model Ollama vs in-process"', delay: 1200 },
+  { out: '', delay: 2000 },
+  { out: '{"session_id":"01KJC1W8...","score":0.91,', delay: 2200 },
+  { out: ' "snippet":"Ollama breaks the single-binary principle. Embedded GGUF...",', delay: 2400 },
+  { out: ' "snippet_turn_index":76}', delay: 2600 },
+  { out: '', delay: 2800 },
+  { comment: 'drill into that turn — 5 turns, not the full 82-turn session', delay: 3200 },
+  { cmd: 'rekal query --session 01KJC1W8... --offset 74 --limit 5', delay: 4200 },
+  { out: '', delay: 5000 },
+  { out: '{"total_turns":82,"offset":74,"limit":5,"has_more":true,', delay: 5200 },
+  { out: ' "turns":[', delay: 5400 },
+  { out: '  {"role":"human","content":"we want nomic-embed-text for deep semantic..."},', delay: 5600 },
+  { out: '  {"role":"assistant","content":"Ollama breaks single-binary principle..."},', delay: 5800 },
+  { out: '  {"role":"assistant","content":"GGUF in-process, no external server..."},', delay: 6000 },
+  { out: '  {"role":"assistant","content":"go-llama.cpp — lightweight CGO, ~5MB..."},', delay: 6200 },
+  { out: '  {"role":"human","content":"ship it"}]}', delay: 6400 },
+  { out: '', delay: 6600 },
+  { comment: '5 turns loaded — 1.2k tokens instead of 38k for the full session', delay: 7000 },
 ];
 
 function colorize(text: string): string {
   return text
-    .replace(/\u001b\[32m/g, '<span class="text-green">')
-    .replace(/\u001b\[0m/g, "</span>")
-    .replace(/(✓)/g, '<span class="text-green">$1</span>')
-    .replace(/(rekal:)/g, '<span class="text-accent">$1</span>')
-    .replace(/("session_id"|"score"|"snippet"|"snippet_turn_index")/g, '<span class="text-accent">$1</span>')
-    .replace(/(0\.87|12)/g, '<span class="text-amber">$1</span>');
+    .replace(/("session_id"|"score"|"snippet"|"snippet_turn_index"|"total_turns"|"offset"|"limit"|"has_more"|"turns"|"role"|"content")/g, '<span class="text-accent">$1</span>')
+    .replace(/("human"|"assistant")/g, '<span class="text-green">$1</span>')
+    .replace(/\b(0\.91|true)\b/g, '<span class="text-amber">$1</span>')
+    .replace(/(?<=[:,])(\d+)/g, '<span class="text-amber">$1</span>');
 }
 
 export default function Terminal() {
@@ -62,7 +63,9 @@ export default function Terminal() {
         <div className="p-4 font-mono text-sm leading-6 min-h-[360px] overflow-x-auto">
           {lines.slice(0, visibleLines).map((line, i) => (
             <div key={i} className="whitespace-pre">
-              {"cmd" in line ? (
+              {"comment" in line ? (
+                <span className="text-muted italic"># {line.comment}</span>
+              ) : "cmd" in line ? (
                 <span>
                   <span className="text-green">$</span>{" "}
                   <span className="text-foreground">{line.cmd}</span>
