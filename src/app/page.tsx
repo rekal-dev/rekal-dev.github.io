@@ -61,8 +61,8 @@ function Hero() {
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <p className="text-sm font-mono text-amber mb-8 tracking-wider">
-            Beta — Claude Code today. Cursor, Codex, Windsurf, Copilot coming.
+          <p className="text-sm font-mono text-red-400 mb-8 tracking-wider">
+            Works with Claude Code only. Cursor, Codex, Windsurf, Copilot, Kiro, ... on the way.
           </p>
         </FadeIn>
         <FadeIn delay={0.3}>
