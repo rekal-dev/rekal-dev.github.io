@@ -4,33 +4,43 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const lines = [
-  { comment: 'agent is adding semantic search — why was Ollama rejected?', delay: 0 },
-  { cmd: 'rekal "embedding model Ollama vs in-process"', delay: 1200 },
-  { out: '', delay: 2000 },
-  { out: '{"session_id":"01KJC1W8...","score":0.91,', delay: 2200 },
-  { out: ' "snippet":"Ollama breaks the single-binary principle. Embedded GGUF...",', delay: 2400 },
-  { out: ' "snippet_turn_index":76}', delay: 2600 },
-  { out: '', delay: 2800 },
-  { comment: 'drill into that turn — 5 turns, not the full 82-turn session', delay: 3200 },
-  { cmd: 'rekal query --session 01KJC1W8... --offset 74 --limit 5', delay: 4200 },
-  { out: '', delay: 5000 },
-  { out: '{"total_turns":82,"offset":74,"limit":5,"has_more":true,', delay: 5200 },
-  { out: ' "turns":[', delay: 5400 },
-  { out: '  {"role":"human","content":"we want nomic-embed-text for deep semantic..."},', delay: 5600 },
-  { out: '  {"role":"assistant","content":"Ollama breaks single-binary principle..."},', delay: 5800 },
-  { out: '  {"role":"assistant","content":"GGUF in-process, no external server..."},', delay: 6000 },
-  { out: '  {"role":"assistant","content":"go-llama.cpp — lightweight CGO, ~5MB..."},', delay: 6200 },
-  { out: '  {"role":"human","content":"ship it"}]}', delay: 6400 },
+  { cmd: 'curl -fsSL https://rekal.dev/install.sh | bash', delay: 0 },
+  { out: '  \u2713 Installed to ~/.local/bin/rekal', delay: 800 },
+  { out: '', delay: 1000 },
+  { cmd: 'rekal init', delay: 1500 },
+  { out: 'rekal: initialized .rekal/ with data.db', delay: 2000 },
+  { out: 'rekal: installed hooks', delay: 2200 },
+  { out: '', delay: 2400 },
+  { cmd: 'rekal sync', delay: 2800 },
+  { out: 'rekal: fetched 3 branches, imported 12 sessions', delay: 3300 },
+  { out: '', delay: 3500 },
+  { comment: 'agent is adding SSO \u2014 how was auth done before?', delay: 3900 },
+  { cmd: 'rekal "auth middleware role-based access"', delay: 5000 },
+  { out: '', delay: 5800 },
+  { out: '{"session_id":"01KGR1...","score":0.92,', delay: 6000 },
+  { out: ' "snippet":"middleware chain: verify token, extract roles, check permission...",', delay: 6200 },
+  { out: ' "snippet_turn_index":14}', delay: 6400 },
   { out: '', delay: 6600 },
-  { comment: '5 turns loaded — 1.2k tokens instead of 38k for the full session', delay: 7000 },
+  { cmd: 'rekal query --session 01KGR1... --offset 12 --limit 5', delay: 7200 },
+  { out: '', delay: 8000 },
+  { out: '{"total_turns":51,"has_more":true,', delay: 8200 },
+  { out: ' "turns":[', delay: 8400 },
+  { out: '  {"role":"human","content":"need role-based access on API routes..."},', delay: 8600 },
+  { out: '  {"role":"assistant","content":"middleware chain: authN then authZ..."},', delay: 8800 },
+  { out: '  {"role":"human","content":"how to handle admin vs user roles?"},', delay: 9000 },
+  { out: '  {"role":"assistant","content":"permission map per role. middleware checks route requirements..."},', delay: 9200 },
+  { out: '  {"role":"human","content":"clean, do it"}]}', delay: 9400 },
+  { out: '', delay: 9600 },
+  { comment: 'agent loaded exact context \u2014 1.0k tokens instead of 24k', delay: 10000 },
 ];
 
 function colorize(text: string): string {
   return text
-    .replace(/("session_id"|"score"|"snippet"|"snippet_turn_index"|"total_turns"|"offset"|"limit"|"has_more"|"turns"|"role"|"content")/g, '<span class="text-accent">$1</span>')
+    .replace(/("session_id"|"score"|"snippet"|"snippet_turn_index"|"total_turns"|"has_more"|"turns"|"role"|"content")/g, '<span class="text-accent">$1</span>')
     .replace(/("human"|"assistant")/g, '<span class="text-green">$1</span>')
-    .replace(/\b(0\.91|true)\b/g, '<span class="text-amber">$1</span>')
-    .replace(/(?<=[:,])(\d+)/g, '<span class="text-amber">$1</span>');
+    .replace(/\b(0\.92|true)\b/g, '<span class="text-amber">$1</span>')
+    .replace(/(?<=[:,])(\d+)/g, '<span class="text-amber">$1</span>')
+    .replace(/(✓)/g, '<span class="text-green">$1</span>');
 }
 
 export default function Terminal() {

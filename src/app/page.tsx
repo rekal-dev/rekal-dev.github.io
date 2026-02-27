@@ -50,8 +50,8 @@ function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--color-accent-dim)_0%,_transparent_70%)] opacity-[0.07]" />
       <div className="relative z-10 text-center max-w-3xl mx-auto mb-12">
         <FadeIn>
-          <p className="text-sm font-mono text-accent mb-4 tracking-wider uppercase">
-            Beta · Claude Code · More agents coming · Open Source
+          <p className="text-sm font-mono text-amber mb-4 tracking-wider uppercase">
+            Beta release — Claude Code only, more agents coming
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
