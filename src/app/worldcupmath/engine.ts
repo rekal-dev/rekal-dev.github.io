@@ -286,7 +286,7 @@ export const ROSTER: PlayerDef[] = [
     jacket: "#f2f2f4", jacketTrim: "#d94040", pants: "#38445a",
   },
   {
-    id: "lena", name: "Lena", flag: "🇨🇭", role: "The Rock",
+    id: "lara", name: "Lara", flag: "🇨🇭", role: "The Rock",
     skin: "#fadcc0", hairStyle: "long", hairColor: "#d9a441",
     jacket: "#e04545", jacketTrim: "#f5f5f5", pants: "#2e3440",
   },
@@ -404,7 +404,7 @@ export const ROSTER: PlayerDef[] = [
     jacket: "#f2c53c", jacketTrim: "#d94040", pants: "#26262c",
   },
   {
-    id: "lina", name: "Lina", flag: "🇨🇳", role: "The Panda",
+    id: "lena", name: "Lena", flag: "🇨🇳", role: "The Panda",
     skin: "#f9d9b8", hairStyle: "curly", hairColor: "#1d1a1e",
     jacket: "#f2f2f4", jacketTrim: "#26262c", pants: "#26262c",
     accessory: "tablet",
