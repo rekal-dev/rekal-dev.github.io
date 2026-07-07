@@ -50,10 +50,18 @@ export default function Game() {
   }, []);
 
   // browsers only allow audio after a user gesture — start the soundtrack
-  // on the first tap/click anywhere in the game
-  const kickstartMusic = () => {
-    if (musicOn && !music.isPlaying()) music.start();
-  };
+  // on the first tap, click, or keypress anywhere, on any screen
+  useEffect(() => {
+    const kick = () => {
+      if (musicOn && !music.isPlaying()) music.start();
+    };
+    window.addEventListener("pointerdown", kick);
+    window.addEventListener("keydown", kick);
+    return () => {
+      window.removeEventListener("pointerdown", kick);
+      window.removeEventListener("keydown", kick);
+    };
+  }, [musicOn]);
 
   const toggleMute = () => {
     const m = !muted;
@@ -101,10 +109,7 @@ export default function Game() {
   };
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-b from-[#0a1128] via-[#0d1b3a] to-[#0a1128] text-white"
-      onClickCapture={kickstartMusic}
-    >
+    <div className="min-h-screen bg-gradient-to-b from-[#0a1128] via-[#0d1b3a] to-[#0a1128] text-white">
       {/* top bar */}
       <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4 pt-4">
         <button

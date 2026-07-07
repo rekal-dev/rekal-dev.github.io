@@ -63,7 +63,7 @@ let barIndex = 0;
 function musicBus(c: AudioContext): GainNode {
   if (!musicGain) {
     musicGain = c.createGain();
-    musicGain.gain.value = muted ? 0 : 1;
+    musicGain.gain.value = 1;
     musicGain.connect(c.destination);
   }
   return musicGain;
@@ -105,13 +105,13 @@ function scheduleBar(c: AudioContext, t: number, bar: number) {
   const root = BASS[bar % 4];
   for (let i = 0; i < 8; i++) {
     const ti = t + i * EIGHTH;
-    note(c, bus, mel[i], ti, EIGHTH * 0.9, "triangle", 0.028); // melody
-    note(c, bus, i % 2 === 0 ? root : root * 2, ti, EIGHTH * 0.85, "triangle", 0.045); // bass
+    note(c, bus, mel[i], ti, EIGHTH * 0.9, "triangle", 0.045); // melody
+    note(c, bus, i % 2 === 0 ? root : root * 2, ti, EIGHTH * 0.85, "triangle", 0.065); // bass
     // hi-hat tick
     const hat = c.createBufferSource();
     hat.buffer = noise(c);
     const hg = c.createGain();
-    hg.gain.setValueAtTime(0.012, ti);
+    hg.gain.setValueAtTime(0.018, ti);
     hg.gain.exponentialRampToValueAtTime(0.0001, ti + 0.03);
     hat.connect(hg).connect(bus);
     hat.start(ti);
@@ -121,7 +121,7 @@ function scheduleBar(c: AudioContext, t: number, bar: number) {
       const kg = c.createGain();
       k.frequency.setValueAtTime(140, ti);
       k.frequency.exponentialRampToValueAtTime(45, ti + 0.1);
-      kg.gain.setValueAtTime(0.06, ti);
+      kg.gain.setValueAtTime(0.08, ti);
       kg.gain.exponentialRampToValueAtTime(0.0001, ti + 0.12);
       k.connect(kg).connect(bus);
       k.start(ti);
@@ -136,10 +136,15 @@ export const music = {
     const c = ac();
     if (!c || musicOn) return;
     musicOn = true;
-    musicBus(c).gain.value = muted ? 0 : 1;
+    musicBus(c).gain.value = 1;
     nextBarTime = c.currentTime + 0.05;
     schedTimer = setInterval(() => {
       if (!musicOn) return;
+      // keep the context alive — browsers suspend it when the tab sleeps
+      if (c.state === "suspended") void c.resume();
+      // if we fell behind (tab was asleep), jump ahead instead of
+      // bursting all the missed bars at once
+      if (nextBarTime < c.currentTime - 0.1) nextBarTime = c.currentTime + 0.05;
       while (nextBarTime < c.currentTime + 0.6) {
         scheduleBar(c, nextBarTime, barIndex++);
         nextBarTime += BAR;
@@ -163,9 +168,9 @@ export const music = {
 };
 
 export const sound = {
+  // mutes sound effects only — the soundtrack has its own 🎵 toggle
   setMuted(m: boolean) {
     muted = m;
-    if (musicGain) musicGain.gain.value = m ? 0 : musicOn ? 1 : 0;
   },
   isMuted: () => muted,
   click() {
