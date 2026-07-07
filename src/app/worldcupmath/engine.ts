@@ -427,6 +427,17 @@ export const ROSTER: PlayerDef[] = [
     jacket: "#d94040", jacketTrim: "#f2c53c", pants: "#26262c",
     accessory: "ball",
   },
+  {
+    id: "naomi", name: "Naomi", flag: "🇨🇳", role: "The Firecracker",
+    skin: "#f9d9b8", hairStyle: "bun", hairColor: "#1d1a1e",
+    jacket: "#f2c53c", jacketTrim: "#d94040", pants: "#26262c",
+  },
+  {
+    id: "lina", name: "Lina", flag: "🇨🇳", role: "The Panda",
+    skin: "#f9d9b8", hairStyle: "curly", hairColor: "#1d1a1e",
+    jacket: "#f2f2f4", jacketTrim: "#26262c", pants: "#26262c",
+    accessory: "tablet",
+  },
 ];
 
 // ------------------------------------------------------------ match rules
