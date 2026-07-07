@@ -310,10 +310,13 @@ function Locker({
       </div>
 
       <section>
-        <h2 className="mb-2.5 text-sm font-bold uppercase tracking-widest text-white/50">
+        <h2 className="mb-1 text-sm font-bold uppercase tracking-widest text-white/50">
           Select your math champion
         </h2>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <p className="mb-2.5 text-xs text-white/35">
+          All 32 World Cup nations, plus India 🇮🇳 and China 🇨🇳 — {ROSTER.length} champions.
+        </p>
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 sm:gap-2.5">
           {ROSTER.map((p) => {
             const active = p.id === me.id;
             return (
@@ -325,17 +328,17 @@ function Locker({
                   sound.click();
                   setMe(p);
                 }}
-                className={`flex flex-col items-center rounded-2xl border-2 px-2 pb-3 pt-2 transition-colors ${
+                className={`flex flex-col items-center rounded-2xl border-2 px-1 pb-2 pt-1.5 transition-colors ${
                   active
                     ? "border-[#ffd54a] bg-[#ffd54a]/10 shadow-[0_0_24px_rgba(255,213,74,0.15)]"
                     : "border-white/10 bg-white/5 hover:border-white/30"
                 }`}
               >
-                <Chibi p={p} state={active ? "cheer" : "idle"} size={64} />
-                <span className="mt-1 flex items-center gap-1.5 text-sm font-bold">
+                <Chibi p={p} state={active ? "cheer" : "idle"} size={52} />
+                <span className="mt-0.5 flex items-center gap-1 text-xs font-bold">
                   <span>{p.flag}</span> {p.name}
                 </span>
-                <span className="text-[10px] text-white/45">{p.role}</span>
+                <span className="text-[9px] leading-tight text-white/45">{p.role}</span>
               </motion.button>
             );
           })}
