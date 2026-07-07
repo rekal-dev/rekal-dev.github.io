@@ -1,0 +1,226 @@
+/* World Cup Math — animation system.
+   The chibi characters are layered SVG groups (head / torso / arms / legs);
+   these classes drive their skeletal animation states. */
+
+.wcm-chibi g {
+  transform-box: fill-box;
+}
+.wcm-chibi .wcm-whole {
+  transform-origin: 50% 100%;
+}
+.wcm-chibi .wcm-head {
+  transform-origin: 50% 88%;
+}
+.wcm-chibi .wcm-armL,
+.wcm-chibi .wcm-armR {
+  transform-origin: 50% 10%;
+}
+.wcm-chibi .wcm-legL,
+.wcm-chibi .wcm-legR {
+  transform-origin: 50% 6%;
+}
+
+/* -------- idle: breathing bob + gentle head tilt */
+.wcm-idle .wcm-whole {
+  animation: wcmBob 2.4s ease-in-out infinite;
+}
+.wcm-idle .wcm-head {
+  animation: wcmTilt 4.5s ease-in-out infinite;
+}
+
+/* -------- run: fast bob + swinging limbs */
+.wcm-run .wcm-whole {
+  animation: wcmBob 0.34s ease-in-out infinite;
+}
+.wcm-run .wcm-legL {
+  animation: wcmSwing 0.34s ease-in-out infinite;
+}
+.wcm-run .wcm-legR {
+  animation: wcmSwing 0.34s ease-in-out infinite;
+  animation-delay: -0.17s;
+}
+.wcm-run .wcm-armL {
+  animation: wcmSwing 0.34s ease-in-out infinite;
+  animation-delay: -0.17s;
+}
+.wcm-run .wcm-armR {
+  animation: wcmSwing 0.34s ease-in-out infinite;
+}
+
+/* -------- kick: wind up and strike */
+.wcm-kick .wcm-legR {
+  animation: wcmKick 0.55s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.wcm-kick .wcm-armL {
+  animation: wcmSwing 0.55s ease-in-out both;
+}
+.wcm-kick .wcm-whole {
+  animation: wcmLean 0.55s ease-in-out both;
+}
+
+/* -------- cheer: jumping with arms up */
+.wcm-cheer .wcm-whole {
+  animation: wcmJump 0.6s ease-in-out infinite;
+}
+.wcm-cheer .wcm-armL {
+  animation: wcmRaiseL 0.6s ease-in-out infinite;
+}
+.wcm-cheer .wcm-armR {
+  animation: wcmRaiseR 0.6s ease-in-out infinite;
+}
+.wcm-cheer .wcm-head {
+  animation: wcmTilt 0.6s ease-in-out infinite;
+}
+
+/* -------- stumble: tackled wobble */
+.wcm-stumble .wcm-whole {
+  animation: wcmStumble 0.85s ease-in-out both;
+}
+.wcm-stumble .wcm-head {
+  animation: wcmDizzy 0.85s ease-in-out both;
+}
+
+@keyframes wcmBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes wcmTilt {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes wcmSwing {
+  0%, 100% { transform: rotate(26deg); }
+  50% { transform: rotate(-26deg); }
+}
+@keyframes wcmKick {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(38deg); }
+  60% { transform: rotate(-72deg); }
+  100% { transform: rotate(-10deg); }
+}
+@keyframes wcmLean {
+  0%, 100% { transform: rotate(0deg); }
+  55% { transform: rotate(-8deg); }
+}
+@keyframes wcmJump {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-16px); }
+}
+@keyframes wcmRaiseL {
+  0%, 100% { transform: rotate(-155deg); }
+  50% { transform: rotate(-175deg); }
+}
+@keyframes wcmRaiseR {
+  0%, 100% { transform: rotate(155deg); }
+  50% { transform: rotate(175deg); }
+}
+@keyframes wcmStumble {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-16deg) translateY(3px); }
+  55% { transform: rotate(10deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes wcmDizzy {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-14deg); }
+  70% { transform: rotate(12deg); }
+}
+
+/* ---------------------------------------------------------- stadium bits */
+
+.wcm-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: wcmMarquee 14s linear infinite;
+}
+@keyframes wcmMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.wcm-crowd {
+  background-image:
+    radial-gradient(circle at 4px 4px, rgba(255, 255, 255, 0.5) 2.2px, transparent 2.6px),
+    radial-gradient(circle at 12px 10px, rgba(255, 214, 130, 0.45) 2.2px, transparent 2.6px),
+    radial-gradient(circle at 20px 5px, rgba(140, 200, 255, 0.45) 2.2px, transparent 2.6px);
+  background-size: 24px 14px;
+  animation: wcmCrowdBounce 1.6s ease-in-out infinite;
+}
+@keyframes wcmCrowdBounce {
+  0%, 100% { background-position-y: 0px, 0px, 0px; }
+  50% { background-position-y: 2px, -2px, 2px; }
+}
+
+.wcm-net {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.55) 1px, transparent 1px);
+  background-size: 7px 7px;
+}
+.wcm-net-shake {
+  animation: wcmNetShake 0.5s ease-in-out;
+}
+@keyframes wcmNetShake {
+  0%, 100% { transform: skewX(0deg); }
+  25% { transform: skewX(-6deg); }
+  55% { transform: skewX(4deg); }
+  80% { transform: skewX(-2deg); }
+}
+
+.wcm-pitch-stripes {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0 12.5%,
+      rgba(0, 0, 0, 0.06) 12.5% 25%
+    ),
+    linear-gradient(#3aa858, #2e8a48);
+}
+
+.wcm-shake {
+  animation: wcmShake 0.45s ease-in-out;
+}
+@keyframes wcmShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  45% { transform: translateX(6px); }
+  70% { transform: translateX(-3px); }
+}
+
+.wcm-confetti {
+  position: absolute;
+  top: -12px;
+  border-radius: 2px;
+  animation: wcmConfettiFall 1.9s cubic-bezier(0.3, 0.4, 0.6, 1) forwards;
+}
+@keyframes wcmConfettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.4; }
+}
+
+.wcm-flood {
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 245, 200, 0.28),
+    transparent
+  );
+}
+
+@keyframes wcmPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.wcm-pulse {
+  animation: wcmPulse 1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wcm-chibi g,
+  .wcm-marquee,
+  .wcm-crowd,
+  .wcm-pulse {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
