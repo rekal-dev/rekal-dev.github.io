@@ -201,7 +201,7 @@ export const DIFFICULTIES: Difficulty[] = [
     label: "World Class",
     tagline: "Three-number chains — like 19 + 6 − 11",
     icon: "🥇",
-    questionTime: 16,
+    questionTime: 20,
     counterChance: 0.35,
     gen: genLevel3,
   },
