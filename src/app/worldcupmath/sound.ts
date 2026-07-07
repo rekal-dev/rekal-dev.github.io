@@ -37,9 +37,135 @@ function tone(
   o.stop(t + dur + 0.05);
 }
 
+// ---------------------------------------------------------------- music
+// A cheery 4-bar chiptune loop (A — F#m — D — E), fully synthesized.
+
+const BPM = 112;
+const BAR = (60 / BPM) * 4;
+const EIGHTH = BAR / 8;
+
+// eighth-note arpeggios per bar (chord tones, root–3rd–5th patterns)
+const MELODY: number[][] = [
+  [440, 554.37, 659.25, 554.37, 880, 659.25, 554.37, 659.25], // A
+  [369.99, 440, 554.37, 440, 739.99, 554.37, 440, 554.37], // F#m
+  [293.66, 369.99, 440, 369.99, 587.33, 440, 369.99, 440], // D
+  [329.63, 415.3, 493.88, 415.3, 659.25, 493.88, 415.3, 493.88], // E
+];
+const BASS = [110, 92.5, 73.42, 82.41]; // A2, F#2, D2, E2
+
+let musicOn = false;
+let musicGain: GainNode | null = null;
+let noiseBuf: AudioBuffer | null = null;
+let schedTimer: ReturnType<typeof setInterval> | null = null;
+let nextBarTime = 0;
+let barIndex = 0;
+
+function musicBus(c: AudioContext): GainNode {
+  if (!musicGain) {
+    musicGain = c.createGain();
+    musicGain.gain.value = muted ? 0 : 1;
+    musicGain.connect(c.destination);
+  }
+  return musicGain;
+}
+
+function noise(c: AudioContext): AudioBuffer {
+  if (!noiseBuf) {
+    noiseBuf = c.createBuffer(1, c.sampleRate * 0.1, c.sampleRate);
+    const data = noiseBuf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+  }
+  return noiseBuf;
+}
+
+function note(
+  c: AudioContext,
+  bus: GainNode,
+  freq: number,
+  t: number,
+  dur: number,
+  type: OscillatorType,
+  gain: number,
+) {
+  const o = c.createOscillator();
+  const g = c.createGain();
+  o.type = type;
+  o.frequency.setValueAtTime(freq, t);
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(gain, t + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  o.connect(g).connect(bus);
+  o.start(t);
+  o.stop(t + dur + 0.03);
+}
+
+function scheduleBar(c: AudioContext, t: number, bar: number) {
+  const bus = musicBus(c);
+  const mel = MELODY[bar % 4];
+  const root = BASS[bar % 4];
+  for (let i = 0; i < 8; i++) {
+    const ti = t + i * EIGHTH;
+    note(c, bus, mel[i], ti, EIGHTH * 0.9, "triangle", 0.028); // melody
+    note(c, bus, i % 2 === 0 ? root : root * 2, ti, EIGHTH * 0.85, "triangle", 0.045); // bass
+    // hi-hat tick
+    const hat = c.createBufferSource();
+    hat.buffer = noise(c);
+    const hg = c.createGain();
+    hg.gain.setValueAtTime(0.012, ti);
+    hg.gain.exponentialRampToValueAtTime(0.0001, ti + 0.03);
+    hat.connect(hg).connect(bus);
+    hat.start(ti);
+    // kick on beats 1 and 3
+    if (i === 0 || i === 4) {
+      const k = c.createOscillator();
+      const kg = c.createGain();
+      k.frequency.setValueAtTime(140, ti);
+      k.frequency.exponentialRampToValueAtTime(45, ti + 0.1);
+      kg.gain.setValueAtTime(0.06, ti);
+      kg.gain.exponentialRampToValueAtTime(0.0001, ti + 0.12);
+      k.connect(kg).connect(bus);
+      k.start(ti);
+      k.stop(ti + 0.15);
+    }
+  }
+}
+
+export const music = {
+  isPlaying: () => musicOn,
+  start() {
+    const c = ac();
+    if (!c || musicOn) return;
+    musicOn = true;
+    musicBus(c).gain.value = muted ? 0 : 1;
+    nextBarTime = c.currentTime + 0.05;
+    schedTimer = setInterval(() => {
+      if (!musicOn) return;
+      while (nextBarTime < c.currentTime + 0.6) {
+        scheduleBar(c, nextBarTime, barIndex++);
+        nextBarTime += BAR;
+      }
+    }, 150);
+  },
+  stop() {
+    musicOn = false;
+    if (schedTimer) {
+      clearInterval(schedTimer);
+      schedTimer = null;
+    }
+    if (musicGain && ctx) {
+      musicGain.gain.setTargetAtTime(0, ctx.currentTime, 0.1);
+      const g = musicGain;
+      setTimeout(() => {
+        if (!musicOn && g === musicGain) g.gain.value = 0;
+      }, 400);
+    }
+  },
+};
+
 export const sound = {
   setMuted(m: boolean) {
     muted = m;
+    if (musicGain) musicGain.gain.value = m ? 0 : musicOn ? 1 : 0;
   },
   isMuted: () => muted,
   click() {

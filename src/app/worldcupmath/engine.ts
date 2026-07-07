@@ -86,84 +86,20 @@ function makeChoices(answer: number, candidates: number[]): number[] {
 
 // ------------------------------------------------------------- generators
 
-function genRookie(): Problem {
-  if (Math.random() < 0.55) {
-    const a = ri(2, 10);
-    const b = ri(1, 10);
-    const ans = a + b;
-    return {
-      text: `${a} + ${b} = ?`,
-      answer: ans,
-      choices: makeChoices(ans, [ans - 1, ans + 1, ans + 2, ans - 2, ans + 10]),
-    };
+/**
+ * Addition inside [minAddend, maxSum] that usually crosses a tens
+ * boundary (a carry), e.g. 47 + 35.
+ */
+function carryAdd(minAddend: number, maxSum: number): Problem {
+  let a = ri(minAddend, maxSum - minAddend);
+  let b = ri(minAddend, maxSum - a);
+  for (let i = 0; i < 60; i++) {
+    a = ri(minAddend, maxSum - minAddend);
+    b = ri(minAddend, maxSum - a);
+    if ((a % 10) + (b % 10) >= 10) break; // force the carry
   }
-  const b = ri(1, 9);
-  const a = b + ri(1, 10);
-  const ans = a - b;
-  return {
-    text: `${a} − ${b} = ?`,
-    answer: ans,
-    choices: makeChoices(ans, [ans + 1, ans - 1, ans + 2, a + b, ans - 2]),
-  };
-}
-
-function genPro(): Problem {
-  const kind = Math.random();
-  if (kind < 0.35) {
-    const a = ri(11, 60);
-    const b = ri(11, 39);
-    const ans = a + b;
-    return {
-      text: `${a} + ${b} = ?`,
-      answer: ans,
-      choices: makeChoices(ans, [ans - 10, ans + 10, ans - 1, ans + 1, ans + 2]),
-    };
-  }
-  if (kind < 0.65) {
-    const b = ri(11, 45);
-    const a = b + ri(5, 50);
-    const ans = a - b;
-    return {
-      text: `${a} − ${b} = ?`,
-      answer: ans,
-      choices: makeChoices(ans, [ans + 10, ans - 10, ans + 1, ans - 1, ans + 2]),
-    };
-  }
-  const a = ri(2, 6);
-  const b = ri(2, 9);
-  const ans = a * b;
-  return {
-    text: `${a} × ${b} = ?`,
-    answer: ans,
-    choices: makeChoices(ans, [(a + 1) * b, (a - 1) * b, a * (b + 1), a + b, ans + 2]),
-  };
-}
-
-function genWorldClass(): Problem {
-  const kind = Math.random();
-  if (kind < 0.5) {
-    const a = ri(3, 12);
-    const b = ri(3, 12);
-    const ans = a * b;
-    return {
-      text: `${a} × ${b} = ?`,
-      answer: ans,
-      choices: makeChoices(ans, [(a + 1) * b, (a - 1) * b, a * (b + 1), a * (b - 1), ans + 4]),
-    };
-  }
-  if (kind < 0.8) {
-    const b = ri(3, 12);
-    const q = ri(3, 12);
-    const a = b * q;
-    return {
-      text: `${a} ÷ ${b} = ?`,
-      answer: q,
-      choices: makeChoices(q, [q + 1, q - 1, q + 2, b, q - 2]),
-    };
-  }
-  const a = ri(45, 160);
-  const b = ri(18, 90);
   const ans = a + b;
+  // forgetting the carry is the classic mistake → ans − 10
   return {
     text: `${a} + ${b} = ?`,
     answer: ans,
@@ -171,38 +107,73 @@ function genWorldClass(): Problem {
   };
 }
 
-function genLegend(): Problem {
-  const kind = Math.random();
-  if (kind < 0.4) {
-    // two-step: a × b ± c
-    const a = ri(3, 12);
-    const b = ri(3, 9);
-    const c = ri(2, 15);
-    const plus = Math.random() < 0.5;
-    const ans = plus ? a * b + c : Math.max(0, a * b - c);
-    return {
-      text: `${a} × ${b} ${plus ? "+" : "−"} ${c} = ?`,
-      answer: ans,
-      choices: makeChoices(ans, [ans + 1, ans - 1, ans + 10, ans - 10, a * b]),
-    };
+/**
+ * Subtraction inside [minResult-ish, maxMinuend] that usually needs
+ * borrowing across tens, e.g. 56 − 18.
+ */
+function borrowSub(minSubtrahend: number, maxMinuend: number): Problem {
+  let a = ri(minSubtrahend * 2, maxMinuend);
+  let b = ri(minSubtrahend, a - 4);
+  for (let i = 0; i < 60; i++) {
+    a = ri(minSubtrahend * 2, maxMinuend);
+    b = ri(minSubtrahend, a - 4);
+    if (a % 10 < b % 10) break; // force the borrow
   }
-  if (kind < 0.7) {
-    // missing factor
-    const a = ri(3, 12);
-    const b = ri(3, 12);
-    return {
-      text: `${a} × ? = ${a * b}`,
-      answer: b,
-      choices: makeChoices(b, [b + 1, b - 1, b + 2, a, b - 2]),
-    };
-  }
-  const b = ri(4, 12);
-  const q = ri(6, 15);
-  const a = b * q;
+  const ans = a - b;
+  // classic mistake: subtracting the smaller digit from the larger in
+  // every column instead of borrowing (56 − 18 → "42")
+  const columnError =
+    Math.abs(Math.floor(a / 10) - Math.floor(b / 10)) * 10 +
+    Math.abs((a % 10) - (b % 10));
   return {
-    text: `${a} ÷ ${b} = ?`,
-    answer: q,
-    choices: makeChoices(q, [q + 1, q - 1, q + 2, q - 2, b]),
+    text: `${a} − ${b} = ?`,
+    answer: ans,
+    choices: makeChoices(ans, [columnError, ans + 10, ans - 10, ans + 1, ans - 1]),
+  };
+}
+
+// Level 1 — add & subtract within 100, crossing tens (e.g. 56 − 18)
+function genLevel1(): Problem {
+  return Math.random() < 0.5 ? carryAdd(12, 100) : borrowSub(13, 99);
+}
+
+// Level 2 — add & subtract within 200
+function genLevel2(): Problem {
+  return Math.random() < 0.5 ? carryAdd(25, 200) : borrowSub(24, 199);
+}
+
+// Level 3 — three-number chains, e.g. 19 + 6 − 11
+function genLevel3(): Problem {
+  const a = ri(15, 99);
+  const b = ri(6, 45);
+  const c = ri(6, 45);
+  // wrong = getting the last sign backwards, the classic chain mistake
+  const variants = [
+    { text: `${a} + ${b} − ${c}`, ans: a + b - c, startsWithSub: false },
+    { text: `${a} + ${b} + ${c}`, ans: a + b + c, startsWithSub: false },
+    { text: `${a} − ${b} + ${c}`, ans: a - b + c, startsWithSub: true },
+    { text: `${a} − ${b} − ${c}`, ans: a - b - c, startsWithSub: true },
+  ];
+  // keep every running total non-negative (kids solve left to right)
+  const ok = variants.filter((v) => v.ans >= 0 && (!v.startsWithSub || a - b >= 0));
+  const v = ok[Math.floor(Math.random() * ok.length)];
+  const wrong = v.text.endsWith(`+ ${c}`) ? v.ans - 2 * c : v.ans + 2 * c;
+  return {
+    text: `${v.text} = ?`,
+    answer: v.ans,
+    choices: makeChoices(v.ans, [wrong, v.ans + 10, v.ans - 10, v.ans + 1, v.ans - 1]),
+  };
+}
+
+// Level 4 — times tables to 12
+function genLevel4(): Problem {
+  const a = ri(2, 12);
+  const b = ri(2, 12);
+  const ans = a * b;
+  return {
+    text: `${a} × ${b} = ?`,
+    answer: ans,
+    choices: makeChoices(ans, [(a + 1) * b, (a - 1) * b, a * (b + 1), a * (b - 1), a + b]),
   };
 }
 
@@ -210,38 +181,38 @@ export const DIFFICULTIES: Difficulty[] = [
   {
     id: "rookie",
     label: "Rookie",
-    tagline: "Add & subtract to 20",
+    tagline: "Add & subtract to 100 — like 56 − 18",
     icon: "⚽",
     questionTime: 15,
     counterChance: 0,
-    gen: genRookie,
+    gen: genLevel1,
   },
   {
     id: "pro",
     label: "Pro",
-    tagline: "Bigger sums & early times tables",
+    tagline: "Bigger sums & differences to 200",
     icon: "🥈",
-    questionTime: 12,
+    questionTime: 14,
     counterChance: 0.2,
-    gen: genPro,
+    gen: genLevel2,
   },
   {
     id: "worldclass",
     label: "World Class",
-    tagline: "Times tables to 12 & division",
+    tagline: "Three-number chains — like 19 + 6 − 11",
     icon: "🥇",
-    questionTime: 10,
+    questionTime: 16,
     counterChance: 0.35,
-    gen: genWorldClass,
+    gen: genLevel3,
   },
   {
     id: "legend",
     label: "Legend",
-    tagline: "Two-step & missing numbers",
+    tagline: "Times tables to 12",
     icon: "🏆",
     questionTime: 10,
     counterChance: 0.5,
-    gen: genLegend,
+    gen: genLevel4,
   },
 ];
 

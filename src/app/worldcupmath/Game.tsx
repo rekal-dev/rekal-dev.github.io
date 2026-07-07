@@ -19,7 +19,7 @@ import {
   type PlayerDef,
   type Screen,
 } from "./engine";
-import { sound } from "./sound";
+import { music, sound } from "./sound";
 
 const fadeUp = {
   initial: { opacity: 0, y: 18 },
@@ -35,6 +35,7 @@ export default function Game() {
   const [summary, setSummary] = useState<MatchSummary | null>(null);
   const [records, setRecords] = useState<MatchRecord[]>([]);
   const [muted, setMuted] = useState(false);
+  const [musicOn, setMusicOn] = useState(true);
   const [matchNo, setMatchNo] = useState(0);
 
   useEffect(() => {
@@ -45,7 +46,14 @@ export default function Game() {
     const m = window.localStorage.getItem("wcm-muted") === "1";
     setMuted(m);
     sound.setMuted(m);
+    setMusicOn(window.localStorage.getItem("wcm-music") !== "0");
   }, []);
+
+  // browsers only allow audio after a user gesture — start the soundtrack
+  // on the first tap/click anywhere in the game
+  const kickstartMusic = () => {
+    if (musicOn && !music.isPlaying()) music.start();
+  };
 
   const toggleMute = () => {
     const m = !muted;
@@ -55,6 +63,16 @@ export default function Game() {
       window.localStorage.setItem("wcm-muted", m ? "1" : "0");
     } catch {}
     if (!m) sound.click();
+  };
+
+  const toggleMusic = () => {
+    const on = !musicOn;
+    setMusicOn(on);
+    try {
+      window.localStorage.setItem("wcm-music", on ? "1" : "0");
+    } catch {}
+    if (on) music.start();
+    else music.stop();
   };
 
   const startMatch = () => {
@@ -83,7 +101,10 @@ export default function Game() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0a1128] via-[#0d1b3a] to-[#0a1128] text-white">
+    <div
+      className="min-h-screen bg-gradient-to-b from-[#0a1128] via-[#0d1b3a] to-[#0a1128] text-white"
+      onClickCapture={kickstartMusic}
+    >
       {/* top bar */}
       <div className="mx-auto flex w-full max-w-2xl items-center justify-between px-4 pt-4">
         <button
@@ -102,6 +123,15 @@ export default function Game() {
           >
             rekal.dev
           </Link>
+          <button
+            onClick={toggleMusic}
+            aria-label={musicOn ? "Turn music off" : "Turn music on"}
+            className={`rounded-full border border-white/15 px-2.5 py-1 text-sm transition-colors hover:bg-white/15 ${
+              musicOn ? "bg-white/15" : "bg-white/5 opacity-50"
+            }`}
+          >
+            🎵
+          </button>
           <button
             onClick={toggleMute}
             aria-label={muted ? "Unmute sounds" : "Mute sounds"}
