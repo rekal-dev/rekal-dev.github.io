@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     "ai pair programming",
     "institutional memory",
   ],
+  metadataBase: new URL("https://rekal.dev"),
   alternates: {
     canonical: "https://rekal.dev",
   },
@@ -49,12 +50,14 @@ export const metadata: Metadata = {
     url: "https://rekal.dev",
     siteName: "Rekal",
     type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Rekal — the memory your AI coding agent is missing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Rekal — the memory your AI coding agent is missing",
     description:
       "The why behind your code — captured at every commit, recalled next session. In git, not someone else's cloud.",
+    images: ["/og.png"],
   },
 };
 
