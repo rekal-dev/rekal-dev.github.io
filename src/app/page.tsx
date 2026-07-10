@@ -1,7 +1,11 @@
+import Link from "next/link";
 import Terminal from "@/components/Terminal";
 import InstallCommand from "@/components/InstallCommand";
 import GitHubButton from "@/components/GitHubButton";
 import FadeIn from "@/components/FadeIn";
+import SpotlightCard from "@/components/SpotlightCard";
+import CountUp from "@/components/CountUp";
+import Pipeline from "@/components/Pipeline";
 
 function Nav() {
   const links = [
@@ -13,10 +17,10 @@ function Nav() {
   return (
     <nav className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3.5">
-        <a href="/" className="flex items-center gap-2 font-mono text-lg font-bold tracking-tight">
+        <Link href="/" className="flex items-center gap-2 font-mono text-lg font-bold tracking-tight">
           <span className="text-accent">❯</span>
           <span>rekal</span>
-        </a>
+        </Link>
         <div className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm text-muted hover:text-foreground transition-colors">
@@ -90,28 +94,10 @@ function Hero() {
   );
 }
 
-function ThreeLines() {
-  const steps = [
-    { k: "commit", t: "Commit", d: "A post-commit hook snapshots the AI conversation that produced the change into an append-only log." },
-    { k: "push", t: "Push", d: "Only merged work rides a git orphan branch to your team. No server, no API, no telemetry." },
-    { k: "recall", t: "Recall", d: "rekal \"<problem>\" returns scored prior context as JSON your agent drills into — cheapest turns first." },
-  ];
+function Flow() {
   return (
-    <section className="px-6 pb-8">
-      <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-px rounded-2xl overflow-hidden border border-border bg-border">
-        {steps.map((s, i) => (
-          <FadeIn key={s.k} delay={i * 0.08} className="bg-card">
-            <div className="p-7 h-full">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs font-mono text-faint">0{i + 1}</span>
-                <span className="text-accent font-mono text-sm">{s.k}</span>
-              </div>
-              <h3 className="font-semibold mb-2">{s.t}</h3>
-              <p className="text-sm text-muted leading-relaxed">{s.d}</p>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
+    <section className="px-6 py-16">
+      <Pipeline />
     </section>
   );
 }
@@ -149,18 +135,22 @@ function Problem() {
   );
 }
 
-function HowItWorks() {
-  const dev = [
-    { cmd: "git commit", d: "Post-commit hook runs rekal checkpoint — the active AI session lands in an append-only local database." },
-    { cmd: "git push", d: "Pre-push hook runs rekal push — only merged work is encoded (zstd + interning) onto your orphan branch. Unmerged spikes stay local." },
-    { cmd: "rekal sync", d: "Pull teammates’ merged intent when you want it. Manual by design — you decide when to import team context." },
-  ];
-  const agent = [
-    { cmd: 'rekal "…"', d: "Three-signal hybrid search (BM25 + LSA + Nomic). Scored JSON with the best-matching turn for progressive drill-down." },
-    { cmd: "rekal --commit", d: "Anchor on a commit and walk back to the session that produced it — the why-chain behind any change." },
-    { cmd: "--role human_steering", d: "Return only the mid-course corrections — the highest-signal turns for intent and unstated preferences." },
-  ];
-  const Col = ({ tone, title, rows, base }: { tone: string; title: string; rows: typeof dev; base: number }) => (
+type HowRow = { cmd: string; d: string };
+
+const DEV_ROWS: HowRow[] = [
+  { cmd: "git commit", d: "Post-commit hook runs rekal checkpoint — the active AI session lands in an append-only local database." },
+  { cmd: "git push", d: "Pre-push hook runs rekal push — only merged work is encoded (zstd + interning) onto your orphan branch. Unmerged spikes stay local." },
+  { cmd: "rekal sync", d: "Pull teammates’ merged intent when you want it. Manual by design — you decide when to import team context." },
+];
+
+const AGENT_ROWS: HowRow[] = [
+  { cmd: 'rekal "…"', d: "Three-signal hybrid search (BM25 + LSA + Nomic). Scored JSON with the best-matching turn for progressive drill-down." },
+  { cmd: "rekal --commit", d: "Anchor on a commit and walk back to the session that produced it — the why-chain behind any change." },
+  { cmd: "--role human_steering", d: "Return only the mid-course corrections — the highest-signal turns for intent and unstated preferences." },
+];
+
+function HowColumn({ tone, title, rows, base }: { tone: string; title: string; rows: HowRow[]; base: number }) {
+  return (
     <div>
       <FadeIn delay={base}>
         <h3 className="text-sm font-mono uppercase tracking-wider mb-5 flex items-center gap-2.5">
@@ -171,15 +161,18 @@ function HowItWorks() {
       <div className="space-y-3">
         {rows.map((r, i) => (
           <FadeIn key={r.cmd} delay={base + 0.06 * (i + 1)}>
-            <div className="card card-hover p-5 flex gap-4 items-start">
+            <SpotlightCard className="p-5 flex gap-4 items-start">
               <code className="shrink-0 mt-0.5 text-xs font-mono text-accent bg-accent/10 border border-accent/15 rounded-md px-2 py-1 whitespace-nowrap">{r.cmd}</code>
               <p className="text-sm text-muted leading-relaxed">{r.d}</p>
-            </div>
+            </SpotlightCard>
           </FadeIn>
         ))}
       </div>
     </div>
   );
+}
+
+function HowItWorks() {
   return (
     <section id="how" className="py-28 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
@@ -189,8 +182,8 @@ function HowItWorks() {
           sub="Two roles, one flow. Nothing to babysit — capture is automatic, recall is on demand."
         />
         <div className="grid md:grid-cols-2 gap-10 mt-14">
-          <Col tone="#4ade80" title="Developer" rows={dev} base={0.1} />
-          <Col tone="#22d3ee" title="Agent" rows={agent} base={0.2} />
+          <HowColumn tone="#4ade80" title="Developer" rows={DEV_ROWS} base={0.1} />
+          <HowColumn tone="#22d3ee" title="Agent" rows={AGENT_ROWS} base={0.2} />
         </div>
       </div>
     </section>
@@ -216,24 +209,23 @@ function Skills() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
           {skills.map((s, i) => (
             <FadeIn key={s.name} delay={i * 0.07}>
-              <div className="card card-hover p-6 h-full">
+              <SpotlightCard className="p-6 h-full">
                 <div className="flex items-center justify-between mb-3">
                   <code className="font-mono text-sm text-accent">{s.name}</code>
                   <span className="text-[10px] font-mono uppercase tracking-wider text-faint border border-border rounded px-1.5 py-0.5">{s.tag}</span>
                 </div>
                 <p className="text-sm text-muted leading-relaxed">{s.d}</p>
-              </div>
+              </SpotlightCard>
             </FadeIn>
           ))}
           <FadeIn delay={0.35}>
-            <a
+            <SpotlightCard
+              as="a"
               href="https://github.com/rekal-dev/rekal-cli#agent-skills"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card card-hover p-6 h-full flex items-center justify-center text-sm text-muted hover:text-accent transition-colors"
+              className="p-6 h-full flex items-center justify-center text-sm text-muted hover:text-accent transition-colors"
             >
               Read the skill docs →
-            </a>
+            </SpotlightCard>
           </FadeIn>
         </div>
       </div>
@@ -294,11 +286,11 @@ function Beliefs() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
           {beliefs.map((b, i) => (
             <FadeIn key={b.t} delay={i * 0.06}>
-              <div className="card card-hover p-6 h-full">
+              <SpotlightCard className="p-6 h-full">
                 <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/15 flex items-center justify-center mb-4 text-accent text-sm">✦</div>
                 <h3 className="font-semibold mb-2">{b.t}</h3>
                 <p className="text-sm text-muted leading-relaxed">{b.d}</p>
-              </div>
+              </SpotlightCard>
             </FadeIn>
           ))}
         </div>
@@ -309,10 +301,10 @@ function Beliefs() {
 
 function Stats() {
   const stats = [
-    { v: "1", l: "Binary", d: "Everything embedded — DB, model, compression" },
-    { v: "0", l: "Servers", d: "Data never leaves git and your machine" },
-    { v: "0", l: "API keys", d: "The embedding model ships in the binary" },
-    { v: "~300B", l: "On the wire", d: "A full session, after zstd + interning" },
+    { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, compression" },
+    { value: 0, prefix: "", suffix: "", l: "Servers", d: "Data never leaves git and your machine" },
+    { value: 0, prefix: "", suffix: "", l: "API keys", d: "The embedding model ships in the binary" },
+    { value: 300, prefix: "~", suffix: "B", l: "On the wire", d: "A full session, after zstd + interning" },
   ];
   return (
     <section className="py-20 px-6 border-y border-border">
@@ -320,7 +312,9 @@ function Stats() {
         {stats.map((s, i) => (
           <FadeIn key={s.l} delay={i * 0.08}>
             <div className="text-center">
-              <div className="text-4xl font-bold font-mono gradient-text">{s.v}</div>
+              <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
+                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
+              </div>
               <div className="text-sm font-medium mt-2">{s.l}</div>
               <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
             </div>
@@ -401,10 +395,11 @@ export default function Home() {
   return (
     <>
       <div className="field" aria-hidden />
+      <div className="stage" aria-hidden />
       <Nav />
       <main>
         <Hero />
-        <ThreeLines />
+        <Flow />
         <Problem />
         <Stats />
         <HowItWorks />
