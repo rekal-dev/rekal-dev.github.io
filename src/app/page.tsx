@@ -51,7 +51,7 @@ function Hero() {
         <FadeIn>
           <span className="chip mb-7">
             <span className="chip-dot" />
-            works with Claude Code
+            works with Claude Code, Codex, Gemini &amp; OpenCode
           </span>
         </FadeIn>
         <FadeIn delay={0.05}>
