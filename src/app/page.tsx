@@ -12,6 +12,7 @@ function Nav() {
     { href: "#how", label: "How it works" },
     { href: "#skills", label: "Skills" },
     { href: "#why", label: "Why Rekal" },
+    { href: "#faq", label: "FAQ" },
     { href: "#install", label: "Install" },
   ];
   return (
@@ -342,6 +343,48 @@ function Install() {
   );
 }
 
+const FAQS = [
+  {
+    q: "Which AI coding agents does Rekal work with?",
+    a: "Rekal ships tested session adapters for Claude Code, Codex, Gemini, and OpenCode, and captures sessions from all of them automatically at every commit.",
+  },
+  {
+    q: "Does my code or its intent leave my machine?",
+    a: "No. Rekal never sends data to a server. Intent is stored on a git orphan branch — no server, no API, no telemetry — and the embedding model ships inside the binary.",
+  },
+  {
+    q: "Why not just use a MEMORY.md file or a RAG SaaS?",
+    a: "A notes file rots, is hand-maintained, and is tied to one branch; a memory SaaS puts your code’s intent on someone else’s server. Rekal captures context automatically at every commit, immutably and branch-aware, and keeps everything in git and on your machine.",
+  },
+  {
+    q: "How does an AI agent recall past context with Rekal?",
+    a: 'The agent runs rekal "<problem>", which returns scored prior context as JSON using a three-signal hybrid search (BM25 + LSA + Nomic embeddings), then drills into the exact session and turns it needs.',
+  },
+];
+
+function FAQ() {
+  return (
+    <section id="faq" className="py-28 px-6 scroll-mt-20">
+      <div className="max-w-3xl mx-auto">
+        <SectionHead eyebrow="FAQ" title="Questions, answered" />
+        <div className="mt-12 space-y-3">
+          {FAQS.map((f, i) => (
+            <FadeIn key={f.q} delay={i * 0.06}>
+              <details className="card group px-6 py-5 [&_summary]:cursor-pointer">
+                <summary className="flex items-center justify-between gap-4 font-medium list-none">
+                  {f.q}
+                  <span className="text-accent transition-transform group-open:rotate-45 text-xl leading-none">+</span>
+                </summary>
+                <p className="text-sm text-muted leading-relaxed mt-4">{f.a}</p>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTA() {
   return (
     <section className="pb-28 px-6">
@@ -402,6 +445,7 @@ export default function Home() {
         <WhyNot />
         <Beliefs />
         <Install />
+        <FAQ />
         <CTA />
       </main>
       <Footer />
