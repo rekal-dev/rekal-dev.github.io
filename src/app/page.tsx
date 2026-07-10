@@ -51,7 +51,7 @@ function Hero() {
         <FadeIn>
           <span className="chip mb-7">
             <span className="chip-dot" />
-            Beta · works with Claude Code
+            works with Claude Code
           </span>
         </FadeIn>
         <FadeIn delay={0.05}>
@@ -79,11 +79,6 @@ function Hero() {
               <GitHubButton />
             </div>
           </div>
-        </FadeIn>
-        <FadeIn delay={0.28}>
-          <p className="text-xs font-mono text-faint tracking-wide mt-3">
-            Cursor · Codex · Windsurf · Copilot — on the way
-          </p>
         </FadeIn>
       </div>
 
