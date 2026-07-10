@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rekal — Git-anchored intent ledger with built-in RAG",
+  title: "Rekal — the memory your AI coding agent is missing",
   description:
-    "Agent-first intent ledger anchored to git. RAG-queryable team intent history alongside git commits. Your agent starts every session knowing exactly why — with minimal token cost.",
+    "Your AI agent starts every session blank. Rekal captures the why behind your code — decisions, rejected paths, dead-ends — at every commit and recalls it next session. Stored in git, not someone else's cloud.",
   keywords: [
     "rekal",
     "ai coding",
@@ -43,18 +43,18 @@ export const metadata: Metadata = {
     canonical: "https://rekal.dev",
   },
   openGraph: {
-    title: "Rekal — Git-anchored intent ledger with built-in RAG",
+    title: "Rekal — the memory your AI coding agent is missing",
     description:
-      "Your agent starts every session knowing exactly why — with minimal token cost.",
+      "The why behind your code — captured at every commit, recalled next session. In git, not someone else's cloud.",
     url: "https://rekal.dev",
     siteName: "Rekal",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rekal — Git-anchored intent ledger with built-in RAG",
+    title: "Rekal — the memory your AI coding agent is missing",
     description:
-      "Your agent starts every session knowing exactly why — with minimal token cost.",
+      "The why behind your code — captured at every commit, recalled next session. In git, not someone else's cloud.",
   },
 };
 

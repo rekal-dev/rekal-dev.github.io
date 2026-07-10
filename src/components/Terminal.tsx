@@ -1,95 +1,100 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const lines = [
-  { cmd: 'curl -fsSL https://rekal.dev/install.sh | bash', delay: 0 },
-  { out: '  \u2713 Installed to ~/.local/bin/rekal', delay: 800 },
-  { out: '', delay: 1000 },
-  { cmd: 'rekal init', delay: 1500 },
-  { out: 'rekal: initialized .rekal/ with data.db', delay: 2000 },
-  { out: 'rekal: installed hooks', delay: 2200 },
-  { out: '', delay: 2400 },
-  { cmd: 'rekal sync', delay: 2800 },
-  { out: 'rekal: fetched 3 branches, imported 12 sessions', delay: 3300 },
-  { out: '', delay: 3500 },
-  { comment: 'agent is adding SSO \u2014 how was auth done before?', delay: 3900 },
-  { cmd: 'rekal "auth middleware role-based access"', delay: 5000 },
-  { out: '', delay: 5800 },
-  { out: '{"session_id":"01KGR1...","score":0.92,', delay: 6000 },
-  { out: ' "snippet":"middleware chain: verify token, extract roles, check permission...",', delay: 6200 },
-  { out: ' "snippet_turn_index":14}', delay: 6400 },
-  { out: '', delay: 6600 },
-  { cmd: 'rekal query --session 01KGR1... --offset 12 --limit 5', delay: 7200 },
-  { out: '', delay: 8000 },
-  { out: '{"total_turns":51,"has_more":true,', delay: 8200 },
-  { out: ' "turns":[', delay: 8400 },
-  { out: '  {"role":"human","content":"need role-based access on API routes..."},', delay: 8600 },
-  { out: '  {"role":"assistant","content":"middleware chain: authN then authZ..."},', delay: 8800 },
-  { out: '  {"role":"human","content":"how to handle admin vs user roles?"},', delay: 9000 },
-  { out: '  {"role":"assistant","content":"permission map per role. middleware checks route requirements..."},', delay: 9200 },
-  { out: '  {"role":"human","content":"clean, do it"}]}', delay: 9400 },
-  { out: '', delay: 9600 },
-  { comment: 'agent loaded exact context \u2014 1.0k tokens instead of 24k', delay: 10000 },
+type Line =
+  | { cmd: string; delay: number }
+  | { out: string; delay: number }
+  | { comment: string; delay: number };
+
+const lines: Line[] = [
+  { cmd: 'git commit -m "webhooks: switch retries to exponential backoff"', delay: 0 },
+  { out: "rekal: captured 1 session, 214 turns", delay: 800 },
+  { out: "", delay: 1000 },
+  { comment: "next week — a different agent, same question", delay: 1500 },
+  { cmd: 'rekal "should webhook retries use a fixed delay?"', delay: 2600 },
+  { out: "", delay: 3300 },
+  { out: '{"session_id":"01JNQX8F2K9M","score":0.87,', delay: 3500 },
+  { out: '  "snippet":"no — a fixed 5s delay stampedes the downstream on', delay: 3750 },
+  { out: '            recovery. use exponential backoff with jitter.",', delay: 3950 },
+  { out: '  "snippet_role":"human_steering"}', delay: 4150 },
+  { out: "", delay: 4400 },
+  { cmd: "rekal query --session 01JNQX8F2K9M --role human_steering", delay: 5100 },
+  { out: "", delay: 5800 },
+  { out: '{"turns":[', delay: 6000 },
+  { out: '  {"role":"human_steering",', delay: 6200 },
+  { out: '   "content":"don’t retry on a fixed delay — it stampedes on recovery"},', delay: 6400 },
+  { out: '  {"role":"assistant",', delay: 6650 },
+  { out: '   "content":"switched to exponential backoff with full jitter"}]}', delay: 6850 },
+  { out: "", delay: 7150 },
+  { comment: "the dead-end was already ruled out — before it got re-proposed", delay: 7700 },
 ];
 
 function colorize(text: string): string {
   return text
-    .replace(/("session_id"|"score"|"snippet"|"snippet_turn_index"|"total_turns"|"has_more"|"turns"|"role"|"content")/g, '<span class="text-accent">$1</span>')
-    .replace(/("human"|"assistant")/g, '<span class="text-green">$1</span>')
-    .replace(/\b(0\.92|true)\b/g, '<span class="text-amber">$1</span>')
-    .replace(/(?<=[:,])(\d+)/g, '<span class="text-amber">$1</span>')
-    .replace(/(✓)/g, '<span class="text-green">$1</span>');
+    .replace(
+      /("session_id"|"score"|"snippet"|"snippet_role"|"turns"|"role"|"content")/g,
+      '<span class="text-accent">$1</span>',
+    )
+    .replace(/("human_steering"|"human"|"assistant")/g, '<span class="text-green">$1</span>')
+    .replace(/\b(0\.87|true)\b/g, '<span class="text-amber">$1</span>')
+    .replace(/(?<=[:,])(\d+)\b/g, '<span class="text-amber">$1</span>');
 }
 
 export default function Terminal() {
-  const [visibleLines, setVisibleLines] = useState<number>(0);
+  const [visible, setVisible] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timers: NodeJS.Timeout[] = [];
-    lines.forEach((line, i) => {
-      timers.push(
-        setTimeout(() => setVisibleLines(i + 1), line.delay)
-      );
-    });
+    const timers = lines.map((line, i) =>
+      setTimeout(() => setVisible(i + 1), line.delay),
+    );
     return () => timers.forEach(clearTimeout);
   }, []);
 
+  useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  }, [visible]);
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
+      initial={{ opacity: 0, y: 28, scale: 0.985 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
       className="w-full max-w-2xl mx-auto"
     >
-      <div className="rounded-lg border border-border overflow-hidden bg-card shadow-2xl shadow-black/50">
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-[#0d0d0f]">
+      <div className="ring-grad glow-accent overflow-hidden">
+        <div className="flex items-center gap-2 px-4 py-3 border-b border-border/80 bg-[#0b0b0e]">
           <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
           <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-          <span className="ml-2 text-xs text-muted font-mono">terminal</span>
+          <span className="ml-2 text-xs text-faint font-mono">rekal — recall</span>
+          <span className="ml-auto text-[10px] text-faint font-mono tracking-wider">git-native · local</span>
         </div>
-        <div className="p-4 font-mono text-sm leading-6 min-h-[360px] overflow-x-auto">
-          {lines.slice(0, visibleLines).map((line, i) => (
+        <div
+          ref={scrollRef}
+          className="p-4 sm:p-5 font-mono text-[13px] leading-6 h-[380px] overflow-y-auto overflow-x-auto scroll-smooth"
+        >
+          {lines.slice(0, visible).map((line, i) => (
             <div key={i} className="whitespace-pre">
               {"comment" in line ? (
-                <span className="text-muted italic"># {line.comment}</span>
+                <span className="text-faint italic"># {line.comment}</span>
               ) : "cmd" in line ? (
                 <span>
-                  <span className="text-green">$</span>{" "}
+                  <span className="text-accent">❯</span>{" "}
                   <span className="text-foreground">{line.cmd}</span>
                 </span>
               ) : (
                 <span
                   className="text-muted"
-                  dangerouslySetInnerHTML={{ __html: colorize(line.out!) }}
+                  dangerouslySetInnerHTML={{ __html: colorize(line.out) }}
                 />
               )}
             </div>
           ))}
-          {visibleLines < lines.length && (
-            <span className="inline-block w-2 h-4 bg-accent animate-pulse" />
+          {visible < lines.length && (
+            <span className="inline-block w-[7px] h-[15px] translate-y-[2px] bg-accent animate-pulse" />
           )}
         </div>
       </div>
