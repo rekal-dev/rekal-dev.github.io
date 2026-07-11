@@ -7,13 +7,9 @@ const LINKS = [
   { href: "#how", label: "How it works" },
   { href: "#skills", label: "Skills" },
   { href: "#why", label: "Why Rekal" },
+  { href: "#paper", label: "Paper" },
   { href: "#faq", label: "FAQ" },
   { href: "#install", label: "Install" },
-  {
-    href: "https://github.com/rekal-dev/rekal-cli/blob/main/docs/research/paper/rekal-paper.pdf",
-    label: "Paper",
-    external: true,
-  },
 ];
 
 export default function Nav() {
@@ -60,9 +56,6 @@ export default function Nav() {
             <a
               key={l.href}
               href={l.href}
-              {...("external" in l && l.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
               className="text-sm text-muted hover:text-foreground transition-colors"
             >
               {l.label}

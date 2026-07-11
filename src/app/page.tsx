@@ -279,6 +279,89 @@ function Beliefs() {
   );
 }
 
+function Research() {
+  const answers = [
+    {
+      problem: "Where does training signal come from?",
+      lit: "Human annotation, or LLM judges grading themselves",
+      git: "the commit",
+      how: "Every commit labels the sessions that produced it. Ground truth is mined from structure the tool already records — never annotated.",
+    },
+    {
+      problem: "How does compiled memory stay fresh?",
+      lit: "Consolidation daemons; maintenance “deferred to future work”",
+      git: "rebuild + diff",
+      how: "The index is disposable — freshness by deletion. Materialized views regenerate deterministically, so drift arrives as a reviewable diff.",
+    },
+    {
+      problem: "Who verifies what enters shared memory?",
+      lit: "Self- or consensus-judged admission",
+      git: "the merge",
+      how: "Only experience that survived review, CI, and merge reaches the team. The verifier is external, and it already exists.",
+    },
+    {
+      problem: "How does private memory cross a boundary?",
+      lit: "One pool, implicitly readable and writable everywhere",
+      git: "the review",
+      how: "Cross-repo memory is index-only and structurally unpushable. Its one egress is a wiki page on a PR — origins labeled, reviewer watching.",
+    },
+  ];
+  return (
+    <section id="paper" className="py-28 px-6 scroll-mt-20">
+      <div className="max-w-5xl mx-auto">
+        <SectionHead
+          eyebrow="Research"
+          title="“The Commit Is the Label”"
+          sub="Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it."
+        />
+        <div className="grid sm:grid-cols-2 gap-5 mt-14">
+          {answers.map((a, i) => (
+            <FadeIn key={a.git} delay={i * 0.07}>
+              <SpotlightCard className="p-6 h-full">
+                <div className="text-xs font-mono text-faint mb-2">{a.problem}</div>
+                <div className="text-sm text-muted line-through decoration-border mb-3">{a.lit}</div>
+                <h3 className="font-semibold mb-2">
+                  <span className="text-accent font-mono">→ {a.git}</span>
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">{a.how}</p>
+              </SpotlightCard>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={0.2}>
+          <div className="mt-10 flex flex-col items-center gap-4 text-center">
+            <p className="text-sm text-muted max-w-2xl leading-relaxed">
+              RekalBench evaluates it: self-labeled, repo-grounded intent recall — retrievability,
+              token cost, drill strategies, and whether a materialized wiki layer earns its keep.
+              Fully local, runnable by any Rekal user on their own store.
+            </p>
+            <div className="flex items-center gap-3">
+              <Magnetic>
+                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Read the paper (PDF)
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                >
+                  Research program
+                </a>
+              </Magnetic>
+            </div>
+            <span className="text-xs font-mono text-faint">
+              draft — empirical tables pending the corpus run; the PDF always tracks main
+            </span>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+}
+
 function Stats() {
   const stats = [
     { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, compression" },
@@ -439,6 +522,7 @@ export default function Home() {
         <Skills />
         <WhyNot />
         <Beliefs />
+        <Research />
         <Install />
         <FAQ />
         <CTA />
