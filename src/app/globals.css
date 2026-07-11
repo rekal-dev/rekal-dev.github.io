@@ -107,6 +107,34 @@ body {
   color: transparent;
 }
 
+/* Living gradient: the hero headline's colors slowly breathe. */
+.gradient-live {
+  background: linear-gradient(100deg,
+    var(--color-accent) 0%, var(--color-violet) 30%, #d9b8ff 50%,
+    var(--color-violet) 70%, var(--color-accent) 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-drift 9s ease-in-out infinite alternate;
+}
+@keyframes gradient-drift {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+
+/* Headline entrance: each .reveal-line rises out of a clipped box. */
+.reveal-clip { display: block; overflow: hidden; }
+.reveal-line {
+  display: block;
+  transform: translateY(110%);
+  animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--rd, 0s);
+}
+@keyframes rise {
+  to { transform: translateY(0); }
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -239,6 +267,34 @@ body {
   to { stroke-dashoffset: 0; }
 }
 
+/* Pipeline node glow: a slow breathing halo, staggered per node. */
+.node-pulse {
+  animation: node-breathe 3.2s ease-in-out infinite;
+  animation-delay: var(--np, 0s);
+}
+@keyframes node-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.12); }
+}
+
+/* Scroll progress hairline under the nav (scaleX driven by JS). */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-violet));
+}
+
+/* 3D tilt support for spotlight cards. */
+.tilt-wrap { perspective: 900px; }
+.spot-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
 /* Gradient hairline border for feature surfaces. */
 .ring-grad {
   position: relative;
@@ -282,12 +338,32 @@ body {
 .btn:active { transform: translateY(1px); }
 
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   color: #04141a;
   background: linear-gradient(100deg, var(--color-accent), #6ee7f0);
   box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--color-accent) 65%, transparent);
 }
 .btn-primary:hover {
   box-shadow: 0 14px 40px -10px color-mix(in oklab, var(--color-accent) 80%, transparent);
+}
+/* Sheen sweep across the primary CTA on hover. */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: -40% auto -40% -60%;
+  width: 40%;
+  transform: skewX(-20deg) translateX(0);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-primary:hover::after {
+  opacity: 1;
+  animation: sheen 0.7s ease forwards;
+}
+@keyframes sheen {
+  to { transform: skewX(-20deg) translateX(420%); }
 }
 
 .btn-ghost {
@@ -307,6 +383,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .field::after,
-  .chip-dot { animation: none !important; }
+  .chip-dot,
+  .gradient-live,
+  .node-pulse,
+  .flow-dash { animation: none !important; }
+  .reveal-line { transform: none; animation: none; }
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }

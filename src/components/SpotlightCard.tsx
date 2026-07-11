@@ -2,6 +2,8 @@
 
 import { ReactNode, useRef } from "react";
 
+const MAX_TILT = 3.2; // degrees — perceptible depth, never seasick
+
 export default function SpotlightCard({
   children,
   className = "",
@@ -19,22 +21,38 @@ export default function SpotlightCard({
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    el.style.setProperty("--mx", `${x}px`);
+    el.style.setProperty("--my", `${y}px`);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const rx = ((y / r.height) - 0.5) * -2 * MAX_TILT;
+      const ry = ((x / r.width) - 0.5) * 2 * MAX_TILT;
+      el.style.transform = `translateY(-3px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    }
+  };
+
+  const onLeave = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = "";
   };
 
   const props = {
     ref,
     onMouseMove: onMove,
+    onMouseLeave: onLeave,
     className: `spot-card ${className}`,
   };
 
-  if (as === "a") {
-    return (
+  const card =
+    as === "a" ? (
       <a {...props} href={href} target="_blank" rel="noopener noreferrer">
         {children}
       </a>
+    ) : (
+      <div {...props}>{children}</div>
     );
-  }
-  return <div {...props}>{children}</div>;
+
+  return <div className="tilt-wrap h-full">{card}</div>;
 }

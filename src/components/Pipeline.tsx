@@ -64,7 +64,10 @@ export default function Pipeline() {
           >
             <div className="relative mx-auto mb-5 w-14 h-14 grid place-items-center">
               <div className="absolute inset-0 rounded-2xl bg-accent/10 border border-accent/20" />
-              <div className="absolute inset-0 rounded-2xl bg-accent/20 blur-md opacity-60" />
+              <div
+                className="node-pulse absolute inset-0 rounded-2xl bg-accent/20 blur-md"
+                style={{ "--np": `${i * 1.05}s` } as React.CSSProperties}
+              />
               <svg
                 className="relative w-6 h-6 text-accent"
                 viewBox="0 0 24 24"

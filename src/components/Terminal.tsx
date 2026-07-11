@@ -44,18 +44,45 @@ function colorize(text: string): string {
 
 export default function Terminal() {
   const [visible, setVisible] = useState(0);
+  const [typing, setTyping] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timers = lines.map((line, i) =>
-      setTimeout(() => setVisible(i + 1), line.delay),
-    );
-    return () => timers.forEach(clearTimeout);
+    let cancelled = false;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+    (async () => {
+      if (reduce) {
+        setVisible(lines.length);
+        return;
+      }
+      let prev = 0;
+      for (let i = 0; i < lines.length; i++) {
+        if (cancelled) return;
+        const line = lines[i];
+        await sleep(Math.max(0, line.delay - prev));
+        prev = line.delay;
+        if (cancelled) return;
+        if ("cmd" in line) {
+          // Type the command character by character, like a human at a prompt.
+          for (let c = 1; c <= line.cmd.length; c++) {
+            if (cancelled) return;
+            setTyping(line.cmd.slice(0, c));
+            await sleep(13);
+          }
+          setTyping(null);
+        }
+        setVisible(i + 1);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-  }, [visible]);
+  }, [visible, typing]);
 
   return (
     <motion.div
@@ -93,7 +120,14 @@ export default function Terminal() {
               )}
             </div>
           ))}
-          {visible < lines.length && (
+          {typing !== null && (
+            <div className="whitespace-pre">
+              <span className="text-accent">❯</span>{" "}
+              <span className="text-foreground">{typing}</span>
+              <span className="inline-block w-[7px] h-[15px] translate-y-[2px] bg-accent" />
+            </div>
+          )}
+          {typing === null && visible < lines.length && (
             <span className="inline-block w-[7px] h-[15px] translate-y-[2px] bg-accent animate-pulse" />
           )}
         </div>
