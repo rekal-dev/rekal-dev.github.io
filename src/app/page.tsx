@@ -59,9 +59,8 @@ function Hero() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <a href={PAPER_URL} target="_blank" rel="noopener noreferrer"
-               className="text-xs font-mono text-faint hover:text-accent transition-colors tracking-wide">
-              Read the paper: “The Commit Is the Label” (draft) →
+            <a href=”/paper” className=”text-xs font-mono text-faint hover:text-accent transition-colors tracking-wide”>
+              Read the paper: “Why Git Is the Memory Solution for the Agentic Development Lifecycle” →
             </a>
           </div>
         </FadeIn>
@@ -282,79 +281,103 @@ function Beliefs() {
 function Research() {
   const answers = [
     {
-      problem: "Where does training signal come from?",
-      lit: "Human annotation, or LLM judges grading themselves",
-      git: "the commit",
-      how: "Every commit labels the sessions that produced it. Ground truth is mined from structure the tool already records — never annotated.",
+      problem: “Where does training signal come from?”,
+      lit: “Human annotation, or LLM judges grading themselves”,
+      git: “the commit”,
+      how: “Every commit labels the sessions that produced it. Ground truth is mined from structure the tool already records — never annotated.”,
     },
     {
-      problem: "How does compiled memory stay fresh?",
-      lit: "Consolidation daemons; maintenance “deferred to future work”",
-      git: "rebuild + diff",
-      how: "The index is disposable — freshness by deletion. Materialized views regenerate deterministically, so drift arrives as a reviewable diff.",
+      problem: “How does compiled memory stay fresh?”,
+      lit: “Consolidation daemons; maintenance “deferred to future work””,
+      git: “rebuild + diff”,
+      how: “The index is disposable — freshness by deletion. Materialized views regenerate deterministically, so drift arrives as a reviewable diff.”,
     },
     {
-      problem: "Who verifies what enters shared memory?",
-      lit: "Self- or consensus-judged admission",
-      git: "the merge",
-      how: "Only experience that survived review, CI, and merge reaches the team. The verifier is external, and it already exists.",
+      problem: “Who verifies what enters shared memory?”,
+      lit: “Self- or consensus-judged admission”,
+      git: “the merge”,
+      how: “Only experience that survived review, CI, and merge reaches the team. The verifier is external, and it already exists.”,
     },
     {
-      problem: "How does private memory cross a boundary?",
-      lit: "One pool, implicitly readable and writable everywhere",
-      git: "the review",
-      how: "Cross-repo memory is index-only and structurally unpushable. Its one egress is a wiki page on a PR — origins labeled, reviewer watching.",
+      problem: “How does private memory cross a boundary?”,
+      lit: “One pool, implicitly readable and writable everywhere”,
+      git: “the review”,
+      how: “Cross-repo memory is index-only and structurally unpushable. Its one egress is a wiki page on a PR — origins labeled, reviewer watching.”,
     },
   ];
+
+  const results = [
+    { metric: “≈60×”, label: “best retrieval vs grep floor”, d: “Five ranking mechanisms tested; two kept. Pooled MRR ≈0.31 across eight corpora.” },
+    { metric: “0.83”, label: “answer sufficiency”, d: “Decision synthesis reconstructs why-arcs across sessions. Raw retrieval scores only 0.07–0.20.” },
+    { metric: “382–980”, label: “tokens per answer”, d: “Router dispatches to structural map, episodes, and synthesis. Three orders of magnitude below the full transcript.” },
+    { metric: “zero”, label: “labeling cost”, d: “Ground truth mined from commit–session links. Reproducible on any Rekal user's own history.” },
+  ];
+
   return (
-    <section id="paper" className="py-28 px-6 scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
+    <section id=”paper” className=”py-28 px-6 scroll-mt-20”>
+      <div className=”max-w-5xl mx-auto”>
         <SectionHead
-          eyebrow="Research"
-          title="“The Commit Is the Label”"
-          sub="Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it."
+          eyebrow=”Research”
+          title=”Why Git Is the Memory Solution for the Agentic Development Lifecycle”
+          sub=”Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it.”
         />
-        <div className="grid sm:grid-cols-2 gap-5 mt-14">
+        <div className=”grid sm:grid-cols-2 gap-5 mt-14”>
           {answers.map((a, i) => (
             <FadeIn key={a.git} delay={i * 0.07}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="text-xs font-mono text-faint mb-2">{a.problem}</div>
-                <div className="text-sm text-muted line-through decoration-border mb-3">{a.lit}</div>
-                <h3 className="font-semibold mb-2">
-                  <span className="text-accent font-mono">→ {a.git}</span>
+              <SpotlightCard className=”p-6 h-full”>
+                <div className=”text-xs font-mono text-faint mb-2”>{a.problem}</div>
+                <div className=”text-sm text-muted line-through decoration-border mb-3”>{a.lit}</div>
+                <h3 className=”font-semibold mb-2”>
+                  <span className=”text-accent font-mono”>→ {a.git}</span>
                 </h3>
-                <p className="text-sm text-muted leading-relaxed">{a.how}</p>
+                <p className=”text-sm text-muted leading-relaxed”>{a.how}</p>
               </SpotlightCard>
             </FadeIn>
           ))}
         </div>
-        <FadeIn delay={0.2}>
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <p className="text-sm text-muted max-w-2xl leading-relaxed">
-              RekalBench evaluates it: self-labeled, repo-grounded intent recall — retrievability,
+
+        <div className=”mt-20”>
+          <FadeIn>
+            <h3 className=”text-sm font-mono uppercase tracking-wider text-muted mb-6”>Empirical results</h3>
+          </FadeIn>
+          <div className=”grid sm:grid-cols-2 gap-5”>
+            {results.map((r, i) => (
+              <FadeIn key={r.metric} delay={0.05 + i * 0.07}>
+                <SpotlightCard className=”p-6”>
+                  <div className=”font-mono text-2xl font-bold text-accent mb-2”>{r.metric}</div>
+                  <div className=”text-sm font-medium mb-2”>{r.label}</div>
+                  <p className=”text-xs text-muted leading-relaxed”>{r.d}</p>
+                </SpotlightCard>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+
+        <FadeIn delay={0.35}>
+          <div className=”mt-10 flex flex-col items-center gap-4 text-center”>
+            <p className=”text-sm text-muted max-w-2xl leading-relaxed”>
+              RekalBench — self-labeled, repo-grounded intent recall — measures retrievability,
               token cost, drill strategies, and whether a materialized wiki layer earns its keep.
-              Fully local, runnable by any Rekal user on their own store.
+              Fully local, runnable by any Rekal user on their own store. Every result is replicable
+              at zero labeling cost.
             </p>
-            <div className="flex items-center gap-3">
+            <div className=”flex items-center gap-3”>
               <Magnetic>
-                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Read the paper (PDF)
+                <a href=”/paper” className=”btn btn-primary”>
+                  Read the paper
                 </a>
               </Magnetic>
               <Magnetic>
                 <a
-                  href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn"
+                  href=”https://github.com/rekal-dev/rekal-cli/tree/main/docs/research”
+                  target=”_blank”
+                  rel=”noopener noreferrer”
+                  className=”btn”
                 >
                   Research program
                 </a>
               </Magnetic>
             </div>
-            <span className="text-xs font-mono text-faint">
-              draft — empirical tables pending the corpus run; the PDF always tracks main
-            </span>
           </div>
         </FadeIn>
       </div>
@@ -473,10 +496,10 @@ function CTA() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="mt-6 text-xs font-mono text-faint">
-              The research behind it:{" "}
-              <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4">
-                “The Commit Is the Label” (draft PDF)
+            <p className=”mt-6 text-xs font-mono text-faint”>
+              The research behind it:{“ “}
+              <a href=”/paper” className=”hover:text-accent transition-colors underline underline-offset-4”>
+                “Why Git Is the Memory Solution for the Agentic Development Lifecycle”
               </a>
             </p>
           </div>
@@ -497,7 +520,7 @@ function Footer() {
         </div>
         <div className="flex items-center gap-6 text-sm text-muted">
           <a href="https://github.com/rekal-dev/rekal-cli" className="hover:text-foreground transition-colors">GitHub</a>
-          <a href={PAPER_URL} className="hover:text-foreground transition-colors">Paper</a>
+          <a href="/paper" className="hover:text-foreground transition-colors">Paper</a>
           <a href="https://discord.gg/eNNabp4b" className="hover:text-foreground transition-colors">Discord</a>
           <a href="https://github.com/rekal-dev/rekal-cli/issues" className="hover:text-foreground transition-colors">Issues</a>
           <a href="https://github.com/rekal-dev/rekal-cli/blob/main/docs/DEVELOPMENT.md" className="hover:text-foreground transition-colors">Docs</a>
