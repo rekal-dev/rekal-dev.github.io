@@ -8,20 +8,19 @@ import Pipeline from "@/components/Pipeline";
 import Nav from "@/components/Nav";
 import Magnetic from "@/components/Magnetic";
 
-// The paper is served from the CLI repo's main branch: the link always shows
-// the latest build — recompile the PDF, merge, and the site needs no rebuild.
-const PAPER_URL =
-  "https://github.com/rekal-dev/rekal-cli/blob/main/docs/research/paper/rekal-paper.pdf";
-
+const PAPER_URL = "https://arxiv.org/abs/2607.14390";
+const PAPER_PDF_URL = "https://arxiv.org/pdf/2607.14390";
 
 function Hero() {
   return (
     <section className="relative flex flex-col items-center px-6 pt-36 pb-24 sm:pt-44">
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <FadeIn>
-          <span className="chip mb-7">
-            <span className="chip-dot" />
-            works with Claude Code, Codex, Gemini &amp; OpenCode
+          <span className="chip mb-7 bg-green/10 border border-green/30 hover:border-green/50 transition-colors cursor-pointer">
+            <span className="chip-dot" style={{ backgroundColor: "#22c55e" }} />
+            <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="hover:text-green transition-colors">
+              Research published on arXiv
+            </a>
           </span>
         </FadeIn>
         <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-6">
@@ -59,8 +58,8 @@ function Hero() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <a href="/paper" className="text-xs font-mono text-faint hover:text-accent transition-colors tracking-wide">
-              Read the paper: &quot;Why Git Is the Memory Solution for the Agentic Development Lifecycle&quot; {'->'}
+            <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="text-xs font-mono text-faint hover:text-accent transition-colors tracking-wide">
+              Read the paper on arXiv {'->'}
             </a>
           </div>
         </FadeIn>
@@ -361,10 +360,15 @@ function Research() {
               Fully local, runnable by any Rekal user on their own store. Every result is replicable
               at zero labeling cost.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center gap-3">
               <Magnetic>
-                <a href="/paper" className="btn btn-primary">
-                  Read the paper
+                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Read on arXiv
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a href={PAPER_PDF_URL} target="_blank" rel="noopener noreferrer" className="btn">
+                  Download PDF
                 </a>
               </Magnetic>
               <Magnetic>
@@ -374,7 +378,7 @@ function Research() {
                   rel="noopener noreferrer"
                   className="btn"
                 >
-                  Research program
+                  Research details
                 </a>
               </Magnetic>
             </div>
@@ -488,7 +492,7 @@ function CTA() {
               No accounts, no telemetry, no plans to gate it. If teams eventually need dashboards or
               cross-org search, we&apos;ll build that on top. Until then, the CLI is the product.
             </p>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
               <Magnetic>
                 <a href="#install" className="btn btn-primary">Install Rekal</a>
               </Magnetic>
@@ -496,12 +500,20 @@ function CTA() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="mt-6 text-xs font-mono text-faint">
-              The research behind it:{" "}
-              <a href="/paper" className="hover:text-accent transition-colors underline underline-offset-4">
-                &quot;Why Git Is the Memory Solution for the Agentic Development Lifecycle&quot;
-              </a>
-            </p>
+            <div className="space-y-3">
+              <p className="text-xs font-mono text-faint">
+                Research published:
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-xs">
+                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground transition-colors font-medium underline underline-offset-4">
+                  arXiv:2607.14390
+                </a>
+                <span className="hidden sm:inline text-faint">•</span>
+                <span className="text-faint italic">
+                  &quot;Why Git Is the Memory Solution for the Agentic Development Lifecycle&quot;
+                </span>
+              </div>
+            </div>
           </div>
         </FadeIn>
       </div>
