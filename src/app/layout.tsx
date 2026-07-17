@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     "llm memory",
     "ai pair programming",
     "institutional memory",
+    "arxiv 2607.14390",
+    "agentic development lifecycle",
   ],
   authors: [{ name: "Rekal", url: "https://github.com/rekal-dev" }],
   creator: "Rekal",
@@ -155,6 +157,23 @@ const JSON_LD = {
       inLanguage: "en",
     },
     {
+      "@type": "ScholarlyArticle",
+      "@id": "https://rekal.dev/paper#article",
+      headline: "Why Git Is the Memory Solution for the Agentic Development Lifecycle",
+      author: { "@type": "Person", name: "Frank Guo" },
+      publisher: { "@id": "https://rekal.dev/#org" },
+      datePublished: "2026-07",
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "arXiv",
+        value: "arXiv:2607.14390",
+      },
+      url: "https://rekal.dev/paper",
+      sameAs: ["https://arxiv.org/abs/2607.14390"],
+      about: { "@id": "https://rekal.dev/#app" },
+      inLanguage: "en",
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://rekal.dev/#faq",
       mainEntity: [
@@ -187,7 +206,7 @@ const JSON_LD = {
           name: "How does an AI agent recall past context with Rekal?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "The agent runs rekal \"<problem>\", which returns scored prior context as JSON using a three-signal hybrid search (BM25 + LSA + Nomic embeddings), then drills into the exact session and turns it needs.",
+            text: "The agent runs rekal \"<problem>\", which returns scored prior sessions plus a knowledge block — pointers into the repo's prose at HEAD — as JSON, using hybrid search (BM25 + LSA + Nomic embeddings). A confidence gate then decides: read the knowledge pointer, drill into the episode, or stay silent.",
           },
         },
       ],

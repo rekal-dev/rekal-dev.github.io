@@ -17,9 +17,10 @@
 <meta name="citation_author" content="Guo, Frank">
 <meta name="citation_publication_date" content="2026">
 <meta name="citation_online_date" content="2026">
+<meta name="citation_arxiv_id" content="2607.14390">
 <meta name="citation_technical_report_institution" content="Rekal">
-<meta name="citation_pdf_url" content="https://rekal.dev/paper/rekal-paper.pdf">
-<meta name="citation_abstract_html_url" content="https://rekal.dev/paper">
+<meta name="citation_pdf_url" content="https://arxiv.org/pdf/2607.14390">
+<meta name="citation_abstract_html_url" content="https://arxiv.org/abs/2607.14390">
 <meta name="citation_language" content="en">
 <meta name="citation_keywords" content="agent memory; coding agents; retrieval; git; agentic development lifecycle">
 
@@ -50,7 +51,13 @@
   "publisher": { "@type": "Organization", "name": "Rekal", "url": "https://rekal.dev" },
   "inLanguage": "en",
   "url": "https://rekal.dev/paper",
-  "sameAs": "https://github.com/rekal-dev/rekal-cli",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "arXiv",
+    "value": "arXiv:2607.14390"
+  },
+  "sameAs": ["https://arxiv.org/abs/2607.14390", "https://github.com/rekal-dev/rekal-cli"],
+  "datePublished": "2026-07",
   "keywords": "agent memory, coding agents, retrieval, git, agentic development lifecycle, ADLC",
   "abstract": "Coding agents now produce a growing share of a team's code, while the reasoning behind each change is trapped in assistant transcripts that vanish with the session. We argue memory should be git-bound — built into version control, inheriting ground truth from commits, freshness from rebuild, verification from the merge, and containment from review. On this ledger we solve two problems separately, then combine them: seed supply (retrieval) and answer assembly (a router over a structural map, confidence-gated episodes, and decision synthesis), answering at 382–980 tokens per question.",
   "encoding": {
@@ -83,6 +90,7 @@
   .stat .n { font-size:24px; font-weight:700; letter-spacing:-0.01em; }
   .stat .l { font-size:13px; color:var(--muted); margin-top:3px; }
   .viewer { width:100%; height:88vh; min-height:560px; margin:14px 0 0; border:1px solid var(--line); border-radius:10px; }
+  .bibtex { border:1px solid var(--line); border-radius:10px; padding:16px 18px; overflow-x:auto; font-size:13.5px; line-height:1.55; background:color-mix(in srgb, var(--fg) 3%, var(--bg)); }
   footer { margin-top:40px; padding-top:18px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); }
   footer a { color:var(--accent); text-decoration:none; }
 </style>
@@ -93,11 +101,13 @@
     <p class="eyebrow">Rekal · Research</p>
     <h1>Why Git Is the Memory Solution for the Agentic Development Lifecycle</h1>
     <p class="sub">Git-bound, routed memory for coding agents: structure, episode, and synthesis under a token budget</p>
-    <p class="byline">Frank Guo · <a href="https://rekal.dev">rekal.dev</a> · <a href="https://github.com/rekal-dev/rekal-cli">github.com/rekal-dev/rekal-cli</a></p>
+    <p class="byline">Frank Guo · 2026 · <a href="https://arxiv.org/abs/2607.14390">arXiv:2607.14390</a> [cs.SE] · <a href="https://rekal.dev">rekal.dev</a> · <a href="https://github.com/rekal-dev/rekal-cli">github.com/rekal-dev/rekal-cli</a></p>
     <div class="actions">
-      <a class="btn primary" href="/paper/rekal-paper.pdf">Download PDF</a>
+      <a class="btn primary" href="https://arxiv.org/abs/2607.14390">View on arXiv</a>
+      <a class="btn" href="/paper/rekal-paper.pdf">Download PDF</a>
       <a class="btn" href="https://github.com/rekal-dev/rekal-cli">Code &amp; benchmark</a>
       <a class="btn" href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research">Reproduce</a>
+      <a class="btn" href="#cite">Cite</a>
     </div>
   </header>
 
@@ -119,8 +129,19 @@
     <iframe class="viewer" src="/paper/rekal-paper.pdf#view=FitH" title="Why Git Is the Memory Solution for the Agentic Development Lifecycle (PDF)"></iframe>
   </object>
 
+  <h2 id="cite">Cite</h2>
+  <pre class="bibtex"><code>@misc{guo2026rekal,
+  title         = {Why Git Is the Memory Solution for the Agentic Development Lifecycle},
+  author        = {Guo, Frank},
+  year          = {2026},
+  eprint        = {2607.14390},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SE},
+  url           = {https://arxiv.org/abs/2607.14390}
+}</code></pre>
+
   <footer>
-    <p>Rekal is a local-first, single-binary memory engine for coding agents. Everything &mdash; capture, storage, hybrid recall, team sync &mdash; runs on your machine; git is the only wire. <a href="https://rekal.dev">rekal.dev</a> · <a href="/paper/rekal-paper.pdf">PDF</a> · <a href="https://github.com/rekal-dev/rekal-cli">GitHub</a></p>
+    <p>Rekal is a local-first, single-binary memory engine for coding agents. Everything &mdash; capture, storage, hybrid recall, team sync &mdash; runs on your machine; git is the only wire. <a href="https://rekal.dev">rekal.dev</a> · <a href="https://arxiv.org/abs/2607.14390">arXiv</a> · <a href="/paper/rekal-paper.pdf">PDF</a> · <a href="https://github.com/rekal-dev/rekal-cli">GitHub</a></p>
   </footer>
 </div>
 </body>

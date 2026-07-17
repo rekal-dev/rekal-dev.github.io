@@ -8,21 +8,27 @@ import Pipeline from "@/components/Pipeline";
 import Nav from "@/components/Nav";
 import Magnetic from "@/components/Magnetic";
 
-// The paper is served from the CLI repo's main branch: the link always shows
-// the latest build — recompile the PDF, merge, and the site needs no rebuild.
-const PAPER_URL =
-  "https://github.com/rekal-dev/rekal-cli/blob/main/docs/research/paper/rekal-paper.pdf";
-
+// Canonical home of the published paper. The /paper page on this site mirrors
+// it with the abstract, an inline PDF, and BibTeX.
+const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
 function Hero() {
   return (
     <section className="relative flex flex-col items-center px-6 pt-36 pb-24 sm:pt-44">
       <div className="relative z-10 text-center max-w-3xl mx-auto">
         <FadeIn>
-          <span className="chip mb-7">
+          <a
+            href={PAPER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="chip mb-7"
+          >
             <span className="chip-dot" />
-            works with Claude Code, Codex, Gemini &amp; OpenCode
-          </span>
+            <span>
+              <span className="text-foreground">New</span> · the research is published on arXiv{" "}
+              <span className="text-accent">{'->'}</span>
+            </span>
+          </a>
         </FadeIn>
         <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-6">
           <span className="reveal-clip">
@@ -59,9 +65,9 @@ function Hero() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <a href="/paper" className="text-xs font-mono text-faint hover:text-accent transition-colors tracking-wide">
-              Read the paper: &quot;Why Git Is the Memory Solution for the Agentic Development Lifecycle&quot; {'->'}
-            </a>
+            <p className="text-xs font-mono text-faint tracking-wide">
+              works with Claude Code · Codex · Gemini · OpenCode
+            </p>
           </div>
         </FadeIn>
       </div>
@@ -170,23 +176,43 @@ function HowItWorks() {
 }
 
 function Skills() {
-  const skills = [
-    { name: "rekal", tag: "search", d: "The base skill — search and progressively drill. The entry point the rest build on." },
-    { name: "rekal-provenance", tag: "why-chain", d: "Artifact &rarr; commit &rarr; session &rarr; intent. Understand how any change was made, and why." },
-    { name: "rekal-reflect", tag: "self-learning", d: "Mine your own steering corrections into explicit rules, so a mistake happens once." },
-    { name: "rekal-distill", tag: "map", d: "Read memory as four libraries — context, decision, rules, boundary — and zoom a topic." },
-    { name: "rekal-census", tag: "full scan", d: "Exhaustively summarise a bounded slice of the whole corpus. Coverage, not relevance." },
+  const substrates = [
+    {
+      name: "tree",
+      tag: "code · now",
+      d: "The current code. Present-tense questions — what does X do, where is it — go to grep and read at HEAD. Memory stays out of the way.",
+    },
+    {
+      name: "knowledge",
+      tag: "prose · now",
+      d: "What the team currently knows — conventions, docs, CLAUDE.md at HEAD. Recall indexes the repo's prose and returns pointers, cross-linked to the sessions that wrote it.",
+    },
+    {
+      name: "map",
+      tag: "structure",
+      d: "How the repo is built. A generated structural map, refreshed by script when stale, read once for breadth-and-shape questions.",
+    },
+    {
+      name: "ledger",
+      tag: "intent · past",
+      d: "Why, tried, rejected. Session intent behind every commit — confidence-gated recall, then progressive drill into the exact turns.",
+    },
+    {
+      name: "silence",
+      tag: "machine event",
+      d: "A route script gates every recall on absolute confidence: INJECT, KNOWLEDGE, or SILENCE. Near-misses are noise — the agent never pads its context to look busy.",
+    },
   ];
   return (
     <section id="skills" className="py-28 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
         <SectionHead
-          eyebrow="Agent skills"
-          title="Playbooks, not just a search box"
-          sub="rekal init installs a suite of Claude Code skills, so the agent reaches for the right memory workflow on its own."
+          eyebrow="The agent skill"
+          title="One skill. Four substrates."
+          sub="rekal init installs a single Claude Code skill — a router. It classifies each question, dispatches it to the one place the answer lives, and stays silent when memory is the wrong tool."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
-          {skills.map((s, i) => (
+          {substrates.map((s, i) => (
             <FadeIn key={s.name} delay={i * 0.07}>
               <SpotlightCard className="p-6 h-full">
                 <div className="flex items-center justify-between mb-3">
@@ -200,13 +226,18 @@ function Skills() {
           <FadeIn delay={0.35}>
             <SpotlightCard
               as="a"
-              href="https://github.com/rekal-dev/rekal-cli#agent-skills"
+              href="https://github.com/rekal-dev/rekal-cli#agent-skill"
               className="p-6 h-full flex items-center justify-center text-sm text-muted hover:text-accent transition-colors"
             >
               Read the skill docs {'->'}
             </SpotlightCard>
           </FadeIn>
         </div>
+        <FadeIn delay={0.4}>
+          <p className="text-center font-mono text-xs text-faint mt-10 tracking-wide">
+            grep for code that is · knowledge for prose that is · ledger for the why that was
+          </p>
+        </FadeIn>
       </div>
     </section>
   );
@@ -321,6 +352,20 @@ function Research() {
           title="Why Git Is the Memory Solution for the Agentic Development Lifecycle"
           sub="Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it."
         />
+        <FadeIn delay={0.05}>
+          <p className="text-center font-mono text-xs text-faint mt-5 tracking-wide">
+            Frank Guo · 2026 ·{" "}
+            <a
+              href={PAPER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-foreground transition-colors"
+            >
+              arXiv:2607.14390
+            </a>{" "}
+            [cs.SE]
+          </p>
+        </FadeIn>
         <div className="grid sm:grid-cols-2 gap-5 mt-14">
           {answers.map((a, i) => (
             <FadeIn key={a.git} delay={i * 0.07}>
@@ -361,10 +406,15 @@ function Research() {
               Fully local, runnable by any Rekal user on their own store. Every result is replicable
               at zero labeling cost.
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center gap-3">
               <Magnetic>
-                <a href="/paper" className="btn btn-primary">
-                  Read the paper
+                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  Read on arXiv
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a href="/paper" className="btn btn-ghost">
+                  Abstract, PDF &amp; BibTeX
                 </a>
               </Magnetic>
               <Magnetic>
@@ -372,9 +422,9 @@ function Research() {
                   href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn"
+                  className="btn btn-ghost"
                 >
-                  Research program
+                  Reproduce it
                 </a>
               </Magnetic>
             </div>
@@ -448,7 +498,7 @@ const FAQS = [
   },
   {
     q: "How does an AI agent recall past context with Rekal?",
-    a: 'The agent runs rekal "<problem>", which returns scored prior context as JSON using a three-signal hybrid search (BM25 + LSA + Nomic embeddings), then drills into the exact session and turns it needs.',
+    a: 'The agent runs rekal "<problem>", which returns scored prior sessions plus a knowledge block — pointers into the repo\'s prose at HEAD — as JSON, using hybrid search (BM25 + LSA + Nomic embeddings). A confidence gate then decides: read the knowledge pointer, drill into the episode, or stay silent.',
   },
 ];
 
@@ -488,7 +538,7 @@ function CTA() {
               No accounts, no telemetry, no plans to gate it. If teams eventually need dashboards or
               cross-org search, we&apos;ll build that on top. Until then, the CLI is the product.
             </p>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
               <Magnetic>
                 <a href="#install" className="btn btn-primary">Install Rekal</a>
               </Magnetic>
@@ -496,10 +546,16 @@ function CTA() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="mt-6 text-xs font-mono text-faint">
-              The research behind it:{" "}
-              <a href="/paper" className="hover:text-accent transition-colors underline underline-offset-4">
-                &quot;Why Git Is the Memory Solution for the Agentic Development Lifecycle&quot;
+            <p className="text-xs font-mono text-faint leading-relaxed">
+              The research behind it: &quot;Why Git Is the Memory Solution for the Agentic
+              Development Lifecycle&quot; —{" "}
+              <a
+                href={PAPER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-foreground transition-colors underline underline-offset-4"
+              >
+                arXiv:2607.14390
               </a>
             </p>
           </div>
