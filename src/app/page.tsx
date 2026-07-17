@@ -15,7 +15,7 @@ const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 function Hero() {
   return (
     <section className="relative flex flex-col items-center px-6 pt-36 pb-24 sm:pt-44">
-      <div className="relative z-10 text-center max-w-3xl mx-auto">
+      <div className="relative z-10 w-full text-center max-w-3xl mx-auto">
         <FadeIn>
           <a
             href={PAPER_URL}
