@@ -155,13 +155,14 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--color-muted);
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
   text-decoration: none;
 }
 
-.chip:hover {
-  border-color: var(--color-accent);
-  background: color-mix(in oklab, var(--color-accent) 12%, transparent);
+/* Only chips that are links invite the pointer. */
+a.chip:hover {
+  border-color: color-mix(in oklab, var(--color-accent) 55%, transparent);
+  background: color-mix(in oklab, var(--color-accent) 10%, transparent);
   color: var(--color-foreground);
 }
 
