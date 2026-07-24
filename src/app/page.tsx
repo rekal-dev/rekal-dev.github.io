@@ -307,131 +307,6 @@ function Beliefs() {
   );
 }
 
-function Research() {
-  const answers = [
-    {
-      problem: "Where does training signal come from?",
-      lit: "Human annotation, or LLM judges grading themselves",
-      git: "the commit",
-      how: "Every commit labels the sessions that produced it. Ground truth is mined from structure the tool already records — never annotated.",
-    },
-    {
-      problem: "How does compiled memory stay fresh?",
-      lit: 'Consolidation daemons; maintenance "deferred to future work"',
-      git: "rebuild + diff",
-      how: "The index is disposable — freshness by deletion. Materialized views regenerate deterministically, so drift arrives as a reviewable diff.",
-    },
-    {
-      problem: "Who verifies what enters shared memory?",
-      lit: "Self- or consensus-judged admission",
-      git: "the merge",
-      how: "Only experience that survived review, CI, and merge reaches the team. The verifier is external, and it already exists.",
-    },
-    {
-      problem: "How does private memory cross a boundary?",
-      lit: "One pool, implicitly readable and writable everywhere",
-      git: "the review",
-      how: "Cross-repo memory is index-only and structurally unpushable. Its one egress is a wiki page on a PR — origins labeled, reviewer watching.",
-    },
-  ];
-
-  const results = [
-    { metric: "~7.5K", label: "context tokens per query", d: "Full inference at query time: lexical + graph + deep retrieval, all local. Zero preprocessing, zero external service." },
-    { metric: "~2s", label: "latency", d: "Complete inference pipeline runs locally. No server roundtrips, no indexing delays, no preprocessing overhead." },
-    { metric: "90.6%", label: "accuracy (LoCoMo)", d: "Beats SotA RAG approaches. Confidence-gated routing delivers only what matters. Silence when uncertain." },
-    { metric: "1", label: "binary", d: "Everything embedded — database, embeddings, inference, graph, compression. Just init and commit. Zero config." },
-  ];
-
-  return (
-    <section id="paper" className="py-28 px-6 scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="Research"
-          title="Why Git Is the Memory Solution for the Agentic Development Lifecycle"
-          sub="Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it."
-        />
-        <FadeIn delay={0.05}>
-          <p className="text-center font-mono text-xs text-faint mt-5 tracking-wide">
-            Frank Guo · 2026 ·{" "}
-            <a
-              href={PAPER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:text-foreground transition-colors"
-            >
-              arXiv:2607.14390
-            </a>{" "}
-            [cs.SE]
-          </p>
-        </FadeIn>
-        <div className="grid sm:grid-cols-2 gap-5 mt-14">
-          {answers.map((a, i) => (
-            <FadeIn key={a.git} delay={i * 0.07}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="text-xs font-mono text-faint mb-2">{a.problem}</div>
-                <div className="text-sm text-muted line-through decoration-border mb-3">{a.lit}</div>
-                <h3 className="font-semibold mb-2">
-                  <span className="text-accent font-mono">{'->'} {a.git}</span>
-                </h3>
-                <p className="text-sm text-muted leading-relaxed">{a.how}</p>
-              </SpotlightCard>
-            </FadeIn>
-          ))}
-        </div>
-
-        <div className="mt-20">
-          <FadeIn>
-            <h3 className="text-sm font-mono uppercase tracking-wider text-muted mb-6">Empirical results</h3>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {results.map((r, i) => (
-              <FadeIn key={r.metric} delay={0.05 + i * 0.07}>
-                <SpotlightCard className="p-6">
-                  <div className="font-mono text-2xl font-bold text-accent mb-2">{r.metric}</div>
-                  <div className="text-sm font-medium mb-2">{r.label}</div>
-                  <p className="text-xs text-muted leading-relaxed">{r.d}</p>
-                </SpotlightCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-
-        <FadeIn delay={0.35}>
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <p className="text-sm text-muted max-w-2xl leading-relaxed">
-              RekalBench — self-labeled, repo-grounded intent recall — measures retrievability,
-              token cost, drill strategies, and whether a materialized wiki layer earns its keep.
-              Fully local, runnable by any Rekal user on their own store. Every result is replicable
-              at zero labeling cost.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-3">
-              <Magnetic>
-                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Read on arXiv
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a href="/paper" className="btn btn-ghost">
-                  Abstract, PDF &amp; BibTeX
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-ghost"
-                >
-                  Reproduce it
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
 
 function Stats() {
   const stats = [
@@ -599,7 +474,6 @@ export default function Home() {
         <Skills />
         <WhyNot />
         <Beliefs />
-        <Research />
         <Install />
         <FAQ />
         <CTA />
