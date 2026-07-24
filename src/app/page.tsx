@@ -135,11 +135,15 @@ function MetricStrip({
 }) {
   const n = stats.length;
   const cols =
-    n <= 3
-      ? "grid-cols-1 sm:grid-cols-3"
-      : n === 4
-        ? "grid-cols-2 md:grid-cols-4"
-        : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6";
+    n <= 2
+      ? "grid-cols-1 sm:grid-cols-2"
+      : n <= 3
+        ? "grid-cols-1 sm:grid-cols-3"
+        : n === 4
+          ? "grid-cols-2 md:grid-cols-4"
+          : n === 5
+            ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
+            : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6";
   const border =
     bordered === "both"
       ? "border-y border-border"
@@ -179,22 +183,32 @@ function MetricStrip({
 
 function Benchmarks() {
   return (
-    <MetricStrip
-      eyebrow="Benchmarks"
-      stats={[
-        { value: 90.6, suffix: "%", l: "LoCoMo" },
-        { value: 86.6, suffix: "%", l: "LongMemEval" },
-        { value: 98.6, suffix: "%", l: "Recall@20" },
-        { value: 93.6, suffix: "%", l: "Recall@10" },
-        { value: 86.4, suffix: "%", l: "Recall@5" },
-        { value: 5.9, prefix: "~", l: "agent turns", detail: "per query" },
-      ]}
-    />
+    <div className="border-t border-border">
+      <MetricStrip
+        eyebrow="Benchmarks"
+        bordered="none"
+        stats={[
+          { value: 90.6, suffix: "%", l: "LoCoMo" },
+          { value: 86.6, suffix: "%", l: "LongMemEval" },
+          { value: 98.6, suffix: "%", l: "Recall@20" },
+          { value: 93.6, suffix: "%", l: "Recall@10" },
+          { value: 86.4, suffix: "%", l: "Recall@5" },
+        ]}
+      />
+      <MetricStrip
+        eyebrow="Perf"
+        bordered="none"
+        stats={[
+          { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
+          { value: 150, prefix: "~", suffix: " ms", l: "recall" },
+        ]}
+      />
+    </div>
   );
 }
 
 function Compression() {
-  // README: Raw JSONL 8.5 MB → Wire 54 KB (~158×); store 16.5 MB; recall ~150 ms.
+  // README: Raw JSONL 8.5 MB → Wire 54 KB (~158×); local store 16.5 MB.
   return (
     <MetricStrip
       eyebrow="Compression & store"
@@ -204,8 +218,6 @@ function Compression() {
         { value: 54, suffix: " KB", l: "wire size" },
         { value: 8.5, suffix: " MB", l: "raw JSONL" },
         { value: 16.5, suffix: " MB", l: "local store" },
-        { value: 150, prefix: "~", suffix: " ms", l: "recall" },
-        { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
       ]}
     />
   );
