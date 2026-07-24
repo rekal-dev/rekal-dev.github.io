@@ -177,23 +177,23 @@ function Skills() {
   const substrates = [
     {
       name: "tree",
-      tag: "code · now",
-      d: "The current code. Present-tense questions — what does X do, where is it — go to grep and read at HEAD. Memory stays out of the way.",
+      tag: "grep · now",
+      d: "Present-tense code questions. grep and read at HEAD. What does this function do, where is it defined, what files touch this pattern.",
     },
     {
       name: "knowledge",
-      tag: "prose · now",
-      d: "What the team currently knows — conventions, docs, CLAUDE.md at HEAD. Recall indexes the repo's prose and returns pointers, cross-linked to the sessions that wrote it.",
+      tag: "prose · HEAD",
+      d: "What the team knows now. Conventions, docs, CLAUDE.md, architecture decisions at HEAD. Hybrid search returns scored pointers with confidence gates.",
     },
     {
       name: "map",
       tag: "structure",
-      d: "How the repo is built. A generated structural map, refreshed by script when stale, read once for breadth-and-shape questions.",
+      d: "How the repo is organized. A generated structural map, refreshed when stale. Breadth-and-shape orientation to the codebase.",
     },
     {
       name: "ledger",
-      tag: "intent · past",
-      d: "Why, tried, rejected. Session intent behind every commit — confidence-gated recall, then progressive drill into the exact turns.",
+      tag: "reasoning · past",
+      d: "Why decisions were made. Reasoning behind commits: what was tried, what was rejected, the conversation that shaped the code. Progressive drill to full sessions.",
     },
   ];
   return (
