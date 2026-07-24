@@ -25,7 +25,7 @@ function Hero() {
           >
             <span className="chip-dot" />
             <span>
-              <span className="text-foreground">New</span> · the research is published on arXiv{" "}
+              <span className="text-foreground">Zero preprocessing</span> · pure query-time inference{" "}
               <span className="text-accent">{'->'}</span>
             </span>
           </a>
@@ -47,9 +47,7 @@ function Hero() {
         </h1>
         <FadeIn delay={0.12}>
           <p className="text-lg text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-            The <span className="text-foreground">why</span> behind your code — decisions, rejected paths,
-            the dead-ends your team already ruled out — captured at every commit and recalled next
-            session. Stored in git, not someone else&apos;s cloud.
+            No preprocessing. No memory layers. No external service. <span className="text-foreground">Every query runs full inference locally</span> — lexical, graph, deep semantics, all at query time. Agents recall intent in seconds, with confidence. The why behind every change, stored in git.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
@@ -66,7 +64,7 @@ function Hero() {
               </Magnetic>
             </div>
             <p className="text-xs font-mono text-faint tracking-wide">
-              works with Claude Code · Codex · Gemini · OpenCode
+              Claude Code · Cursor · Copilot · Codex · Gemini · OpenCode. Zero preprocessing, pure query inference.
             </p>
           </div>
         </FadeIn>
@@ -129,9 +127,9 @@ const DEV_ROWS: HowRow[] = [
 ];
 
 const AGENT_ROWS: HowRow[] = [
-  { cmd: 'rekal "…"', d: "Three-signal hybrid search (BM25 + LSA + Nomic). Scored JSON with the best-matching turn for progressive drill-down." },
-  { cmd: "rekal --commit", d: "Anchor on a commit and walk back to the session that produced it — the why-chain behind any change." },
-  { cmd: "--role human_steering", d: "Return only the mid-course corrections — the highest-signal turns for intent and unstated preferences." },
+  { cmd: 'rekal "…"', d: "Full inference at query time: lexical (BM25) + graph embeddings (LSA) + deep retrieval (Nomic). No preprocessing. Scored JSON with turn, confidence, and provenance." },
+  { cmd: "rekal --commit", d: "Graph-backed: anchor on a commit, walk to the session that produced it. Complete decision lineage, no memory layers." },
+  { cmd: "--role human_steering", d: "Just the steering turns — mid-course corrections. Highest signal for intent, no noise, ~78 token answers." },
 ];
 
 function HowColumn({ tone, title, rows, base }: { tone: string; title: string; rows: HowRow[]; base: number }) {
@@ -282,12 +280,12 @@ function WhyNot() {
 
 function Beliefs() {
   const beliefs = [
-    { t: "Immutable", d: "Append-only wire format. No byte is modified after it is written. The record is the record." },
-    { t: "Intent next to code", d: "Distributed through git orphan branches. No sync server. Works with any remote." },
-    { t: "Thin on the wire", d: "A multi-MB session becomes a few hundred bytes. Indexes and embeddings are computed locally." },
-    { t: "Secure by design", d: "No external calls. The embedding model ships inside the binary. No API keys, no accounts." },
-    { t: "Simple", d: "One binary, everything embedded — database engine, embedding model, compression dictionary." },
-    { t: "Agent first", d: "Three-signal ranking, structured JSON, progressive drill-down. The agent owns its token budget." },
+    { t: "Zero preprocessing", d: "No indexing pipeline. No embedding queue. No delays. Sessions stored raw, inference at query time." },
+    { t: "Query-time inference", d: "Full search stack runs locally on demand: lexical + graph + deep semantics. No preprocessing overhead, ever." },
+    { t: "Intent in git", d: "Decision ledger travels with the repo. No external service. No separate system. Team-wide, persistent." },
+    { t: "Local-only", d: "No API calls, no external embeddings, no servers. Everything embedded in the binary. Privacy native." },
+    { t: "Single binary", d: "Database, inference, graph engine, compression — all built in. Just init and commit. Zero config." },
+    { t: "Agent-native", d: "Scored JSON, drill-down interface, silence gates, confidence, provenance. Built for agent consumption." },
   ];
   return (
     <section className="py-28 px-6">
@@ -338,10 +336,10 @@ function Research() {
   ];
 
   const results = [
-    { metric: "≈60×", label: "best retrieval vs grep floor", d: "Five ranking mechanisms tested; two kept. Pooled MRR ≈0.31 across eight corpora." },
-    { metric: "0.83", label: "answer sufficiency", d: "Decision synthesis reconstructs why-arcs across sessions. Raw retrieval scores only 0.07–0.20." },
-    { metric: "382–980", label: "tokens per answer", d: "Router dispatches to structural map, episodes, and synthesis. Three orders of magnitude below the full transcript." },
-    { metric: "zero", label: "labeling cost", d: "Ground truth mined from commit–session links. Reproducible on any Rekal user's own history." },
+    { metric: "90.6%", label: "LoCoMo accuracy", d: "Zero preprocessing. Pure query-time inference. Beats SotA RAG. No indexing overhead, no external service." },
+    { metric: "~23s", label: "latency per query", d: "Full inference pipeline runs locally: lexical search + graph embeddings + deep retrieval + routing. No server roundtrips." },
+    { metric: "~78 tokens", label: "typical answer length", d: "Confidence-gated routing. Only deliver what matters. Silence when uncertain. No padding, no hallucination cover." },
+    { metric: "zero", label: "setup cost", d: "No preprocessing pipeline. Sessions captured automatically. Queries run instantly. No indexing, no tuning, no config." },
   ];
 
   return (
