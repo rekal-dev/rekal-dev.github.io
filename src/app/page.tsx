@@ -310,7 +310,7 @@ function Beliefs() {
 
 function Stats() {
   const stats = [
-    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Full inference at query time — zero preprocessing overhead" },
+    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Progressive drill-down: answer, then episodes, then full transcript. Agent controls token spend." },
     { value: 2, prefix: "~", suffix: "s", l: "Latency", d: "Complete search pipeline runs locally, no server roundtrips" },
     { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy", d: "Beats SotA RAG. Confidence-gated routing. No hallucination padding." },
     { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, inference, compression" },
@@ -318,14 +318,16 @@ function Stats() {
   return (
     <section className="py-20 px-6 border-y border-border">
       <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((s) => (
-          <div key={s.l} className="text-center">
-            <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
-              <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
+        {stats.map((s, i) => (
+          <FadeIn key={s.l} delay={i * 0.08}>
+            <div className="text-center">
+              <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
+                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
+              </div>
+              <div className="text-sm font-medium mt-2">{s.l}</div>
+              <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
             </div>
-            <div className="text-sm font-medium mt-2">{s.l}</div>
-            <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
-          </div>
+          </FadeIn>
         ))}
       </div>
     </section>
