@@ -7,7 +7,7 @@ const LINKS = [
   { href: "#how", label: "How it works" },
   { href: "#skills", label: "Agent skill" },
   { href: "#why", label: "Why Rekal" },
-  { href: "#paper", label: "Paper" },
+  { href: "/paper", label: "Paper" },
   { href: "#faq", label: "FAQ" },
   { href: "#install", label: "Install" },
 ];

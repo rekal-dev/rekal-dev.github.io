@@ -135,11 +135,11 @@ function AttachedNotArchived() {
   return (
     <section className="py-8 px-6 pb-28">
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-0 border border-border rounded-2xl overflow-hidden">
-        <div className="flex flex-col border-b md:border-b-0 md:border-r border-border">
-          <div className="flex-1 flex items-center justify-center px-6 py-12 bg-card/40 min-h-[280px]">
+        <div className="flex flex-col border-b md:border-b-0 md:border-r border-border min-w-0">
+          <div className="flex-1 flex items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-card/40 min-h-[240px] min-w-0 overflow-hidden">
             <CheckpointSync />
           </div>
-          <div className="px-8 py-8 text-center border-t border-border">
+          <div className="px-6 sm:px-8 py-8 text-center border-t border-border">
             <h3 className="font-semibold text-lg mb-2">Sessions sync with commits</h3>
             <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
               Every conversation is captured and linked to your git history automatically.
@@ -147,32 +147,34 @@ function AttachedNotArchived() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="flex-1 flex items-center justify-center px-8 py-12 bg-card/40 min-h-[280px]">
-            <div className="w-full max-w-sm space-y-3 font-mono text-xs">
-              <div className="ring-grad px-4 py-3 flex items-center justify-between gap-3">
-                <span className="text-foreground truncate">should webhook retries use a fixed delay?</span>
+        <div className="flex flex-col min-w-0">
+          <div className="flex-1 flex items-center justify-center px-4 sm:px-8 py-10 sm:py-12 bg-card/40 min-h-[240px] min-w-0">
+            <div className="w-full max-w-sm space-y-3 font-mono text-xs min-w-0">
+              <div className="ring-grad px-3 sm:px-4 py-3 flex items-start sm:items-center justify-between gap-2 sm:gap-3 flex-col sm:flex-row">
+                <span className="text-foreground break-words min-w-0">
+                  should webhook retries use a fixed delay?
+                </span>
                 <span className="text-accent shrink-0">INJECT</span>
               </div>
-              <div className="ring-grad px-4 py-3 opacity-70">
-                <div className="flex justify-between text-faint mb-1">
-                  <span>01JNQX8F2K9M</span>
-                  <span className="text-green">conf=0.81</span>
+              <div className="ring-grad px-3 sm:px-4 py-3 opacity-70 min-w-0">
+                <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-faint mb-1">
+                  <span className="truncate">01JNQX8F2K9M</span>
+                  <span className="text-green shrink-0">conf=0.81</span>
                 </div>
-                <p className="text-muted leading-relaxed">
+                <p className="text-muted leading-relaxed break-words">
                   no — a fixed 5s delay stampedes on recovery. Use exponential backoff with jitter…
                 </p>
               </div>
-              <div className="ring-grad px-4 py-3 opacity-40">
-                <div className="flex justify-between text-faint mb-1">
-                  <span>01JNR2A7YQ4P</span>
-                  <span>conf=0.53</span>
+              <div className="ring-grad px-3 sm:px-4 py-3 opacity-40 min-w-0">
+                <div className="flex flex-wrap justify-between gap-x-3 gap-y-1 text-faint mb-1">
+                  <span className="truncate">01JNR2A7YQ4P</span>
+                  <span className="shrink-0">conf=0.53</span>
                 </div>
-                <p className="text-muted leading-relaxed">capped retries at 5 then dead-letter…</p>
+                <p className="text-muted leading-relaxed break-words">capped retries at 5 then dead-letter…</p>
               </div>
             </div>
           </div>
-          <div className="px-8 py-8 text-center border-t border-border">
+          <div className="px-6 sm:px-8 py-8 text-center border-t border-border">
             <h3 className="font-semibold text-lg mb-2">Recall the intent, not just the diff</h3>
             <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
               Confidence-gated seeds your agent can act on — verdict, turn, provenance —
@@ -194,7 +196,7 @@ const DEV_ROWS: HowRow[] = [
 ];
 
 const AGENT_ROWS: HowRow[] = [
-  { cmd: 'rekal "…"', d: "Full inference at query time: lexical (BM25) + graph embeddings (LSA) + deep retrieval (Nomic). No preprocessing. Scored JSON with turn, confidence, and provenance." },
+  { cmd: 'rekal "…"', d: "Hybrid search locally: lexical (BM25) + graph (LSA) + deep embeddings (Nomic). All computed on your machine, zero external service. Scored JSON with turn, confidence, and provenance." },
   { cmd: "rekal --commit", d: "Graph-backed: anchor on a commit, walk to the session that produced it. Complete decision lineage, no memory layers." },
   { cmd: "--role human_steering", d: "Just the steering turns — mid-course corrections. Highest signal for intent, no noise, ~78 token answers." },
 ];
@@ -244,28 +246,23 @@ function Skills() {
   const substrates = [
     {
       name: "tree",
-      tag: "code · now",
-      d: "The current code. Present-tense questions — what does X do, where is it — go to grep and read at HEAD. Memory stays out of the way.",
+      tag: "grep · now",
+      d: "Present-tense code questions. grep and read at HEAD. What does this function do, where is it defined, what files touch this pattern.",
     },
     {
       name: "knowledge",
-      tag: "prose · now",
-      d: "What the team currently knows — conventions, docs, CLAUDE.md at HEAD. Recall indexes the repo's prose and returns pointers, cross-linked to the sessions that wrote it.",
+      tag: "prose · HEAD",
+      d: "What the team knows now. Conventions, docs, CLAUDE.md, architecture decisions at HEAD. Hybrid search returns scored pointers with confidence gates.",
     },
     {
       name: "map",
       tag: "structure",
-      d: "How the repo is built. A generated structural map, refreshed by script when stale, read once for breadth-and-shape questions.",
+      d: "How the repo is organized. A generated structural map, refreshed when stale. Breadth-and-shape orientation to the codebase.",
     },
     {
       name: "ledger",
-      tag: "intent · past",
-      d: "Why, tried, rejected. Session intent behind every commit — confidence-gated recall, then progressive drill into the exact turns.",
-    },
-    {
-      name: "silence",
-      tag: "machine event",
-      d: "A route script gates every recall on absolute confidence: INJECT, KNOWLEDGE, or SILENCE. Near-misses are noise — the agent never pads its context to look busy.",
+      tag: "reasoning · past",
+      d: "Why decisions were made. Reasoning behind commits: what was tried, what was rejected, the conversation that shaped the code. Progressive drill to full sessions.",
     },
   ];
   return (
@@ -274,7 +271,7 @@ function Skills() {
         <SectionHead
           eyebrow="The agent skill"
           title="One skill. Four substrates."
-          sub="rekal init installs a single Claude Code skill — a router. It classifies each question, dispatches it to the one place the answer lives, and stays silent when memory is the wrong tool."
+          sub="rekal init installs a single Claude Code skill — a router. It classifies each question and dispatches it to the right substrate. A silence gate ensures near-misses are ignored, never padded."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
           {substrates.map((s, i) => (
@@ -356,7 +353,7 @@ function Beliefs() {
     {
       n: "02",
       t: "Local-only recall",
-      d: "Lexical + graph + deep semantics run on your machine at query time. Sessions stay raw; nothing is sent to a memory SaaS.",
+      d: "Lexical + graph + deep semantics run on your machine. Sessions stay raw; nothing is sent to a memory SaaS.",
     },
     {
       n: "03",
@@ -392,135 +389,9 @@ function Beliefs() {
   );
 }
 
-function Research() {
-  const answers = [
-    {
-      problem: "Where does training signal come from?",
-      lit: "Human annotation, or LLM judges grading themselves",
-      git: "the commit",
-      how: "Every commit labels the sessions that produced it. Ground truth is mined from structure the tool already records — never annotated.",
-    },
-    {
-      problem: "How does compiled memory stay fresh?",
-      lit: 'Consolidation daemons; maintenance "deferred to future work"',
-      git: "rebuild + diff",
-      how: "The index is disposable — freshness by deletion. Materialized views regenerate deterministically, so drift arrives as a reviewable diff.",
-    },
-    {
-      problem: "Who verifies what enters shared memory?",
-      lit: "Self- or consensus-judged admission",
-      git: "the merge",
-      how: "Only experience that survived review, CI, and merge reaches the team. The verifier is external, and it already exists.",
-    },
-    {
-      problem: "How does private memory cross a boundary?",
-      lit: "One pool, implicitly readable and writable everywhere",
-      git: "the review",
-      how: "Cross-repo memory is index-only and structurally unpushable. Its one egress is a wiki page on a PR — origins labeled, reviewer watching.",
-    },
-  ];
-
-  const results = [
-    { metric: "~7.5K", label: "context tokens per query", d: "Full inference at query time: lexical + graph + deep retrieval, all local. Zero preprocessing, zero external service." },
-    { metric: "~2s", label: "latency", d: "Complete inference pipeline runs locally. No server roundtrips, no indexing delays, no preprocessing overhead." },
-    { metric: "90.6%", label: "accuracy (LoCoMo)", d: "Beats SotA RAG approaches. Confidence-gated routing delivers only what matters. Silence when uncertain." },
-    { metric: "1", label: "binary", d: "Everything embedded — database, embeddings, inference, graph, compression. Just init and commit. Zero config." },
-  ];
-
-  return (
-    <section id="paper" className="py-28 px-6 scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="Research"
-          title="Why Git Is the Memory Solution for the Agentic Development Lifecycle"
-          sub="Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it."
-        />
-        <FadeIn delay={0.05}>
-          <p className="text-center font-mono text-xs text-faint mt-5 tracking-wide">
-            Frank Guo · 2026 ·{" "}
-            <a
-              href={PAPER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:text-foreground transition-colors"
-            >
-              arXiv:2607.14390
-            </a>{" "}
-            [cs.SE]
-          </p>
-        </FadeIn>
-        <div className="grid sm:grid-cols-2 gap-5 mt-14">
-          {answers.map((a, i) => (
-            <FadeIn key={a.git} delay={i * 0.07}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="text-xs font-mono text-faint mb-2">{a.problem}</div>
-                <div className="text-sm text-muted line-through decoration-border mb-3">{a.lit}</div>
-                <h3 className="font-semibold mb-2">
-                  <span className="text-accent font-mono">{'->'} {a.git}</span>
-                </h3>
-                <p className="text-sm text-muted leading-relaxed">{a.how}</p>
-              </SpotlightCard>
-            </FadeIn>
-          ))}
-        </div>
-
-        <div className="mt-20">
-          <FadeIn>
-            <h3 className="text-sm font-mono uppercase tracking-wider text-muted mb-6">Empirical results</h3>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {results.map((r, i) => (
-              <FadeIn key={r.metric} delay={0.05 + i * 0.07}>
-                <SpotlightCard className="p-6">
-                  <div className="font-mono text-2xl font-bold text-accent mb-2">{r.metric}</div>
-                  <div className="text-sm font-medium mb-2">{r.label}</div>
-                  <p className="text-xs text-muted leading-relaxed">{r.d}</p>
-                </SpotlightCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-
-        <FadeIn delay={0.35}>
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <p className="text-sm text-muted max-w-2xl leading-relaxed">
-              RekalBench — self-labeled, repo-grounded intent recall — measures retrievability,
-              token cost, drill strategies, and whether a materialized wiki layer earns its keep.
-              Fully local, runnable by any Rekal user on their own store. Every result is replicable
-              at zero labeling cost.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-3">
-              <Magnetic>
-                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Read on arXiv
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a href="/paper" className="btn btn-ghost">
-                  Abstract, PDF &amp; BibTeX
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-ghost"
-                >
-                  Reproduce it
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
-
 function Stats() {
   const stats = [
-    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Full inference at query time — zero preprocessing overhead" },
+    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Progressive drill-down: answer, then episodes, then full transcript. Agent controls token spend." },
     { value: 2, prefix: "~", suffix: "s", l: "Latency", d: "Complete search pipeline runs locally, no server roundtrips" },
     { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy", d: "Beats SotA RAG. Confidence-gated routing. No hallucination padding." },
     { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, inference, compression" },
@@ -686,7 +557,6 @@ export default function Home() {
         <Skills />
         <WhyNot />
         <Beliefs />
-        <Research />
         <Install />
         <FAQ />
         <CTA />
