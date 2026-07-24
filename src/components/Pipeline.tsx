@@ -80,11 +80,10 @@ export default function Pipeline() {
                 <path d={s.icon} />
               </svg>
             </div>
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-xs font-mono text-faint">0{i + 1}</span>
               <span className="font-mono text-sm text-accent">{s.k}</span>
             </div>
-            <h3 className="font-semibold mb-2">{s.t}</h3>
             <p className="text-sm text-muted leading-relaxed max-w-xs mx-auto">{s.d}</p>
           </motion.div>
         ))}
