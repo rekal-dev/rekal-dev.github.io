@@ -23,7 +23,7 @@ function Hero() {
           >
             <span className="chip-dot" />
             <span>
-              Memory that lives in <span className="text-foreground">git</span>
+              Team memory in <span className="text-foreground">git</span>
               {" · "}
               arXiv:2607.14390{" "}
               <span className="text-accent">{'->'}</span>
@@ -47,7 +47,7 @@ function Hero() {
         </h1>
         <FadeIn delay={0.12}>
           <p className="text-lg text-muted max-w-lg mx-auto mb-8 leading-relaxed">
-            Captures the why at every commit. Recalls it from git, on your machine.
+            Captures the why at every commit. Shared with your team over plain git — on your machine, not someone else&apos;s cloud.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
@@ -102,30 +102,121 @@ function Problem() {
   );
 }
 
-function Stats() {
-  const stats = [
-    { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
-    { value: 2, prefix: "~", suffix: "s", l: "latency" },
-    { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy" },
-    { value: 1, prefix: "", suffix: "", l: "binary" },
+/** Entire-style metric strip: big number + short label. */
+function MetricStrip({
+  eyebrow,
+  stats,
+}: {
+  eyebrow: string;
+  stats: { value: number; prefix?: string; suffix?: string; l: string }[];
+}) {
+  const cols =
+    stats.length <= 3
+      ? "grid-cols-1 sm:grid-cols-3"
+      : "grid-cols-2 md:grid-cols-4";
+  return (
+    <section className="border-t border-border">
+      <div className="max-w-5xl mx-auto">
+        <p className="eyebrow text-center pt-8 pb-2">{eyebrow}</p>
+        <div className={`grid ${cols}`}>
+          {stats.map((s, i) => (
+            <FadeIn key={s.l} delay={i * 0.06}>
+              <div
+                className={`text-center px-4 py-8 ${
+                  i < stats.length - 1
+                    ? "border-b sm:border-b-0 sm:border-r border-border"
+                    : ""
+                }`}
+              >
+                <div className="text-3xl sm:text-4xl font-bold font-mono gradient-text tabular-nums">
+                  <CountUp
+                    value={s.value}
+                    prefix={s.prefix ?? ""}
+                    suffix={s.suffix ?? ""}
+                  />
+                </div>
+                <div className="text-xs font-mono uppercase tracking-wider text-faint mt-2">
+                  {s.l}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Benchmarks() {
+  return (
+    <MetricStrip
+      eyebrow="Benchmarks"
+      stats={[
+        { value: 90.6, suffix: "%", l: "LoCoMo" },
+        { value: 86.6, suffix: "%", l: "LongMemEval" },
+        { value: 98.6, suffix: "%", l: "Recall@20" },
+      ]}
+    />
+  );
+}
+
+function Compression() {
+  // README: Raw JSONL 8.5 MB → Wire 54 KB (~158×); recall median ~150 ms.
+  return (
+    <div className="border-b border-border">
+      <MetricStrip
+        eyebrow="Compression & store"
+        stats={[
+          { value: 158, prefix: "~", suffix: "×", l: "wire vs JSONL" },
+          { value: 54, suffix: " KB", l: "wire size" },
+          { value: 150, prefix: "~", suffix: " ms", l: "recall latency" },
+          { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
+        ]}
+      />
+    </div>
+  );
+}
+
+function Team() {
+  const points = [
+    {
+      t: "Orphan branches",
+      d: "Session history rides rekal/<email> — never touches your product branch or PRs.",
+    },
+    {
+      t: "Merged work only",
+      d: "Dead-ends stay local. What lands on main is what the team inherits.",
+    },
+    {
+      t: "rekal sync",
+      d: "Fetch teammates' branches and fold their sessions into your local store.",
+    },
   ];
   return (
-    <section className="border-y border-border">
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
-        {stats.map((s, i) => (
-          <FadeIn key={s.l} delay={i * 0.06}>
-            <div
-              className={`text-center px-4 py-10 ${
-                i < stats.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
-              } ${i === 1 ? "border-b md:border-b-0" : ""}`}
-            >
-              <div className="text-3xl sm:text-4xl font-bold font-mono gradient-text tabular-nums">
-                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
+    <section id="team" className="py-20 px-6 scroll-mt-20">
+      <div className="max-w-3xl mx-auto">
+        <FadeIn>
+          <p className="eyebrow text-center mb-4">Team</p>
+          <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight leading-tight text-center mb-4">
+            Memory that travels with the code
+          </h2>
+          <p className="text-muted text-center leading-relaxed max-w-xl mx-auto">
+            Shared over plain git — no memory server. Push on commit; sync when you want team context.
+          </p>
+        </FadeIn>
+        <div className="mt-12 grid sm:grid-cols-3 gap-8 sm:gap-6">
+          {points.map((p, i) => (
+            <FadeIn key={p.t} delay={i * 0.06}>
+              <div className="text-center sm:text-left">
+                <p className="font-mono text-[11px] text-accent mb-2">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-semibold mb-2">{p.t}</h3>
+                <p className="text-sm text-muted leading-relaxed">{p.d}</p>
               </div>
-              <div className="text-xs font-mono uppercase tracking-wider text-faint mt-2">{s.l}</div>
-            </div>
-          </FadeIn>
-        ))}
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -216,8 +307,12 @@ const FAQS = [
     a: "Claude Code, Codex, Gemini, OpenCode — captured at commit. Also works with Cursor and Copilot.",
   },
   {
+    q: "How does team memory work?",
+    a: "Orphan branches per author. Only merged work reaches the wire. rekal sync folds teammates' sessions into your local index.",
+  },
+  {
     q: "Does intent leave my machine?",
-    a: "No. Git orphan branch. No server, no API, no telemetry.",
+    a: "No cloud memory API. It rides git on your remote — same push/fetch you already use. No telemetry.",
   },
   {
     q: "How does recall work?",
@@ -313,7 +408,9 @@ export default function Home() {
         <Hero />
         <AgentsStrip />
         <Problem />
-        <Stats />
+        <Team />
+        <Benchmarks />
+        <Compression />
         <Skills />
         <WhyNot />
         <Install />
