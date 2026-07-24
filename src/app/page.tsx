@@ -258,6 +258,7 @@ function Team() {
           </h2>
           <p className="text-muted text-center leading-relaxed max-w-xl mx-auto mb-10">
             Shared over plain git — no memory server. Push on commit; sync when you want team context.
+            Agent-agnostic: the team doesn&apos;t lock into one coding agent — Rekal adapts.
           </p>
         </FadeIn>
 
@@ -467,7 +468,7 @@ const FAQS = [
   },
   {
     q: "Which agents?",
-    a: "Claude Code, Codex, Gemini, OpenCode — captured at commit. Also works with Cursor and Copilot.",
+    a: "Claude Code, Codex, Gemini, OpenCode, Kiro — captured at commit. Also works with Cursor and Copilot. Agent-agnostic: switch tools without losing team memory.",
   },
   {
     q: "How does team memory work?",
