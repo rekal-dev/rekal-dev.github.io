@@ -318,16 +318,14 @@ function Stats() {
   return (
     <section className="py-20 px-6 border-y border-border">
       <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((s, i) => (
-          <FadeIn key={s.l} delay={i * 0.08}>
-            <div className="text-center">
-              <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
-                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
-              </div>
-              <div className="text-sm font-medium mt-2">{s.l}</div>
-              <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
+        {stats.map((s) => (
+          <div key={s.l} className="text-center">
+            <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
+              <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
             </div>
-          </FadeIn>
+            <div className="text-sm font-medium mt-2">{s.l}</div>
+            <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
+          </div>
         ))}
       </div>
     </section>
