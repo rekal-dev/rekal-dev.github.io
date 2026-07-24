@@ -32,28 +32,19 @@ export default function RotatingWord({
   }, [words, interval]);
 
   const longest = words.reduce((a, b) => (a.length >= b.length ? a : b), words[0] ?? "");
-
-  if (!reserveWidth) {
-    return (
-      <span className="relative inline-block overflow-hidden align-baseline">
-        <span key={i} className={`rotate-word inline-block ${className}`} aria-live="polite">
-          {words[i]}
-        </span>
-      </span>
-    );
-  }
+  // Sizer shares the grid cell with the visible word so baselines match
+  // adjacent copy ("it's missing", "has nothing").
+  const measure = reserveWidth ? longest : words[i];
 
   return (
-    <span className="relative inline-block overflow-hidden align-baseline">
-      <span className="invisible whitespace-nowrap" aria-hidden>
-        {longest}
+    <span className="rotate-word-slot">
+      <span className="invisible whitespace-nowrap col-start-1 row-start-1" aria-hidden>
+        {measure}
       </span>
-      <span
-        key={i}
-        className={`rotate-word absolute left-0 top-0 whitespace-nowrap ${className}`}
-        aria-live="polite"
-      >
-        {words[i]}
+      <span className="rotate-word-clip col-start-1 row-start-1">
+        <span key={i} className={`rotate-word ${className}`} aria-live="polite">
+          {words[i]}
+        </span>
       </span>
     </span>
   );
