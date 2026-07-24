@@ -102,42 +102,60 @@ function Problem() {
   );
 }
 
+type Stat = {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  l: string;
+  detail?: string;
+  decimals?: number;
+};
+
 /** Entire-style metric strip: big number + short label. */
 function MetricStrip({
   eyebrow,
   stats,
+  bordered = "top",
 }: {
   eyebrow: string;
-  stats: { value: number; prefix?: string; suffix?: string; l: string }[];
+  stats: Stat[];
+  bordered?: "top" | "both" | "none";
 }) {
+  const n = stats.length;
   const cols =
-    stats.length <= 3
+    n <= 3
       ? "grid-cols-1 sm:grid-cols-3"
-      : "grid-cols-2 md:grid-cols-4";
+      : n === 4
+        ? "grid-cols-2 md:grid-cols-4"
+        : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6";
+  const border =
+    bordered === "both"
+      ? "border-y border-border"
+      : bordered === "top"
+        ? "border-t border-border"
+        : "";
   return (
-    <section className="border-t border-border">
+    <section className={border}>
       <div className="max-w-5xl mx-auto">
         <p className="eyebrow text-center pt-8 pb-2">{eyebrow}</p>
-        <div className={`grid ${cols}`}>
+        <div className={`grid ${cols} divide-y divide-x divide-border border-t border-border`}>
           {stats.map((s, i) => (
-            <FadeIn key={s.l} delay={i * 0.06}>
-              <div
-                className={`text-center px-4 py-8 ${
-                  i < stats.length - 1
-                    ? "border-b sm:border-b-0 sm:border-r border-border"
-                    : ""
-                }`}
-              >
-                <div className="text-3xl sm:text-4xl font-bold font-mono gradient-text tabular-nums">
+            <FadeIn key={s.l} delay={i * 0.05}>
+              <div className="text-center px-3 py-7 sm:px-4">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold font-mono gradient-text tabular-nums">
                   <CountUp
                     value={s.value}
                     prefix={s.prefix ?? ""}
                     suffix={s.suffix ?? ""}
+                    decimals={s.decimals}
                   />
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider text-faint mt-2">
+                <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-faint mt-2">
                   {s.l}
                 </div>
+                {s.detail && (
+                  <div className="mt-1 text-[10px] text-muted/80">{s.detail}</div>
+                )}
               </div>
             </FadeIn>
           ))}
@@ -155,25 +173,29 @@ function Benchmarks() {
         { value: 90.6, suffix: "%", l: "LoCoMo" },
         { value: 86.6, suffix: "%", l: "LongMemEval" },
         { value: 98.6, suffix: "%", l: "Recall@20" },
+        { value: 93.6, suffix: "%", l: "Recall@10" },
+        { value: 86.4, suffix: "%", l: "Recall@5" },
+        { value: 5.9, prefix: "~", l: "agent turns", detail: "per query" },
       ]}
     />
   );
 }
 
 function Compression() {
-  // README: Raw JSONL 8.5 MB → Wire 54 KB (~158×); recall median ~150 ms.
+  // README: Raw JSONL 8.5 MB → Wire 54 KB (~158×); store 16.5 MB; recall ~150 ms.
   return (
-    <div className="border-b border-border">
-      <MetricStrip
-        eyebrow="Compression & store"
-        stats={[
-          { value: 158, prefix: "~", suffix: "×", l: "wire vs JSONL" },
-          { value: 54, suffix: " KB", l: "wire size" },
-          { value: 150, prefix: "~", suffix: " ms", l: "recall latency" },
-          { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
-        ]}
-      />
-    </div>
+    <MetricStrip
+      eyebrow="Compression & store"
+      bordered="both"
+      stats={[
+        { value: 158, prefix: "~", suffix: "×", l: "wire vs JSONL" },
+        { value: 54, suffix: " KB", l: "wire size" },
+        { value: 8.5, suffix: " MB", l: "raw JSONL" },
+        { value: 16.5, suffix: " MB", l: "local store" },
+        { value: 150, prefix: "~", suffix: " ms", l: "recall" },
+        { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
+      ]}
+    />
   );
 }
 
@@ -181,7 +203,11 @@ function Team() {
   const points = [
     {
       t: "Orphan branches",
-      d: "Session history rides rekal/<email> — never touches your product branch or PRs.",
+      d: (
+        <>
+          Sessions ride <code className="font-mono text-[12px] text-foreground">rekal/&lt;email&gt;</code> — never touch product history or PRs.
+        </>
+      ),
     },
     {
       t: "Merged work only",
@@ -200,23 +226,56 @@ function Team() {
           <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight leading-tight text-center mb-4">
             Memory that travels with the code
           </h2>
-          <p className="text-muted text-center leading-relaxed max-w-xl mx-auto">
+          <p className="text-muted text-center leading-relaxed max-w-xl mx-auto mb-10">
             Shared over plain git — no memory server. Push on commit; sync when you want team context.
           </p>
         </FadeIn>
-        <div className="mt-12 grid sm:grid-cols-3 gap-8 sm:gap-6">
-          {points.map((p, i) => (
-            <FadeIn key={p.t} delay={i * 0.06}>
-              <div className="text-center sm:text-left">
-                <p className="font-mono text-[11px] text-accent mb-2">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-semibold mb-2">{p.t}</h3>
-                <p className="text-sm text-muted leading-relaxed">{p.d}</p>
+
+        <FadeIn delay={0.08}>
+          <div className="card overflow-hidden">
+            {/* Sync flow — the interactive beat of the card */}
+            <div className="border-b border-border px-5 py-5 sm:px-7 sm:py-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-3 font-mono text-xs sm:text-sm">
+                <div className="flex-1 ring-grad px-3 py-2.5 min-w-0">
+                  <div className="text-faint text-[10px] uppercase tracking-wider mb-1">you</div>
+                  <div className="truncate text-foreground">rekal/&lt;you&gt;</div>
+                  <div className="text-faint truncate mt-0.5">push on commit</div>
+                </div>
+                <div className="flex items-center justify-center gap-2 shrink-0 text-accent" aria-hidden>
+                  <svg className="hidden sm:block w-8 h-2" viewBox="0 0 32 8" fill="none">
+                    <path className="sync-dash" d="M0 4H32" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" />
+                  </svg>
+                  <span className="size-8 rounded-full border border-accent/30 bg-card grid place-items-center text-[10px] tracking-tight">
+                    git
+                  </span>
+                  <svg className="hidden sm:block w-8 h-2" viewBox="0 0 32 8" fill="none">
+                    <path className="sync-dash" d="M0 4H32" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 5" />
+                  </svg>
+                </div>
+                <div className="flex-1 ring-grad px-3 py-2.5 min-w-0">
+                  <div className="text-faint text-[10px] uppercase tracking-wider mb-1">teammate</div>
+                  <div className="truncate text-foreground">rekal/&lt;them&gt;</div>
+                  <div className="text-faint truncate mt-0.5">
+                    <span className="text-accent">rekal sync</span>
+                    {" → .rekal/"}
+                  </div>
+                </div>
               </div>
-            </FadeIn>
-          ))}
-        </div>
+            </div>
+
+            <div className="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
+              {points.map((p, i) => (
+                <div key={p.t} className="p-5 sm:p-6">
+                  <p className="font-mono text-[11px] text-accent mb-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="font-semibold mb-2 text-sm sm:text-base">{p.t}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{p.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
