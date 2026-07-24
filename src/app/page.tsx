@@ -192,28 +192,19 @@ function MetricStrip({
 
 function Benchmarks() {
   return (
-    <div className="border-t border-border">
-      <MetricStrip
-        eyebrow="Benchmarks"
-        bordered="none"
-        stats={[
-          { value: 90.6, suffix: "%", l: "LoCoMo" },
-          { value: 86.6, suffix: "%", l: "LongMemEval" },
-          { value: 98.6, suffix: "%", l: "Recall@20" },
-          { value: 93.6, suffix: "%", l: "Recall@10" },
-          { value: 86.4, suffix: "%", l: "Recall@5" },
-        ]}
-      />
-      <MetricStrip
-        eyebrow="Perf"
-        bordered="none"
-        stats={[
-          { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
-          { value: 150, prefix: "~", suffix: " ms", l: "recall" },
-          { value: 2, prefix: "~", suffix: "s", l: "end-to-end", detail: "query" },
-        ]}
-      />
-    </div>
+    <MetricStrip
+      eyebrow="Benchmarks"
+      stats={[
+        { value: 90.6, suffix: "%", l: "LoCoMo" },
+        { value: 86.6, suffix: "%", l: "LongMemEval" },
+        { value: 98.6, suffix: "%", l: "Recall@20" },
+        { value: 93.6, suffix: "%", l: "Recall@10" },
+        { value: 86.4, suffix: "%", l: "Recall@5" },
+        { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
+        { value: 150, prefix: "~", suffix: " ms", l: "recall" },
+        { value: 2, prefix: "~", suffix: "s", l: "end-to-end" },
+      ]}
+    />
   );
 }
 
