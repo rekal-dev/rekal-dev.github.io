@@ -4,19 +4,22 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Animates a number up to `value` when it scrolls into view. `prefix`/`suffix`
- * wrap it (e.g. "~", "B"). Non-numeric values (like "∞") render as-is.
+ * wrap it (e.g. "~", "B"). Pass `decimals` to force precision (e.g. 5.9, 90.6).
  */
 export default function CountUp({
   value,
   prefix = "",
   suffix = "",
   duration = 1100,
+  decimals,
 }: {
   value: number;
   prefix?: string;
   suffix?: string;
   duration?: number;
+  decimals?: number;
 }) {
+  const places = decimals ?? (Number.isInteger(value) ? 0 : 1);
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const done = useRef(false);
@@ -34,9 +37,7 @@ export default function CountUp({
           return;
         }
         const start = performance.now();
-        // Preserve one decimal when the target isn't an integer (e.g. 7.5, 90.6).
-        const decimals = Number.isInteger(value) ? 0 : 1;
-        const factor = 10 ** decimals;
+        const factor = 10 ** places;
         const tick = (t: number) => {
           const p = Math.min(1, (t - start) / duration);
           const eased = 1 - Math.pow(1 - p, 3);
@@ -49,12 +50,14 @@ export default function CountUp({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [value, duration]);
+  }, [value, duration, places]);
+
+  const shown = places > 0 ? n.toFixed(places) : String(n);
 
   return (
     <span ref={ref}>
       {prefix}
-      {n}
+      {shown}
       {suffix}
     </span>
   );
