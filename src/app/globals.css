@@ -135,14 +135,30 @@ body {
   to { transform: translateY(0); }
 }
 
-/* Rotating headline word: clip-rise on each swap. */
+/* Rotating headline word: clip-rise on each swap.
+   Slot is inline-grid so the sizer + visible word share one cell
+   (same baseline as adjacent text). Animation must NOT use
+   forwards/both — a lingering transform shifts the baseline up. */
+.rotate-word-slot {
+  display: inline-grid;
+  vertical-align: baseline;
+  justify-items: start;
+}
+.rotate-word-clip {
+  overflow: hidden;
+  display: block;
+  /* Anchor to the sizer's box; avoid absolute top:0 drift. */
+  width: 100%;
+}
 .rotate-word {
-  animation: rotate-word-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  display: block;
+  /* backwards: start from keyframe; no forwards — clear transform at rest */
+  animation: rotate-word-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 @keyframes rotate-word-in {
   from {
     opacity: 0;
-    transform: translateY(55%);
+    transform: translateY(0.4em);
   }
   to {
     opacity: 1;
