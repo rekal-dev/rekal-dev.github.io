@@ -25,7 +25,7 @@ function Hero() {
           >
             <span className="chip-dot" />
             <span>
-              <span className="text-foreground">Zero preprocessing</span> · pure query-time inference{" "}
+              <span className="text-foreground">No external preprocessing</span> · all inference local{" "}
               <span className="text-accent">{'->'}</span>
             </span>
           </a>
@@ -47,7 +47,7 @@ function Hero() {
         </h1>
         <FadeIn delay={0.12}>
           <p className="text-lg text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-            No preprocessing. No memory layers. No external service. <span className="text-foreground">Every query runs full inference locally</span> — lexical, graph, deep semantics, all at query time. Agents recall intent in seconds, with confidence. The why behind every change, stored in git.
+            No external preprocessing. No memory layers. No external service. Sessions land raw into git. <span className="text-foreground">All search and inference runs locally</span> — lexical, graph, deep embeddings, all on your machine. Agents recall intent in seconds, with confidence. The why behind every change, stored in git.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
@@ -64,7 +64,7 @@ function Hero() {
               </Magnetic>
             </div>
             <p className="text-xs font-mono text-faint tracking-wide">
-              Claude Code · Cursor · Copilot · Codex · Gemini · OpenCode. Zero preprocessing, pure query inference.
+              Claude Code · Cursor · Copilot · Codex · Gemini · OpenCode. No external service. All local.
             </p>
           </div>
         </FadeIn>
@@ -127,7 +127,7 @@ const DEV_ROWS: HowRow[] = [
 ];
 
 const AGENT_ROWS: HowRow[] = [
-  { cmd: 'rekal "…"', d: "Full inference at query time: lexical (BM25) + graph embeddings (LSA) + deep retrieval (Nomic). No preprocessing. Scored JSON with turn, confidence, and provenance." },
+  { cmd: 'rekal "…"', d: "Hybrid search locally: lexical (BM25) + graph (LSA) + deep embeddings (Nomic). All computed on your machine, zero external service. Scored JSON with turn, confidence, and provenance." },
   { cmd: "rekal --commit", d: "Graph-backed: anchor on a commit, walk to the session that produced it. Complete decision lineage, no memory layers." },
   { cmd: "--role human_steering", d: "Just the steering turns — mid-course corrections. Highest signal for intent, no noise, ~78 token answers." },
 ];
