@@ -291,39 +291,6 @@ function Team() {
   );
 }
 
-function Skills() {
-  const substrates = [
-    { name: "tree", tag: "grep · now", d: "Present-tense code. grep and read at HEAD." },
-    { name: "knowledge", tag: "prose · HEAD", d: "Conventions and docs the team knows now." },
-    { name: "map", tag: "structure", d: "How the repo is organized." },
-    { name: "ledger", tag: "reasoning · past", d: "Why it was written that way." },
-  ];
-  return (
-    <section id="skills" className="py-20 px-6 scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="Agent skill"
-          title="One skill. Four substrates."
-          sub="A router. Silence when memory isn’t the tool."
-        />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-12 border border-border rounded-2xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x divide-border">
-          {substrates.map((s, i) => (
-            <FadeIn key={s.name} delay={i * 0.06}>
-              <article className="p-6 h-full">
-                <div className="flex items-center justify-between mb-3 gap-2">
-                  <code className="font-mono text-sm text-accent">{s.name}</code>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-faint shrink-0">{s.tag}</span>
-                </div>
-                <p className="text-sm text-muted leading-relaxed">{s.d}</p>
-              </article>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Soul() {
   const trade = [
     {
@@ -574,7 +541,6 @@ export default function Home() {
         <Team />
         <Benchmarks />
         <Compression />
-        <Skills />
         <Soul />
         <Install />
         <FAQ />
