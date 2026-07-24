@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 import Magnetic from "@/components/Magnetic";
 import AgentsStrip from "@/components/AgentsStrip";
 import RotatingWord from "@/components/RotatingWord";
+import type { CSSProperties, ReactNode } from "react";
 
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
@@ -39,14 +40,14 @@ function Hero() {
             <span className="reveal-line">Your coding agent starts every</span>
           </span>
           <span className="reveal-clip">
-            <span className="reveal-line" style={{ "--rd": "0.12s" } as React.CSSProperties}>
+            <span className="reveal-line" style={{ "--rd": "0.12s" } as CSSProperties}>
               session blank. Rekal is the
             </span>
           </span>
           <span className="reveal-clip">
             <span
               className="reveal-line gradient-live"
-              style={{ "--rd": "0.24s" } as React.CSSProperties}
+              style={{ "--rd": "0.24s" } as CSSProperties}
             >
               <RotatingWord
                 words={ROTATE_NOUNS}
@@ -86,7 +87,15 @@ function Hero() {
   );
 }
 
-function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
+function SectionHead({
+  eyebrow,
+  title,
+  sub,
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  sub?: string;
+}) {
   return (
     <FadeIn>
       <p className="eyebrow text-center mb-4">{eyebrow}</p>
@@ -310,6 +319,9 @@ function Team() {
   );
 }
 
+/** What Rekal zeros out — README: nothing to summarize, maintain, or drift. */
+const ZERO_WORDS = ["maintenance", "ingestion-time summarization", "drift"];
+
 function Soul() {
   const trade = [
     {
@@ -347,7 +359,17 @@ function Soul() {
       <div className="max-w-5xl mx-auto">
         <SectionHead
           eyebrow="Soul"
-          title="Agent first. Zero maintenance."
+          title={
+            <>
+              Agent first. Zero{" "}
+              <RotatingWord
+                words={ZERO_WORDS}
+                className="gradient-live"
+                reserveWidth={false}
+              />
+              .
+            </>
+          }
           sub="The trade we make on purpose — one immutable ledger, lazy inference, real reasoning on demand."
         />
 
