@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const TITLE = "Rekal — the memory your AI coding agent is missing";
 const DESCRIPTION =
-  "Your AI agent starts every session blank. Rekal captures the why behind your code — decisions, rejected paths, dead-ends — at every commit and recalls it next session. Works with Claude Code, Codex, Gemini, and OpenCode. Stored in git, not someone else's cloud.";
+  "Your coding agent starts every session blank. Rekal captures the why behind your code — decisions, rejected paths, dead-ends — at every commit and recalls it next session. Works with Claude Code, Codex, Gemini, and OpenCode. Stored in git, not someone else's cloud.";
 const SHORT_DESC =
   "The why behind your code — captured at every commit, recalled next session. Works with Claude Code, Codex, Gemini & OpenCode. In git, not someone else's cloud.";
 

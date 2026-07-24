@@ -32,7 +32,7 @@ function Hero() {
         </FadeIn>
         <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-6">
           <span className="reveal-clip">
-            <span className="reveal-line">Your agent starts every</span>
+            <span className="reveal-line">Your coding agent starts every</span>
           </span>
           <span className="reveal-clip">
             <span className="reveal-line" style={{ "--rd": "0.12s" } as React.CSSProperties}>
