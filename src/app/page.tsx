@@ -324,26 +324,116 @@ function Skills() {
   );
 }
 
-function WhyNot() {
-  const rows = [
-    { q: "01", t: "Not a MEMORY.md", d: "Rots. Hand-maintained. Rekal captures at every commit." },
-    { q: "02", t: "Not a memory SaaS", d: "Intent stays in git and on your machine." },
-    { q: "03", t: "Not just git log", d: "Log shows what changed. Rekal shows why." },
+function Soul() {
+  const trade = [
+    {
+      tag: "Lazy inference",
+      title: "Reason at ask-time",
+      d: "No write-time summaries. Retrieval, ranking, routing, and the agent's judgment run over the real record when you ask — compute on demand, nothing derived that can rot.",
+    },
+    {
+      tag: "Zero maintenance",
+      title: "Nothing to keep healthy",
+      d: "Raw sessions are the truth. The index is a disposable accelerator — rebuild reconciles it. No consolidation pipeline, no memory tiers, no drift.",
+    },
   ];
+
+  const vs = [
+    {
+      them: "Mem0",
+      gap: "Extracts and maintains distilled “memories.”",
+      us: "Append-only raw ledger. The agent drills the real turns — no lossy distillation to babysit.",
+    },
+    {
+      them: "Tiered memory",
+      gap: "L1/L2/L3 and wiki-style compiles (AdaMem, Tencent-style layers) need consolidation to stay fresh.",
+      us: "No memory layers. Query-time structure over a disposable index — the maintenance problem we exit.",
+    },
+    {
+      them: "Memory SaaS",
+      gap: "Another service, another store, privacy and ops on the critical path.",
+      us: "Local binary. Intent rides git. Nothing to operate.",
+    },
+  ];
+
   return (
-    <section className="py-20 px-6">
+    <section id="soul" className="py-20 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-3 border border-border rounded-2xl overflow-hidden">
-          {rows.map((r, i) => (
-            <FadeIn key={r.q} delay={i * 0.08}>
-              <article
-                className={`p-7 h-full ${
-                  i < rows.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
-                }`}
+        <SectionHead
+          eyebrow="Soul"
+          title="Agent first. Zero maintenance."
+          sub="The trade we make on purpose — one immutable ledger, lazy inference, real reasoning on demand."
+        />
+
+        {/* Featured: agent-first */}
+        <FadeIn delay={0.06}>
+          <article className="card mt-12 overflow-hidden">
+            <div className="border-b border-border px-6 py-5 sm:px-8 sm:py-6 flex flex-wrap items-center justify-between gap-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                Belief · agent first
+              </p>
+              <a
+                href="https://github.com/rekal-dev/rekal-cli/blob/main/SOUL.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-mono text-muted hover:text-foreground transition-colors"
               >
-                <p className="font-mono text-xs text-accent mb-3">{r.q}</p>
-                <h3 className="font-semibold mb-2">{r.t}</h3>
-                <p className="text-sm text-muted leading-relaxed">{r.d}</p>
+                SOUL.md →
+              </a>
+            </div>
+            <div className="px-6 py-8 sm:px-8 sm:py-10">
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 max-w-2xl">
+                The agent is the reader — not the human.
+              </h3>
+              <p className="text-muted leading-relaxed max-w-2xl mb-8">
+                Every decision about output format, query interface, and context loading
+                puts the agent first. A compact digest — verdict, confidence, drill pointers —
+                built to act on. Silence when memory isn&apos;t the tool. Humans benefit as a side effect.
+              </p>
+              <div className="grid sm:grid-cols-3 gap-4 font-mono text-xs">
+                {[
+                  { k: "INJECT", v: "Surface this memory now" },
+                  { k: "KNOWLEDGE", v: "Read a HEAD pointer instead" },
+                  { k: "SILENCE", v: "Stay quiet — wrong tool" },
+                ].map((x) => (
+                  <div key={x.k} className="ring-grad px-4 py-3">
+                    <div className="text-accent mb-1">{x.k}</div>
+                    <div className="text-faint leading-relaxed">{x.v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        </FadeIn>
+
+        {/* Trade */}
+        <div className="mt-4 grid md:grid-cols-2 border border-border rounded-2xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-border">
+          {trade.map((t, i) => (
+            <FadeIn key={t.tag} delay={0.08 + i * 0.06}>
+              <article className="p-7 sm:p-8 h-full bg-card/40">
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-3">
+                  {t.tag}
+                </p>
+                <h3 className="font-semibold text-lg mb-2">{t.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{t.d}</p>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
+
+        {/* vs others */}
+        <div className="mt-4 grid md:grid-cols-3 border border-border rounded-2xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-border">
+          {vs.map((r, i) => (
+            <FadeIn key={r.them} delay={0.1 + i * 0.06}>
+              <article className="p-7 h-full">
+                <p className="font-mono text-xs text-faint mb-3">vs {r.them}</p>
+                <p className="text-sm text-muted leading-relaxed mb-4">{r.gap}</p>
+                <p className="text-sm text-foreground leading-relaxed">
+                  <span className="text-accent font-mono text-[11px] uppercase tracking-wider mr-2">
+                    Rekal
+                  </span>
+                  {r.us}
+                </p>
               </article>
             </FadeIn>
           ))}
@@ -371,6 +461,10 @@ function Install() {
 }
 
 const FAQS = [
+  {
+    q: "How is this different from Mem0?",
+    a: "Mem0 maintains distilled memories. Rekal keeps a raw append-only ledger and runs lazy inference at ask-time — zero memory tiers to maintain, agent-first digests instead of prose dumps.",
+  },
   {
     q: "Which agents?",
     a: "Claude Code, Codex, Gemini, OpenCode — captured at commit. Also works with Cursor and Copilot.",
@@ -481,7 +575,7 @@ export default function Home() {
         <Benchmarks />
         <Compression />
         <Skills />
-        <WhyNot />
+        <Soul />
         <Install />
         <FAQ />
         <CTA />
