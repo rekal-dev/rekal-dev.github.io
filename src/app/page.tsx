@@ -11,7 +11,6 @@ import RotatingWord from "@/components/RotatingWord";
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
 const HERO_WORDS = [
-  "team memory",
   "intent ledger",
   "why",
   "memory it's missing",
