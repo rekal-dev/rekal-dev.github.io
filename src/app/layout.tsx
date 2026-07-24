@@ -135,7 +135,7 @@ const JSON_LD = {
       ],
       sameAs: [
         "https://github.com/rekal-dev/rekal-cli",
-        "https://discord.gg/eNNabp4b",
+        "https://discord.gg/hDMj8zHH2",
       ],
       publisher: { "@id": "https://rekal.dev/#org" },
     },
@@ -146,7 +146,7 @@ const JSON_LD = {
       url: "https://rekal.dev",
       sameAs: [
         "https://github.com/rekal-dev",
-        "https://discord.gg/eNNabp4b",
+        "https://discord.gg/hDMj8zHH2",
       ],
     },
     {
