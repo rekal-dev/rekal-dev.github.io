@@ -336,10 +336,10 @@ function Research() {
   ];
 
   const results = [
-    { metric: "90.6%", label: "LoCoMo accuracy", d: "Zero preprocessing. Pure query-time inference. Beats SotA RAG. No indexing overhead, no external service." },
-    { metric: "~23s", label: "latency per query", d: "Full inference pipeline runs locally: lexical search + graph embeddings + deep retrieval + routing. No server roundtrips." },
-    { metric: "~78 tokens", label: "typical answer length", d: "Confidence-gated routing. Only deliver what matters. Silence when uncertain. No padding, no hallucination cover." },
-    { metric: "zero", label: "setup cost", d: "No preprocessing pipeline. Sessions captured automatically. Queries run instantly. No indexing, no tuning, no config." },
+    { metric: "~7.5K", label: "context tokens per query", d: "Full inference at query time: lexical + graph + deep retrieval, all local. Zero preprocessing, zero external service." },
+    { metric: "~2s", label: "latency", d: "Complete inference pipeline runs locally. No server roundtrips, no indexing delays, no preprocessing overhead." },
+    { metric: "90.6%", label: "accuracy (LoCoMo)", d: "Beats SotA RAG approaches. Confidence-gated routing delivers only what matters. Silence when uncertain." },
+    { metric: "1", label: "binary", d: "Everything embedded — database, embeddings, inference, graph, compression. Just init and commit. Zero config." },
   ];
 
   return (
@@ -435,10 +435,9 @@ function Research() {
 
 function Stats() {
   const stats = [
-    { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, compression" },
+    { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, inference, compression" },
     { value: 0, prefix: "", suffix: "", l: "Servers", d: "Data never leaves git and your machine" },
     { value: 0, prefix: "", suffix: "", l: "API keys", d: "The embedding model ships in the binary" },
-    { value: 300, prefix: "~", suffix: "B", l: "On the wire", d: "A full session, after zstd + interning" },
   ];
   return (
     <section className="py-20 px-6 border-y border-border">
