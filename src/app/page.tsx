@@ -47,7 +47,7 @@ function Hero() {
         </h1>
         <FadeIn delay={0.12}>
           <p className="text-lg text-muted max-w-lg mx-auto mb-8 leading-relaxed">
-            Captures the why at every commit. Recalls it next session — in git, on your machine.
+            Captures the why at every commit. Recalls it from git, on your machine.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
