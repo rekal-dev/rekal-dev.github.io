@@ -10,7 +10,9 @@ import RotatingWord from "@/components/RotatingWord";
 
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
-const HERO_WORDS = ["memory", "intent ledger", "why"];
+/** Same three nouns as the hero — memory → intent ledger → why. */
+const ROTATE_NOUNS = ["memory", "intent ledger", "why"];
+const ROTATE_NOUNS_TITLE = ["Memory", "Intent ledger", "Why"];
 
 function Hero() {
   return (
@@ -47,7 +49,7 @@ function Hero() {
               style={{ "--rd": "0.24s" } as React.CSSProperties}
             >
               <RotatingWord
-                words={HERO_WORDS}
+                words={ROTATE_NOUNS}
                 className="gradient-live"
                 reserveWidth={false}
               />{" "}
@@ -234,7 +236,12 @@ function Team() {
         <FadeIn>
           <p className="eyebrow text-center mb-4">Team</p>
           <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight leading-tight text-center mb-4">
-            Memory that travels with the code
+            <RotatingWord
+              words={ROTATE_NOUNS_TITLE}
+              className="gradient-live"
+              reserveWidth={false}
+            />{" "}
+            that travels with the code
           </h2>
           <p className="text-muted text-center leading-relaxed max-w-xl mx-auto mb-10">
             Shared over plain git — no memory server. Push on commit; sync when you want team context.
