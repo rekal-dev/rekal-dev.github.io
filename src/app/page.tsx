@@ -2,22 +2,17 @@ import Terminal from "@/components/Terminal";
 import InstallCommand from "@/components/InstallCommand";
 import GitHubButton from "@/components/GitHubButton";
 import FadeIn from "@/components/FadeIn";
-import SpotlightCard from "@/components/SpotlightCard";
 import CountUp from "@/components/CountUp";
-import Pipeline from "@/components/Pipeline";
 import Nav from "@/components/Nav";
 import Magnetic from "@/components/Magnetic";
 import AgentsStrip from "@/components/AgentsStrip";
-import CheckpointSync from "@/components/CheckpointSync";
 import RotatingWord from "@/components/RotatingWord";
 
-// Canonical home of the published paper. The /paper page on this site mirrors
-// it with the abstract, an inline PDF, and BibTeX.
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
 function Hero() {
   return (
-    <section className="relative flex flex-col items-center px-6 pt-36 pb-20 sm:pt-44">
+    <section className="relative flex flex-col items-center px-6 pt-36 pb-16 sm:pt-44">
       <div className="relative z-10 w-full text-center max-w-3xl mx-auto">
         <FadeIn>
           <a
@@ -35,7 +30,7 @@ function Hero() {
             </span>
           </a>
         </FadeIn>
-        <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-6">
+        <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-5">
           <span className="reveal-clip">
             <span className="reveal-line">Your coding agent starts every</span>
           </span>
@@ -51,29 +46,23 @@ function Hero() {
           </span>
         </h1>
         <FadeIn delay={0.12}>
-          <p className="text-lg text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-            Every session settles decisions — why this approach, what got tried and thrown away.
-            Then it ends, and that reasoning is gone.{" "}
-            <span className="text-foreground">Rekal captures the why at every commit</span>
-            {" "}and recalls it next session — in git, on your machine, not someone else&apos;s cloud.
+          <p className="text-lg text-muted max-w-lg mx-auto mb-8 leading-relaxed">
+            Captures the why at every commit. Recalls it from git, on your machine.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <div className="flex flex-col items-center gap-4 mb-4">
+          <div className="flex flex-col items-center gap-4">
             <InstallCommand />
             <div className="flex items-center gap-3">
               <Magnetic>
-                <a href="#how" className="btn btn-primary">
-                  See how it works
+                <a href="#install" className="btn btn-primary">
+                  Get started
                 </a>
               </Magnetic>
               <Magnetic>
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="text-xs font-mono text-faint tracking-wide">
-              Works with Claude Code, Cursor, Copilot, Codex, Gemini &amp; OpenCode
-            </p>
           </div>
         </FadeIn>
       </div>
@@ -85,45 +74,27 @@ function Hero() {
   );
 }
 
-function Flow() {
-  return (
-    <section className="px-6 py-16">
-      <Pipeline />
-    </section>
-  );
-}
-
 function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
   return (
     <FadeIn>
       <p className="eyebrow text-center mb-4">{eyebrow}</p>
       <h2 className="text-3xl sm:text-[2.6rem] font-bold text-center tracking-tight leading-tight">{title}</h2>
-      {sub && <p className="text-muted text-center max-w-xl mx-auto mt-4 leading-relaxed">{sub}</p>}
+      {sub && <p className="text-muted text-center max-w-lg mx-auto mt-3 leading-relaxed">{sub}</p>}
     </FadeIn>
   );
 }
 
 function Problem() {
   return (
-    <section className="py-28 px-6">
-      <div className="max-w-3xl mx-auto text-center">
+    <section id="why" className="py-20 px-6 scroll-mt-20">
+      <div className="max-w-2xl mx-auto text-center">
         <FadeIn>
           <p className="eyebrow text-center mb-4">The gap</p>
-          <h2 className="text-3xl sm:text-[2.6rem] font-bold text-center tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight leading-tight">
             Code has git. <RotatingWord className="gradient-live" /> has nothing.
           </h2>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <p className="text-lg text-muted leading-relaxed mt-8">
-            Every line, every author — recorded forever. But the reasoning behind the code has no
-            ledger. The conversations where you and your AI weighed approaches, rejected
-            alternatives, and decided vanish the moment the session ends. Next week a fresh agent
-            re-proposes the exact thing you already threw away, because nothing remembers that you did.
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="text-lg mt-6">
-            <span className="text-foreground font-medium">Rekal is the ledger for the why.</span>
+          <p className="text-muted mt-5 leading-relaxed">
+            Attached to the commit — not archived somewhere else.
           </p>
         </FadeIn>
       </div>
@@ -131,110 +102,30 @@ function Problem() {
   );
 }
 
-function AttachedNotArchived() {
+function Stats() {
+  const stats = [
+    { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
+    { value: 2, prefix: "~", suffix: "s", l: "latency" },
+    { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy" },
+    { value: 1, prefix: "", suffix: "", l: "binary" },
+  ];
   return (
-    <section className="py-8 px-6 pb-28">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-0 border border-border rounded-2xl overflow-hidden">
-        <div className="flex flex-col border-b md:border-b-0 md:border-r border-border">
-          <div className="flex-1 flex items-center justify-center px-6 py-12 bg-card/40 min-h-[280px]">
-            <CheckpointSync />
-          </div>
-          <div className="px-8 py-8 text-center border-t border-border">
-            <h3 className="font-semibold text-lg mb-2">Sessions sync with commits</h3>
-            <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
-              Every conversation is captured and linked to your git history automatically.
-              Context that&apos;s attached, not archived.
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <div className="flex-1 flex items-center justify-center px-8 py-12 bg-card/40 min-h-[280px]">
-            <div className="w-full max-w-sm space-y-3 font-mono text-xs">
-              <div className="ring-grad px-4 py-3 flex items-center justify-between gap-3">
-                <span className="text-foreground truncate">should webhook retries use a fixed delay?</span>
-                <span className="text-accent shrink-0">INJECT</span>
+    <section className="border-y border-border">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
+        {stats.map((s, i) => (
+          <FadeIn key={s.l} delay={i * 0.06}>
+            <div
+              className={`text-center px-4 py-10 ${
+                i < stats.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
+              } ${i === 1 ? "border-b md:border-b-0" : ""}`}
+            >
+              <div className="text-3xl sm:text-4xl font-bold font-mono gradient-text tabular-nums">
+                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
-              <div className="ring-grad px-4 py-3 opacity-70">
-                <div className="flex justify-between text-faint mb-1">
-                  <span>01JNQX8F2K9M</span>
-                  <span className="text-green">conf=0.81</span>
-                </div>
-                <p className="text-muted leading-relaxed">
-                  no — a fixed 5s delay stampedes on recovery. Use exponential backoff with jitter…
-                </p>
-              </div>
-              <div className="ring-grad px-4 py-3 opacity-40">
-                <div className="flex justify-between text-faint mb-1">
-                  <span>01JNR2A7YQ4P</span>
-                  <span>conf=0.53</span>
-                </div>
-                <p className="text-muted leading-relaxed">capped retries at 5 then dead-letter…</p>
-              </div>
+              <div className="text-xs font-mono uppercase tracking-wider text-faint mt-2">{s.l}</div>
             </div>
-          </div>
-          <div className="px-8 py-8 text-center border-t border-border">
-            <h3 className="font-semibold text-lg mb-2">Recall the intent, not just the diff</h3>
-            <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
-              Confidence-gated seeds your agent can act on — verdict, turn, provenance —
-              before it wastes a round re-proposing a dead-end.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-type HowRow = { cmd: string; d: string };
-
-const DEV_ROWS: HowRow[] = [
-  { cmd: "git commit", d: "Post-commit hook runs rekal checkpoint — the active AI session lands in an append-only local database." },
-  { cmd: "git push", d: "Pre-push hook runs rekal push — only merged work is encoded (zstd + interning) onto your orphan branch. Unmerged spikes stay local." },
-  { cmd: "rekal sync", d: "Pull teammates’ merged intent when you want it. Manual by design — you decide when to import team context." },
-];
-
-const AGENT_ROWS: HowRow[] = [
-  { cmd: 'rekal "…"', d: "Full inference at query time: lexical (BM25) + graph embeddings (LSA) + deep retrieval (Nomic). No preprocessing. Scored JSON with turn, confidence, and provenance." },
-  { cmd: "rekal --commit", d: "Graph-backed: anchor on a commit, walk to the session that produced it. Complete decision lineage, no memory layers." },
-  { cmd: "--role human_steering", d: "Just the steering turns — mid-course corrections. Highest signal for intent, no noise, ~78 token answers." },
-];
-
-function HowColumn({ tone, title, rows, base }: { tone: string; title: string; rows: HowRow[]; base: number }) {
-  return (
-    <div>
-      <FadeIn delay={base}>
-        <h3 className="text-sm font-mono uppercase tracking-wider mb-5 flex items-center gap-2.5">
-          <span className="w-6 h-6 rounded-md flex items-center justify-center text-xs" style={{ background: `${tone}1a`, color: tone }}>▲</span>
-          {title}
-        </h3>
-      </FadeIn>
-      <div className="space-y-3">
-        {rows.map((r, i) => (
-          <FadeIn key={r.cmd} delay={base + 0.06 * (i + 1)}>
-            <SpotlightCard className="p-5 flex gap-4 items-start">
-              <code className="shrink-0 mt-0.5 text-xs font-mono text-accent bg-accent/10 border border-accent/15 rounded-md px-2 py-1 whitespace-nowrap">{r.cmd}</code>
-              <p className="text-sm text-muted leading-relaxed">{r.d}</p>
-            </SpotlightCard>
           </FadeIn>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function HowItWorks() {
-  return (
-    <section id="how" className="py-28 px-6 scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="How it works"
-          title="You commit. Your agent recalls."
-          sub="Two roles, one flow. Nothing to babysit — capture is automatic, recall is on demand."
-        />
-        <div className="grid md:grid-cols-2 gap-10 mt-14">
-          <HowColumn tone="#4ade80" title="Developer" rows={DEV_ROWS} base={0.1} />
-          <HowColumn tone="#22d3ee" title="Agent" rows={AGENT_ROWS} base={0.2} />
-        </div>
       </div>
     </section>
   );
@@ -242,147 +133,28 @@ function HowItWorks() {
 
 function Skills() {
   const substrates = [
-    {
-      name: "tree",
-      tag: "code · now",
-      d: "The current code. Present-tense questions — what does X do, where is it — go to grep and read at HEAD. Memory stays out of the way.",
-    },
-    {
-      name: "knowledge",
-      tag: "prose · now",
-      d: "What the team currently knows — conventions, docs, CLAUDE.md at HEAD. Recall indexes the repo's prose and returns pointers, cross-linked to the sessions that wrote it.",
-    },
-    {
-      name: "map",
-      tag: "structure",
-      d: "How the repo is built. A generated structural map, refreshed by script when stale, read once for breadth-and-shape questions.",
-    },
-    {
-      name: "ledger",
-      tag: "intent · past",
-      d: "Why, tried, rejected. Session intent behind every commit — confidence-gated recall, then progressive drill into the exact turns.",
-    },
-    {
-      name: "silence",
-      tag: "machine event",
-      d: "A route script gates every recall on absolute confidence: INJECT, KNOWLEDGE, or SILENCE. Near-misses are noise — the agent never pads its context to look busy.",
-    },
+    { name: "tree", tag: "grep · now", d: "Present-tense code. grep and read at HEAD." },
+    { name: "knowledge", tag: "prose · HEAD", d: "Conventions and docs the team knows now." },
+    { name: "map", tag: "structure", d: "How the repo is organized." },
+    { name: "ledger", tag: "reasoning · past", d: "Why it was written that way." },
   ];
   return (
-    <section id="skills" className="py-28 px-6 scroll-mt-20">
+    <section id="skills" className="py-20 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
         <SectionHead
-          eyebrow="The agent skill"
+          eyebrow="Agent skill"
           title="One skill. Four substrates."
-          sub="rekal init installs a single Claude Code skill — a router. It classifies each question, dispatches it to the one place the answer lives, and stays silent when memory is the wrong tool."
+          sub="A router. Silence when memory isn’t the tool."
         />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-12 border border-border rounded-2xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x divide-border">
           {substrates.map((s, i) => (
-            <FadeIn key={s.name} delay={i * 0.07}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="flex items-center justify-between mb-3">
+            <FadeIn key={s.name} delay={i * 0.06}>
+              <article className="p-6 h-full">
+                <div className="flex items-center justify-between mb-3 gap-2">
                   <code className="font-mono text-sm text-accent">{s.name}</code>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-faint border border-border rounded px-1.5 py-0.5">{s.tag}</span>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-faint shrink-0">{s.tag}</span>
                 </div>
                 <p className="text-sm text-muted leading-relaxed">{s.d}</p>
-              </SpotlightCard>
-            </FadeIn>
-          ))}
-          <FadeIn delay={0.35}>
-            <SpotlightCard
-              as="a"
-              href="https://github.com/rekal-dev/rekal-cli#agent-skill"
-              className="p-6 h-full flex items-center justify-center text-sm text-muted hover:text-accent transition-colors"
-            >
-              Read the skill docs {'->'}
-            </SpotlightCard>
-          </FadeIn>
-        </div>
-        <FadeIn delay={0.4}>
-          <p className="text-center font-mono text-xs text-faint mt-10 tracking-wide">
-            grep for code that is · knowledge for prose that is · ledger for the why that was
-          </p>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
-
-function WhyNot() {
-  const rows = [
-    { alt: "a MEMORY.md / notes file", gap: "Rots, hand-maintained, tied to one branch.", win: "Captured automatically at every commit. Immutable. Branch-aware." },
-    { alt: "a RAG / memory SaaS", gap: "Your code’s intent lives on someone else’s server.", win: "Never leaves git and your machine. No server, no API, no telemetry." },
-    { alt: "editor rules (Cursor/Copilot)", gap: "Per-user, per-editor, not shared history.", win: "Team-wide, editor-agnostic, travels with the repo." },
-    { alt: "git log / git blame", gap: "Tell you what changed, never why.", win: "The conversation and reasoning behind the change." },
-  ];
-  return (
-    <section id="why" className="py-28 px-6 scroll-mt-20">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead eyebrow="Why Rekal" title="Why not just…?" />
-        <div className="mt-14 space-y-3">
-          {rows.map((r, i) => (
-            <FadeIn key={r.alt} delay={i * 0.08}>
-              <div className="card p-6 grid md:grid-cols-[1fr_1fr_1.2fr] gap-4 md:gap-6 md:items-center">
-                <div className="font-mono text-sm text-foreground">
-                  <span className="text-faint">instead of</span>
-                  <br />
-                  {r.alt}
-                </div>
-                <div className="text-sm text-muted flex items-start gap-2">
-                  <span className="text-[#ff5f57] mt-0.5">✕</span>
-                  {r.gap}
-                </div>
-                <div className="text-sm text-foreground flex items-start gap-2">
-                  <span className="text-green mt-0.5">✓</span>
-                  {r.win}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Beliefs() {
-  // Three pillars — not a six-card inventory. Matches README beliefs without the dashboard feel.
-  const beliefs = [
-    {
-      n: "01",
-      t: "Intent in git",
-      d: "Decision ledger travels with the repo on orphan branches. No external service, no separate system — team-wide and persistent.",
-    },
-    {
-      n: "02",
-      t: "Local-only recall",
-      d: "Lexical + graph + deep semantics run on your machine at query time. Sessions stay raw; nothing is sent to a memory SaaS.",
-    },
-    {
-      n: "03",
-      t: "Agent-native output",
-      d: "Compact digests with verdict, confidence, and drill pointers — silence when memory isn't the tool. JSON one flag away.",
-    },
-  ];
-  return (
-    <section className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="Beliefs"
-          title="Opinionated by design"
-          sub="Rekal is built on beliefs. When a choice conflicts with one, the choice loses."
-        />
-        <div className="grid md:grid-cols-3 mt-14 border border-border rounded-2xl overflow-hidden">
-          {beliefs.map((b, i) => (
-            <FadeIn key={b.t} delay={i * 0.08}>
-              <article
-                className={`p-8 h-full ${
-                  i < beliefs.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
-                }`}
-              >
-                <p className="font-mono text-xs text-accent mb-4">{b.n}</p>
-                <h3 className="font-semibold text-lg mb-2">{b.t}</h3>
-                <p className="text-sm text-muted leading-relaxed">{b.d}</p>
               </article>
             </FadeIn>
           ))}
@@ -392,153 +164,30 @@ function Beliefs() {
   );
 }
 
-function Research() {
-  const answers = [
-    {
-      problem: "Where does training signal come from?",
-      lit: "Human annotation, or LLM judges grading themselves",
-      git: "the commit",
-      how: "Every commit labels the sessions that produced it. Ground truth is mined from structure the tool already records — never annotated.",
-    },
-    {
-      problem: "How does compiled memory stay fresh?",
-      lit: 'Consolidation daemons; maintenance "deferred to future work"',
-      git: "rebuild + diff",
-      how: "The index is disposable — freshness by deletion. Materialized views regenerate deterministically, so drift arrives as a reviewable diff.",
-    },
-    {
-      problem: "Who verifies what enters shared memory?",
-      lit: "Self- or consensus-judged admission",
-      git: "the merge",
-      how: "Only experience that survived review, CI, and merge reaches the team. The verifier is external, and it already exists.",
-    },
-    {
-      problem: "How does private memory cross a boundary?",
-      lit: "One pool, implicitly readable and writable everywhere",
-      git: "the review",
-      how: "Cross-repo memory is index-only and structurally unpushable. Its one egress is a wiki page on a PR — origins labeled, reviewer watching.",
-    },
+function WhyNot() {
+  const rows = [
+    { q: "01", t: "Not a MEMORY.md", d: "Rots. Hand-maintained. Rekal captures at every commit." },
+    { q: "02", t: "Not a memory SaaS", d: "Intent stays in git and on your machine." },
+    { q: "03", t: "Not just git log", d: "Log shows what changed. Rekal shows why." },
   ];
-
-  const results = [
-    { metric: "~7.5K", label: "context tokens per query", d: "Full inference at query time: lexical + graph + deep retrieval, all local. Zero preprocessing, zero external service." },
-    { metric: "~2s", label: "latency", d: "Complete inference pipeline runs locally. No server roundtrips, no indexing delays, no preprocessing overhead." },
-    { metric: "90.6%", label: "accuracy (LoCoMo)", d: "Beats SotA RAG approaches. Confidence-gated routing delivers only what matters. Silence when uncertain." },
-    { metric: "1", label: "binary", d: "Everything embedded — database, embeddings, inference, graph, compression. Just init and commit. Zero config." },
-  ];
-
   return (
-    <section id="paper" className="py-28 px-6 scroll-mt-20">
+    <section className="py-20 px-6">
       <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="Research"
-          title="Why Git Is the Memory Solution for the Agentic Development Lifecycle"
-          sub="Four problems the agent-memory literature treats as open research. Four git primitives your team already uses. The paper argues they are the same list — then measures it."
-        />
-        <FadeIn delay={0.05}>
-          <p className="text-center font-mono text-xs text-faint mt-5 tracking-wide">
-            Frank Guo · 2026 ·{" "}
-            <a
-              href={PAPER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:text-foreground transition-colors"
-            >
-              arXiv:2607.14390
-            </a>{" "}
-            [cs.SE]
-          </p>
-        </FadeIn>
-        <div className="grid sm:grid-cols-2 gap-5 mt-14">
-          {answers.map((a, i) => (
-            <FadeIn key={a.git} delay={i * 0.07}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="text-xs font-mono text-faint mb-2">{a.problem}</div>
-                <div className="text-sm text-muted line-through decoration-border mb-3">{a.lit}</div>
-                <h3 className="font-semibold mb-2">
-                  <span className="text-accent font-mono">{'->'} {a.git}</span>
-                </h3>
-                <p className="text-sm text-muted leading-relaxed">{a.how}</p>
-              </SpotlightCard>
+        <div className="grid md:grid-cols-3 border border-border rounded-2xl overflow-hidden">
+          {rows.map((r, i) => (
+            <FadeIn key={r.q} delay={i * 0.08}>
+              <article
+                className={`p-7 h-full ${
+                  i < rows.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
+                }`}
+              >
+                <p className="font-mono text-xs text-accent mb-3">{r.q}</p>
+                <h3 className="font-semibold mb-2">{r.t}</h3>
+                <p className="text-sm text-muted leading-relaxed">{r.d}</p>
+              </article>
             </FadeIn>
           ))}
         </div>
-
-        <div className="mt-20">
-          <FadeIn>
-            <h3 className="text-sm font-mono uppercase tracking-wider text-muted mb-6">Empirical results</h3>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {results.map((r, i) => (
-              <FadeIn key={r.metric} delay={0.05 + i * 0.07}>
-                <SpotlightCard className="p-6">
-                  <div className="font-mono text-2xl font-bold text-accent mb-2">{r.metric}</div>
-                  <div className="text-sm font-medium mb-2">{r.label}</div>
-                  <p className="text-xs text-muted leading-relaxed">{r.d}</p>
-                </SpotlightCard>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-
-        <FadeIn delay={0.35}>
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <p className="text-sm text-muted max-w-2xl leading-relaxed">
-              RekalBench — self-labeled, repo-grounded intent recall — measures retrievability,
-              token cost, drill strategies, and whether a materialized wiki layer earns its keep.
-              Fully local, runnable by any Rekal user on their own store. Every result is replicable
-              at zero labeling cost.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-3">
-              <Magnetic>
-                <a href={PAPER_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Read on arXiv
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a href="/paper" className="btn btn-ghost">
-                  Abstract, PDF &amp; BibTeX
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  href="https://github.com/rekal-dev/rekal-cli/tree/main/docs/research"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-ghost"
-                >
-                  Reproduce it
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
-
-function Stats() {
-  const stats = [
-    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Full inference at query time — zero preprocessing overhead" },
-    { value: 2, prefix: "~", suffix: "s", l: "Latency", d: "Complete search pipeline runs locally, no server roundtrips" },
-    { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy", d: "Beats SotA RAG. Confidence-gated routing. No hallucination padding." },
-    { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, inference, compression" },
-  ];
-  return (
-    <section className="py-20 px-6 border-y border-border">
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-        {stats.map((s, i) => (
-          <FadeIn key={s.l} delay={i * 0.08}>
-            <div className="text-center">
-              <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
-                <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
-              </div>
-              <div className="text-sm font-medium mt-2">{s.l}</div>
-              <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
-            </div>
-          </FadeIn>
-        ))}
       </div>
     </section>
   );
@@ -546,19 +195,14 @@ function Stats() {
 
 function Install() {
   return (
-    <section id="install" className="py-28 px-6 scroll-mt-20">
+    <section id="install" className="py-20 px-6 scroll-mt-20">
       <div className="max-w-2xl mx-auto text-center">
-        <SectionHead eyebrow="Get started" title="Single binary. Ten seconds." sub="Requirements: git, macOS or Linux. Nothing to configure." />
+        <SectionHead eyebrow="Install" title="Then commit as normal." />
         <FadeIn delay={0.1}>
-          <div className="flex justify-center mt-10 mb-6">
-            <InstallCommand />
-          </div>
-        </FadeIn>
-        <FadeIn delay={0.18}>
-          <div className="ring-grad inline-block text-left font-mono text-sm px-6 py-5 space-y-1">
+          <div className="ring-grad inline-block text-left font-mono text-sm px-6 py-5 space-y-1 mt-10">
             <p><span className="text-accent">❯</span> <span className="text-foreground">cd your-project</span></p>
             <p><span className="text-accent">❯</span> <span className="text-foreground">rekal init</span></p>
-            <p className="text-faint pl-4"># done. commit and push as normal.</p>
+            <p className="text-faint pl-4"># done</p>
           </div>
         </FadeIn>
       </div>
@@ -568,37 +212,33 @@ function Install() {
 
 const FAQS = [
   {
-    q: "Which AI coding agents does Rekal work with?",
-    a: "Rekal ships tested session adapters for Claude Code, Codex, Gemini, and OpenCode, and captures sessions from all of them automatically at every commit.",
+    q: "Which agents?",
+    a: "Claude Code, Codex, Gemini, OpenCode — captured at commit. Also works with Cursor and Copilot.",
   },
   {
-    q: "Does my code or its intent leave my machine?",
-    a: "No. Rekal never sends data to a server. Intent is stored on a git orphan branch — no server, no API, no telemetry — and the embedding model ships inside the binary.",
+    q: "Does intent leave my machine?",
+    a: "No. Git orphan branch. No server, no API, no telemetry.",
   },
   {
-    q: "Why not just use a MEMORY.md file or a RAG SaaS?",
-    a: "A notes file rots, is hand-maintained, and is tied to one branch; a memory SaaS puts your code’s intent on someone else’s server. Rekal captures context automatically at every commit, immutably and branch-aware, and keeps everything in git and on your machine.",
-  },
-  {
-    q: "How does an AI agent recall past context with Rekal?",
-    a: 'The agent runs rekal "<problem>", which returns scored prior sessions plus a knowledge block — pointers into the repo\'s prose at HEAD — as JSON, using hybrid search (BM25 + LSA + Nomic embeddings). A confidence gate then decides: read the knowledge pointer, drill into the episode, or stay silent.',
+    q: "How does recall work?",
+    a: 'rekal "<problem>" returns scored seeds with confidence — drill, follow a pointer, or stay silent.',
   },
 ];
 
 function FAQ() {
   return (
-    <section id="faq" className="py-28 px-6 scroll-mt-20">
+    <section id="faq" className="py-20 px-6 scroll-mt-20">
       <div className="max-w-3xl mx-auto">
-        <SectionHead eyebrow="FAQ" title="Questions, answered" />
-        <div className="mt-12 space-y-3">
+        <SectionHead eyebrow="FAQ" title="Questions" />
+        <div className="mt-10 space-y-2">
           {FAQS.map((f, i) => (
-            <FadeIn key={f.q} delay={i * 0.06}>
-              <details className="card group px-6 py-5 [&_summary]:cursor-pointer">
-                <summary className="flex items-center justify-between gap-4 font-medium list-none">
+            <FadeIn key={f.q} delay={i * 0.05}>
+              <details className="card group px-5 py-4 [&_summary]:cursor-pointer">
+                <summary className="flex items-center justify-between gap-4 font-medium list-none text-sm sm:text-base">
                   {f.q}
                   <span className="text-accent transition-transform group-open:rotate-45 text-xl leading-none">+</span>
                 </summary>
-                <p className="text-sm text-muted leading-relaxed mt-4">{f.a}</p>
+                <p className="text-sm text-muted leading-relaxed mt-3">{f.a}</p>
               </details>
             </FadeIn>
           ))}
@@ -610,18 +250,15 @@ function FAQ() {
 
 function CTA() {
   return (
-    <section className="pb-28 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="pb-20 px-6">
+      <div className="max-w-3xl mx-auto">
         <FadeIn>
-          <div className="ring-grad glow-accent text-center px-8 py-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-              The CLI is free and local — forever.
+          <div className="ring-grad glow-accent text-center px-8 py-12">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
+              Free. Local. Forever.
             </h2>
-            <p className="text-muted max-w-lg mx-auto leading-relaxed mb-8">
-              No accounts, no telemetry, no plans to gate it. If teams eventually need dashboards or
-              cross-org search, we&apos;ll build that on top. Until then, the CLI is the product.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+            <p className="text-muted mb-8">No accounts. No telemetry. The CLI is the product.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
               <Magnetic>
                 <a href="#install" className="btn btn-primary">Install Rekal</a>
               </Magnetic>
@@ -629,14 +266,12 @@ function CTA() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="text-xs font-mono text-faint leading-relaxed">
-              The research behind it: &quot;Why Git Is the Memory Solution for the Agentic
-              Development Lifecycle&quot; —{" "}
+            <p className="text-xs font-mono text-faint">
               <a
                 href={PAPER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:text-foreground transition-colors underline underline-offset-4"
+                className="text-accent hover:text-foreground transition-colors"
               >
                 arXiv:2607.14390
               </a>
@@ -650,7 +285,7 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-12 px-6">
+    <footer className="border-t border-border py-10 px-6">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3 font-mono">
           <span className="text-accent">❯</span>
@@ -662,7 +297,6 @@ function Footer() {
           <a href="/paper" className="hover:text-foreground transition-colors">Paper</a>
           <a href="https://discord.gg/eNNabp4b" className="hover:text-foreground transition-colors">Discord</a>
           <a href="https://github.com/rekal-dev/rekal-cli/issues" className="hover:text-foreground transition-colors">Issues</a>
-          <a href="https://github.com/rekal-dev/rekal-cli/blob/main/docs/DEVELOPMENT.md" className="hover:text-foreground transition-colors">Docs</a>
         </div>
       </div>
     </footer>
@@ -678,15 +312,10 @@ export default function Home() {
       <main>
         <Hero />
         <AgentsStrip />
-        <Flow />
         <Problem />
-        <AttachedNotArchived />
         <Stats />
-        <HowItWorks />
         <Skills />
         <WhyNot />
-        <Beliefs />
-        <Research />
         <Install />
         <FAQ />
         <CTA />
