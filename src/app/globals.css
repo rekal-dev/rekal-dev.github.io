@@ -389,13 +389,31 @@ a.chip:hover {
   background: linear-gradient(to right, transparent, var(--color-border-hi), transparent);
 }
 
+/* Commit ↔ session sync demo (Entire-style pulse). */
+.sync-dash {
+  animation: sync-flow 1.6s linear infinite;
+}
+@keyframes sync-flow {
+  from { stroke-dashoffset: 16; }
+  to { stroke-dashoffset: 0; }
+}
+.sync-halo {
+  animation: sync-breathe 2.4s ease-in-out infinite;
+}
+@keyframes sync-breathe {
+  0%, 100% { opacity: 0.35; transform: scale(0.92); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .field::after,
   .chip-dot,
   .gradient-live,
   .node-pulse,
-  .flow-dash { animation: none !important; }
+  .flow-dash,
+  .sync-dash,
+  .sync-halo { animation: none !important; }
   .reveal-line { transform: none; animation: none; }
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }
