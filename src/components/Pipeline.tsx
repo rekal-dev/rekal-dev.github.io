@@ -28,7 +28,7 @@ export default function Pipeline() {
     <div className="relative max-w-5xl mx-auto">
       {/* Flowing connector line (desktop) */}
       <svg
-        className="hidden md:block absolute left-0 right-0 top-[46px] w-full h-2 overflow-visible"
+        className="hidden md:block absolute left-0 right-0 top-[27px] w-full h-2 overflow-visible"
         aria-hidden
         preserveAspectRatio="none"
       >
