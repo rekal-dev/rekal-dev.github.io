@@ -4,9 +4,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const LINKS = [
-  { href: "#how", label: "How it works" },
-  { href: "#skills", label: "Agent skill" },
-  { href: "#why", label: "Why Rekal" },
+  { href: "#why", label: "Why" },
+  { href: "#skills", label: "Skill" },
   { href: "/paper", label: "Paper" },
   { href: "#faq", label: "FAQ" },
   { href: "#install", label: "Install" },

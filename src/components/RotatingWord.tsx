@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const WORDS = ["intent", "why", "reasoning"];
 
 /**
- * Entire-style rotating word. Layout stays stable via an invisible sizer.
+ * Entire-style rotating word. Only the active word is in the accessibility tree.
  */
 export default function RotatingWord({ className = "" }: { className?: string }) {
   const [i, setI] = useState(0);
@@ -24,20 +24,9 @@ export default function RotatingWord({ className = "" }: { className?: string })
       <span className="invisible whitespace-nowrap" aria-hidden>
         {longest}
       </span>
-      {WORDS.map((w, idx) => (
-        <span
-          key={w}
-          className="absolute left-0 top-0 whitespace-nowrap transition-[opacity,transform] duration-500 ease-out"
-          style={{
-            opacity: idx === i ? 1 : 0,
-            transform: idx === i ? "translateY(0)" : "translateY(0.3em)",
-          }}
-          aria-hidden={idx !== i}
-        >
-          {w}
-        </span>
-      ))}
-      <span className="sr-only">{WORDS[i]}</span>
+      <span className="absolute left-0 top-0 whitespace-nowrap" aria-live="polite">
+        {WORDS[i]}
+      </span>
     </span>
   );
 }
