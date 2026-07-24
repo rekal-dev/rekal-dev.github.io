@@ -10,6 +10,13 @@ import RotatingWord from "@/components/RotatingWord";
 
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
+const HERO_WORDS = [
+  "team memory",
+  "intent ledger",
+  "why",
+  "memory it's missing",
+];
+
 function Hero() {
   return (
     <section className="relative flex flex-col items-center px-6 pt-36 pb-16 sm:pt-44">
@@ -36,12 +43,19 @@ function Hero() {
           </span>
           <span className="reveal-clip">
             <span className="reveal-line" style={{ "--rd": "0.12s" } as React.CSSProperties}>
-              session blank. <span className="gradient-live">Rekal is the</span>
+              session blank. Rekal is the
             </span>
           </span>
           <span className="reveal-clip">
-            <span className="reveal-line gradient-live" style={{ "--rd": "0.24s" } as React.CSSProperties}>
-              memory it&apos;s missing.
+            <span
+              className="reveal-line"
+              style={{ "--rd": "0.24s" } as React.CSSProperties}
+            >
+              <RotatingWord
+                words={HERO_WORDS}
+                className="gradient-live"
+                reserveWidth={false}
+              />.
             </span>
           </span>
         </h1>
