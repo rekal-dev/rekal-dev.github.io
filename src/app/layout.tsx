@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 
 const TITLE = "Rekal — the memory your AI coding agent is missing";
 const DESCRIPTION =
-  "Your coding agent starts every session blank. Rekal captures the why behind your code — decisions, rejected paths, dead-ends — at every commit and recalls it next session. Works with Claude Code, Codex, Gemini, and OpenCode. Stored in git, not someone else's cloud.";
+  "Your coding agent starts every session blank. Rekal captures the why behind your code — decisions, rejected paths, dead-ends — at every commit and recalls it next session. Works with Claude Code, Codex, Gemini, OpenCode, and Kiro. Stored in git, not someone else's cloud.";
 const SHORT_DESC =
-  "The why behind your code — captured at every commit, recalled next session. Works with Claude Code, Codex, Gemini & OpenCode. In git, not someone else's cloud.";
+  "The why behind your code — captured at every commit, recalled next session. Works with Claude Code, Codex, Gemini, OpenCode & Kiro. In git, not someone else's cloud.";
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     "codex cli",
     "gemini cli",
     "opencode",
+    "kiro",
     "developer tools",
     "ai agent",
     "code context",
@@ -116,7 +117,7 @@ const JSON_LD = {
       applicationSubCategory: "AI coding agent memory",
       operatingSystem: "macOS, Linux",
       description:
-        "Git-native memory for AI coding agents. Rekal captures the intent behind every commit — decisions, rejected approaches, dead-ends — and recalls it in the next session. Works with Claude Code, Codex, Gemini, and OpenCode.",
+        "Git-native memory for AI coding agents. Rekal captures the intent behind every commit — decisions, rejected approaches, dead-ends — and recalls it in the next session. Works with Claude Code, Codex, Gemini, OpenCode, and Kiro.",
       url: "https://rekal.dev",
       downloadUrl: "https://rekal.dev/install.sh",
       softwareHelp: "https://github.com/rekal-dev/rekal-cli#readme",
@@ -126,7 +127,8 @@ const JSON_LD = {
       featureList: [
         "Captures AI session intent at every git commit",
         "Hybrid recall: BM25 + LSA + Nomic embeddings",
-        "Works with Claude Code, Codex, Gemini, and OpenCode",
+        "Works with Claude Code, Codex, Gemini, OpenCode, and Kiro",
+        "Agent-agnostic — teams don't lock into one coding agent",
         "Runs fully local — no server, no API, no telemetry",
         "Distributed through git orphan branches",
         "Single embedded binary",
@@ -182,7 +184,7 @@ const JSON_LD = {
           name: "Which AI coding agents does Rekal work with?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Rekal ships tested session adapters for Claude Code, Codex, Gemini, and OpenCode, and captures sessions from all of them automatically at every commit.",
+            text: "Rekal ships tested session adapters for Claude Code, Codex, Gemini, OpenCode, and Kiro, and also works with Cursor and Copilot. Captures at every commit. Agent-agnostic — switch tools without losing team memory.",
           },
         },
         {
