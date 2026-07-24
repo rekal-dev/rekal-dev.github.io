@@ -34,10 +34,13 @@ export default function CountUp({
           return;
         }
         const start = performance.now();
+        // Preserve one decimal when the target isn't an integer (e.g. 7.5, 90.6).
+        const decimals = Number.isInteger(value) ? 0 : 1;
+        const factor = 10 ** decimals;
         const tick = (t: number) => {
           const p = Math.min(1, (t - start) / duration);
           const eased = 1 - Math.pow(1 - p, 3);
-          setN(Math.round(eased * value));
+          setN(Math.round(eased * value * factor) / factor);
           if (p < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
