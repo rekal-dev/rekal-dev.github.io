@@ -554,7 +554,7 @@ function Footer() {
         <div className="flex items-center gap-6 text-sm text-muted">
           <a href="https://github.com/rekal-dev/rekal-cli" className="hover:text-foreground transition-colors">GitHub</a>
           <a href="/paper" className="hover:text-foreground transition-colors">Paper</a>
-          <a href="https://discord.gg/eNNabp4b" className="hover:text-foreground transition-colors">Discord</a>
+          <a href="https://discord.gg/hDMj8zHH2" className="hover:text-foreground transition-colors">Discord</a>
           <a href="https://github.com/rekal-dev/rekal-cli/issues" className="hover:text-foreground transition-colors">Issues</a>
         </div>
       </div>
