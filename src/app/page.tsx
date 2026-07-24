@@ -195,11 +195,6 @@ function Skills() {
       tag: "intent · past",
       d: "Why, tried, rejected. Session intent behind every commit — confidence-gated recall, then progressive drill into the exact turns.",
     },
-    {
-      name: "silence",
-      tag: "machine event",
-      d: "A route script gates every recall on absolute confidence: INJECT, KNOWLEDGE, or SILENCE. Near-misses are noise — the agent never pads its context to look busy.",
-    },
   ];
   return (
     <section id="skills" className="py-28 px-6 scroll-mt-20">
@@ -207,7 +202,7 @@ function Skills() {
         <SectionHead
           eyebrow="The agent skill"
           title="One skill. Four substrates."
-          sub="rekal init installs a single Claude Code skill — a router. It classifies each question, dispatches it to the one place the answer lives, and stays silent when memory is the wrong tool."
+          sub="rekal init installs a single Claude Code skill — a router. It classifies each question and dispatches it to the right substrate. A silence gate ensures near-misses are ignored, never padded."
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
           {substrates.map((s, i) => (
