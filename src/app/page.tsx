@@ -11,13 +11,11 @@ import AgentsStrip from "@/components/AgentsStrip";
 import CheckpointSync from "@/components/CheckpointSync";
 import RotatingWord from "@/components/RotatingWord";
 
-// Canonical home of the published paper. The /paper page on this site mirrors
-// it with the abstract, an inline PDF, and BibTeX.
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
 function Hero() {
   return (
-    <section className="relative flex flex-col items-center px-6 pt-36 pb-20 sm:pt-44">
+    <section className="relative flex flex-col items-center px-6 pt-36 pb-16 sm:pt-44">
       <div className="relative z-10 w-full text-center max-w-3xl mx-auto">
         <FadeIn>
           <a
@@ -35,7 +33,7 @@ function Hero() {
             </span>
           </a>
         </FadeIn>
-        <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-6">
+        <h1 className="text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-tight mb-5">
           <span className="reveal-clip">
             <span className="reveal-line">Your coding agent starts every</span>
           </span>
@@ -51,15 +49,12 @@ function Hero() {
           </span>
         </h1>
         <FadeIn delay={0.12}>
-          <p className="text-lg text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-            Every session settles decisions — why this approach, what got tried and thrown away.
-            Then it ends, and that reasoning is gone.{" "}
-            <span className="text-foreground">Rekal captures the why at every commit</span>
-            {" "}and recalls it next session — in git, on your machine, not someone else&apos;s cloud.
+          <p className="text-lg text-muted max-w-lg mx-auto mb-8 leading-relaxed">
+            Captures the why at every commit. Recalls it next session — in git, on your machine.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
-          <div className="flex flex-col items-center gap-4 mb-4">
+          <div className="flex flex-col items-center gap-4">
             <InstallCommand />
             <div className="flex items-center gap-3">
               <Magnetic>
@@ -71,9 +66,6 @@ function Hero() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="text-xs font-mono text-faint tracking-wide">
-              Works with Claude Code, Cursor, Copilot, Codex, Gemini &amp; OpenCode
-            </p>
           </div>
         </FadeIn>
       </div>
@@ -87,7 +79,7 @@ function Hero() {
 
 function Flow() {
   return (
-    <section className="px-6 py-16">
+    <section className="px-6 py-14">
       <Pipeline />
     </section>
   );
@@ -98,32 +90,22 @@ function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; 
     <FadeIn>
       <p className="eyebrow text-center mb-4">{eyebrow}</p>
       <h2 className="text-3xl sm:text-[2.6rem] font-bold text-center tracking-tight leading-tight">{title}</h2>
-      {sub && <p className="text-muted text-center max-w-xl mx-auto mt-4 leading-relaxed">{sub}</p>}
+      {sub && <p className="text-muted text-center max-w-lg mx-auto mt-3 leading-relaxed">{sub}</p>}
     </FadeIn>
   );
 }
 
 function Problem() {
   return (
-    <section className="py-28 px-6">
-      <div className="max-w-3xl mx-auto text-center">
+    <section className="py-24 px-6">
+      <div className="max-w-2xl mx-auto text-center">
         <FadeIn>
-          <p className="eyebrow text-center mb-4">The gap</p>
-          <h2 className="text-3xl sm:text-[2.6rem] font-bold text-center tracking-tight leading-tight">
+          <p className="eyebrow text-center mb-4">Why Rekal</p>
+          <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight leading-tight">
             Code has git. <RotatingWord className="gradient-live" /> has nothing.
           </h2>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <p className="text-lg text-muted leading-relaxed mt-8">
-            Every line, every author — recorded forever. But the reasoning behind the code has no
-            ledger. The conversations where you and your AI weighed approaches, rejected
-            alternatives, and decided vanish the moment the session ends. Next week a fresh agent
-            re-proposes the exact thing you already threw away, because nothing remembers that you did.
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="text-lg mt-6">
-            <span className="text-foreground font-medium">Rekal is the ledger for the why.</span>
+          <p className="text-muted mt-5 leading-relaxed">
+            Context that&apos;s attached to the commit — not archived somewhere else.
           </p>
         </FadeIn>
       </div>
@@ -133,17 +115,16 @@ function Problem() {
 
 function AttachedNotArchived() {
   return (
-    <section className="py-8 px-6 pb-28">
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-0 border border-border rounded-2xl overflow-hidden">
+    <section className="px-6 pb-24">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-2 md:gap-0 border border-border rounded-2xl overflow-hidden">
         <div className="flex flex-col border-b md:border-b-0 md:border-r border-border min-w-0">
           <div className="flex-1 flex items-center justify-center px-4 sm:px-6 py-10 sm:py-12 bg-card/40 min-h-[240px] min-w-0 overflow-hidden">
             <CheckpointSync />
           </div>
-          <div className="px-6 sm:px-8 py-8 text-center border-t border-border">
-            <h3 className="font-semibold text-lg mb-2">Sessions sync with commits</h3>
-            <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
-              Every conversation is captured and linked to your git history automatically.
-              Context that&apos;s attached, not archived.
+          <div className="px-6 sm:px-8 py-7 text-center border-t border-border">
+            <h3 className="font-semibold text-lg mb-1.5">Sessions sync with commits</h3>
+            <p className="text-sm text-muted leading-relaxed max-w-sm mx-auto">
+              Captured automatically. No extra steps.
             </p>
           </div>
         </div>
@@ -174,11 +155,10 @@ function AttachedNotArchived() {
               </div>
             </div>
           </div>
-          <div className="px-6 sm:px-8 py-8 text-center border-t border-border">
-            <h3 className="font-semibold text-lg mb-2">Recall the intent, not just the diff</h3>
-            <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
-              Confidence-gated seeds your agent can act on — verdict, turn, provenance —
-              before it wastes a round re-proposing a dead-end.
+          <div className="px-6 sm:px-8 py-7 text-center border-t border-border">
+            <h3 className="font-semibold text-lg mb-1.5">Recall the intent, not just the diff</h3>
+            <p className="text-sm text-muted leading-relaxed max-w-sm mx-auto">
+              Confidence-gated seeds. Dead-ends stay ruled out.
             </p>
           </div>
         </div>
@@ -190,15 +170,15 @@ function AttachedNotArchived() {
 type HowRow = { cmd: string; d: string };
 
 const DEV_ROWS: HowRow[] = [
-  { cmd: "git commit", d: "Post-commit hook runs rekal checkpoint — the active AI session lands in an append-only local database." },
-  { cmd: "git push", d: "Pre-push hook runs rekal push — only merged work is encoded (zstd + interning) onto your orphan branch. Unmerged spikes stay local." },
-  { cmd: "rekal sync", d: "Pull teammates’ merged intent when you want it. Manual by design — you decide when to import team context." },
+  { cmd: "git commit", d: "Session lands in an append-only local store." },
+  { cmd: "git push", d: "Only merged work rides your orphan branch." },
+  { cmd: "rekal sync", d: "Pull teammates’ intent when you want it." },
 ];
 
 const AGENT_ROWS: HowRow[] = [
-  { cmd: 'rekal "…"', d: "Hybrid search locally: lexical (BM25) + graph (LSA) + deep embeddings (Nomic). All computed on your machine, zero external service. Scored JSON with turn, confidence, and provenance." },
-  { cmd: "rekal --commit", d: "Graph-backed: anchor on a commit, walk to the session that produced it. Complete decision lineage, no memory layers." },
-  { cmd: "--role human_steering", d: "Just the steering turns — mid-course corrections. Highest signal for intent, no noise, ~78 token answers." },
+  { cmd: 'rekal "…"', d: "Hybrid search locally — scored, with provenance." },
+  { cmd: "rekal --commit", d: "Walk from a commit to the session that made it." },
+  { cmd: "--role human_steering", d: "Just the mid-course corrections." },
 ];
 
 function HowColumn({ tone, title, rows, base }: { tone: string; title: string; rows: HowRow[]; base: number }) {
@@ -213,7 +193,7 @@ function HowColumn({ tone, title, rows, base }: { tone: string; title: string; r
       <div className="space-y-3">
         {rows.map((r, i) => (
           <FadeIn key={r.cmd} delay={base + 0.06 * (i + 1)}>
-            <SpotlightCard className="p-5 flex gap-4 items-start">
+            <SpotlightCard className="p-4 flex gap-4 items-start">
               <code className="shrink-0 mt-0.5 text-xs font-mono text-accent bg-accent/10 border border-accent/15 rounded-md px-2 py-1 whitespace-nowrap">{r.cmd}</code>
               <p className="text-sm text-muted leading-relaxed">{r.d}</p>
             </SpotlightCard>
@@ -226,14 +206,10 @@ function HowColumn({ tone, title, rows, base }: { tone: string; title: string; r
 
 function HowItWorks() {
   return (
-    <section id="how" className="py-28 px-6 scroll-mt-20">
+    <section id="how" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="How it works"
-          title="You commit. Your agent recalls."
-          sub="Two roles, one flow. Nothing to babysit — capture is automatic, recall is on demand."
-        />
-        <div className="grid md:grid-cols-2 gap-10 mt-14">
+        <SectionHead eyebrow="How it works" title="You commit. Your agent recalls." />
+        <div className="grid md:grid-cols-2 gap-10 mt-12">
           <HowColumn tone="#4ade80" title="Developer" rows={DEV_ROWS} base={0.1} />
           <HowColumn tone="#22d3ee" title="Agent" rows={AGENT_ROWS} base={0.2} />
         </div>
@@ -244,60 +220,40 @@ function HowItWorks() {
 
 function Skills() {
   const substrates = [
-    {
-      name: "tree",
-      tag: "grep · now",
-      d: "Present-tense code questions. grep and read at HEAD. What does this function do, where is it defined, what files touch this pattern.",
-    },
-    {
-      name: "knowledge",
-      tag: "prose · HEAD",
-      d: "What the team knows now. Conventions, docs, CLAUDE.md, architecture decisions at HEAD. Hybrid search returns scored pointers with confidence gates.",
-    },
-    {
-      name: "map",
-      tag: "structure",
-      d: "How the repo is organized. A generated structural map, refreshed when stale. Breadth-and-shape orientation to the codebase.",
-    },
-    {
-      name: "ledger",
-      tag: "reasoning · past",
-      d: "Why decisions were made. Reasoning behind commits: what was tried, what was rejected, the conversation that shaped the code. Progressive drill to full sessions.",
-    },
+    { name: "tree", tag: "grep · now", d: "Present-tense code. grep and read at HEAD." },
+    { name: "knowledge", tag: "prose · HEAD", d: "Conventions and docs the team knows now." },
+    { name: "map", tag: "structure", d: "How the repo is organized." },
+    { name: "ledger", tag: "reasoning · past", d: "Why it was written that way." },
   ];
   return (
-    <section id="skills" className="py-28 px-6 scroll-mt-20">
+    <section id="skills" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
         <SectionHead
           eyebrow="The agent skill"
           title="One skill. Four substrates."
-          sub="rekal init installs a single Claude Code skill — a router. It classifies each question and dispatches it to the right substrate. A silence gate ensures near-misses are ignored, never padded."
+          sub="A router. Silence when memory isn’t the tool."
         />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 mt-12 border border-border rounded-2xl overflow-hidden divide-y sm:divide-y-0 sm:divide-x divide-border">
           {substrates.map((s, i) => (
-            <FadeIn key={s.name} delay={i * 0.07}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="flex items-center justify-between mb-3">
+            <FadeIn key={s.name} delay={i * 0.06}>
+              <article className="p-6 h-full">
+                <div className="flex items-center justify-between mb-3 gap-2">
                   <code className="font-mono text-sm text-accent">{s.name}</code>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-faint border border-border rounded px-1.5 py-0.5">{s.tag}</span>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-faint shrink-0">{s.tag}</span>
                 </div>
                 <p className="text-sm text-muted leading-relaxed">{s.d}</p>
-              </SpotlightCard>
+              </article>
             </FadeIn>
           ))}
-          <FadeIn delay={0.35}>
-            <SpotlightCard
-              as="a"
-              href="https://github.com/rekal-dev/rekal-cli#agent-skill"
-              className="p-6 h-full flex items-center justify-center text-sm text-muted hover:text-accent transition-colors"
-            >
-              Read the skill docs {'->'}
-            </SpotlightCard>
-          </FadeIn>
         </div>
-        <FadeIn delay={0.4}>
-          <p className="text-center font-mono text-xs text-faint mt-10 tracking-wide">
-            grep for code that is · knowledge for prose that is · ledger for the why that was
+        <FadeIn delay={0.3}>
+          <p className="text-center mt-8">
+            <a
+              href="https://github.com/rekal-dev/rekal-cli#agent-skill"
+              className="text-sm text-muted hover:text-accent transition-colors font-mono"
+            >
+              Skill docs {'->'}
+            </a>
           </p>
         </FadeIn>
       </div>
@@ -307,79 +263,25 @@ function Skills() {
 
 function WhyNot() {
   const rows = [
-    { alt: "a MEMORY.md / notes file", gap: "Rots, hand-maintained, tied to one branch.", win: "Captured automatically at every commit. Immutable. Branch-aware." },
-    { alt: "a RAG / memory SaaS", gap: "Your code’s intent lives on someone else’s server.", win: "Never leaves git and your machine. No server, no API, no telemetry." },
-    { alt: "editor rules (Cursor/Copilot)", gap: "Per-user, per-editor, not shared history.", win: "Team-wide, editor-agnostic, travels with the repo." },
-    { alt: "git log / git blame", gap: "Tell you what changed, never why.", win: "The conversation and reasoning behind the change." },
+    { q: "01", t: "Why not a MEMORY.md?", d: "Rots. Hand-maintained. One branch. Rekal captures at every commit." },
+    { q: "02", t: "Why not a memory SaaS?", d: "Your intent stays in git and on your machine. No server." },
+    { q: "03", t: "Why not git log?", d: "Log shows what changed. Rekal shows why." },
   ];
   return (
-    <section id="why" className="py-28 px-6 scroll-mt-20">
+    <section id="why" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-5xl mx-auto">
-        <SectionHead eyebrow="Why Rekal" title="Why not just…?" />
-        <div className="mt-14 space-y-3">
+        <SectionHead eyebrow="Why not just…" title="Built for the gap git left open." />
+        <div className="grid md:grid-cols-3 mt-12 border border-border rounded-2xl overflow-hidden">
           {rows.map((r, i) => (
-            <FadeIn key={r.alt} delay={i * 0.08}>
-              <div className="card p-6 grid md:grid-cols-[1fr_1fr_1.2fr] gap-4 md:gap-6 md:items-center">
-                <div className="font-mono text-sm text-foreground">
-                  <span className="text-faint">instead of</span>
-                  <br />
-                  {r.alt}
-                </div>
-                <div className="text-sm text-muted flex items-start gap-2">
-                  <span className="text-[#ff5f57] mt-0.5">✕</span>
-                  {r.gap}
-                </div>
-                <div className="text-sm text-foreground flex items-start gap-2">
-                  <span className="text-green mt-0.5">✓</span>
-                  {r.win}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Beliefs() {
-  // Three pillars — not a six-card inventory. Matches README beliefs without the dashboard feel.
-  const beliefs = [
-    {
-      n: "01",
-      t: "Intent in git",
-      d: "Decision ledger travels with the repo on orphan branches. No external service, no separate system — team-wide and persistent.",
-    },
-    {
-      n: "02",
-      t: "Local-only recall",
-      d: "Lexical + graph + deep semantics run on your machine. Sessions stay raw; nothing is sent to a memory SaaS.",
-    },
-    {
-      n: "03",
-      t: "Agent-native output",
-      d: "Compact digests with verdict, confidence, and drill pointers — silence when memory isn't the tool. JSON one flag away.",
-    },
-  ];
-  return (
-    <section className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
-        <SectionHead
-          eyebrow="Beliefs"
-          title="Opinionated by design"
-          sub="Rekal is built on beliefs. When a choice conflicts with one, the choice loses."
-        />
-        <div className="grid md:grid-cols-3 mt-14 border border-border rounded-2xl overflow-hidden">
-          {beliefs.map((b, i) => (
-            <FadeIn key={b.t} delay={i * 0.08}>
+            <FadeIn key={r.q} delay={i * 0.08}>
               <article
-                className={`p-8 h-full ${
-                  i < beliefs.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
+                className={`p-7 h-full ${
+                  i < rows.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
                 }`}
               >
-                <p className="font-mono text-xs text-accent mb-4">{b.n}</p>
-                <h3 className="font-semibold text-lg mb-2">{b.t}</h3>
-                <p className="text-sm text-muted leading-relaxed">{b.d}</p>
+                <p className="font-mono text-xs text-accent mb-3">{r.q}</p>
+                <h3 className="font-semibold mb-2">{r.t}</h3>
+                <p className="text-sm text-muted leading-relaxed">{r.d}</p>
               </article>
             </FadeIn>
           ))}
@@ -391,22 +293,25 @@ function Beliefs() {
 
 function Stats() {
   const stats = [
-    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Progressive drill-down: answer, then episodes, then full transcript. Agent controls token spend." },
-    { value: 2, prefix: "~", suffix: "s", l: "Latency", d: "Complete search pipeline runs locally, no server roundtrips" },
-    { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy", d: "Beats SotA RAG. Confidence-gated routing. No hallucination padding." },
-    { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, inference, compression" },
+    { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
+    { value: 2, prefix: "~", suffix: "s", l: "latency" },
+    { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy" },
+    { value: 1, prefix: "", suffix: "", l: "binary" },
   ];
   return (
-    <section className="py-20 px-6 border-y border-border">
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="border-y border-border">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4">
         {stats.map((s, i) => (
-          <FadeIn key={s.l} delay={i * 0.08}>
-            <div className="text-center">
-              <div className="text-4xl font-bold font-mono gradient-text tabular-nums">
+          <FadeIn key={s.l} delay={i * 0.06}>
+            <div
+              className={`text-center px-4 py-10 ${
+                i < stats.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
+              } ${i === 1 ? "border-b md:border-b-0" : ""}`}
+            >
+              <div className="text-3xl sm:text-4xl font-bold font-mono gradient-text tabular-nums">
                 <CountUp value={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
-              <div className="text-sm font-medium mt-2">{s.l}</div>
-              <div className="text-xs text-faint mt-1 leading-snug">{s.d}</div>
+              <div className="text-xs font-mono uppercase tracking-wider text-faint mt-2">{s.l}</div>
             </div>
           </FadeIn>
         ))}
@@ -417,9 +322,9 @@ function Stats() {
 
 function Install() {
   return (
-    <section id="install" className="py-28 px-6 scroll-mt-20">
+    <section id="install" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-2xl mx-auto text-center">
-        <SectionHead eyebrow="Get started" title="Single binary. Ten seconds." sub="Requirements: git, macOS or Linux. Nothing to configure." />
+        <SectionHead eyebrow="Install" title="One command. Then commit as normal." />
         <FadeIn delay={0.1}>
           <div className="flex justify-center mt-10 mb-6">
             <InstallCommand />
@@ -429,7 +334,7 @@ function Install() {
           <div className="ring-grad inline-block text-left font-mono text-sm px-6 py-5 space-y-1">
             <p><span className="text-accent">❯</span> <span className="text-foreground">cd your-project</span></p>
             <p><span className="text-accent">❯</span> <span className="text-foreground">rekal init</span></p>
-            <p className="text-faint pl-4"># done. commit and push as normal.</p>
+            <p className="text-faint pl-4"># done</p>
           </div>
         </FadeIn>
       </div>
@@ -439,37 +344,37 @@ function Install() {
 
 const FAQS = [
   {
-    q: "Which AI coding agents does Rekal work with?",
-    a: "Rekal ships tested session adapters for Claude Code, Codex, Gemini, and OpenCode, and captures sessions from all of them automatically at every commit.",
+    q: "Which agents work with Rekal?",
+    a: "Claude Code, Codex, Gemini, and OpenCode — captured automatically at every commit. Also works alongside Cursor and Copilot.",
   },
   {
-    q: "Does my code or its intent leave my machine?",
-    a: "No. Rekal never sends data to a server. Intent is stored on a git orphan branch — no server, no API, no telemetry — and the embedding model ships inside the binary.",
+    q: "Does intent leave my machine?",
+    a: "No. Stored on a git orphan branch. No server, no API, no telemetry. Embeddings ship in the binary.",
   },
   {
-    q: "Why not just use a MEMORY.md file or a RAG SaaS?",
-    a: "A notes file rots, is hand-maintained, and is tied to one branch; a memory SaaS puts your code’s intent on someone else’s server. Rekal captures context automatically at every commit, immutably and branch-aware, and keeps everything in git and on your machine.",
+    q: "Why not MEMORY.md or a RAG SaaS?",
+    a: "Notes rot and stay per-branch. SaaS puts intent on someone else’s server. Rekal captures at commit, stays in git.",
   },
   {
-    q: "How does an AI agent recall past context with Rekal?",
-    a: 'The agent runs rekal "<problem>", which returns scored prior sessions plus a knowledge block — pointers into the repo\'s prose at HEAD — as JSON, using hybrid search (BM25 + LSA + Nomic embeddings). A confidence gate then decides: read the knowledge pointer, drill into the episode, or stay silent.',
+    q: "How does an agent recall?",
+    a: 'rekal "<problem>" returns scored seeds with confidence. Drill, follow a knowledge pointer, or stay silent.',
   },
 ];
 
 function FAQ() {
   return (
-    <section id="faq" className="py-28 px-6 scroll-mt-20">
+    <section id="faq" className="py-24 px-6 scroll-mt-20">
       <div className="max-w-3xl mx-auto">
-        <SectionHead eyebrow="FAQ" title="Questions, answered" />
-        <div className="mt-12 space-y-3">
+        <SectionHead eyebrow="FAQ" title="Questions" />
+        <div className="mt-10 space-y-2">
           {FAQS.map((f, i) => (
-            <FadeIn key={f.q} delay={i * 0.06}>
-              <details className="card group px-6 py-5 [&_summary]:cursor-pointer">
-                <summary className="flex items-center justify-between gap-4 font-medium list-none">
+            <FadeIn key={f.q} delay={i * 0.05}>
+              <details className="card group px-5 py-4 [&_summary]:cursor-pointer">
+                <summary className="flex items-center justify-between gap-4 font-medium list-none text-sm sm:text-base">
                   {f.q}
                   <span className="text-accent transition-transform group-open:rotate-45 text-xl leading-none">+</span>
                 </summary>
-                <p className="text-sm text-muted leading-relaxed mt-4">{f.a}</p>
+                <p className="text-sm text-muted leading-relaxed mt-3">{f.a}</p>
               </details>
             </FadeIn>
           ))}
@@ -481,18 +386,17 @@ function FAQ() {
 
 function CTA() {
   return (
-    <section className="pb-28 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="pb-24 px-6">
+      <div className="max-w-3xl mx-auto">
         <FadeIn>
-          <div className="ring-grad glow-accent text-center px-8 py-16">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-              The CLI is free and local — forever.
+          <div className="ring-grad glow-accent text-center px-8 py-14">
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
+              Free. Local. Forever.
             </h2>
-            <p className="text-muted max-w-lg mx-auto leading-relaxed mb-8">
-              No accounts, no telemetry, no plans to gate it. If teams eventually need dashboards or
-              cross-org search, we&apos;ll build that on top. Until then, the CLI is the product.
+            <p className="text-muted max-w-md mx-auto leading-relaxed mb-8">
+              No accounts. No telemetry. The CLI is the product.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
               <Magnetic>
                 <a href="#install" className="btn btn-primary">Install Rekal</a>
               </Magnetic>
@@ -500,14 +404,12 @@ function CTA() {
                 <GitHubButton />
               </Magnetic>
             </div>
-            <p className="text-xs font-mono text-faint leading-relaxed">
-              The research behind it: &quot;Why Git Is the Memory Solution for the Agentic
-              Development Lifecycle&quot; —{" "}
+            <p className="text-xs font-mono text-faint">
               <a
                 href={PAPER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:text-foreground transition-colors underline underline-offset-4"
+                className="text-accent hover:text-foreground transition-colors"
               >
                 arXiv:2607.14390
               </a>
@@ -521,7 +423,7 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-border py-12 px-6">
+    <footer className="border-t border-border py-10 px-6">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3 font-mono">
           <span className="text-accent">❯</span>
@@ -533,7 +435,6 @@ function Footer() {
           <a href="/paper" className="hover:text-foreground transition-colors">Paper</a>
           <a href="https://discord.gg/eNNabp4b" className="hover:text-foreground transition-colors">Discord</a>
           <a href="https://github.com/rekal-dev/rekal-cli/issues" className="hover:text-foreground transition-colors">Issues</a>
-          <a href="https://github.com/rekal-dev/rekal-cli/blob/main/docs/DEVELOPMENT.md" className="hover:text-foreground transition-colors">Docs</a>
         </div>
       </div>
     </footer>
@@ -556,7 +457,6 @@ export default function Home() {
         <HowItWorks />
         <Skills />
         <WhyNot />
-        <Beliefs />
         <Install />
         <FAQ />
         <CTA />

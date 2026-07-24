@@ -6,19 +6,19 @@ const steps = [
   {
     k: "commit",
     t: "Commit",
-    d: "A post-commit hook snapshots the AI conversation that produced the change into an append-only log.",
+    d: "Session that produced the change is snapshotted.",
     icon: "M12 2v14M12 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM5 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
   },
   {
     k: "push",
     t: "Push",
-    d: "Only merged work rides a git orphan branch to your team. No server, no API, no telemetry.",
+    d: "Merged work rides a git orphan branch. No server.",
     icon: "M12 19V5M5 12l7-7 7 7",
   },
   {
     k: "recall",
     t: "Recall",
-    d: 'rekal "<problem>" returns scored prior context as JSON your agent drills into — cheapest turns first.',
+    d: 'rekal "<problem>" — scored context, cheapest turns first.',
     icon: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35",
   },
 ];
