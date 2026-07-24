@@ -10,11 +10,7 @@ import RotatingWord from "@/components/RotatingWord";
 
 const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
-const HERO_WORDS = [
-  "intent ledger",
-  "why",
-  "memory it's missing",
-];
+const HERO_WORDS = ["memory", "intent ledger", "why"];
 
 function Hero() {
   return (
@@ -47,14 +43,15 @@ function Hero() {
           </span>
           <span className="reveal-clip">
             <span
-              className="reveal-line"
+              className="reveal-line gradient-live"
               style={{ "--rd": "0.24s" } as React.CSSProperties}
             >
               <RotatingWord
                 words={HERO_WORDS}
                 className="gradient-live"
                 reserveWidth={false}
-              />.
+              />{" "}
+              it&apos;s missing.
             </span>
           </span>
         </h1>
