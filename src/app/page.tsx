@@ -435,9 +435,10 @@ function Research() {
 
 function Stats() {
   const stats = [
+    { value: 7.5, prefix: "~", suffix: "K tokens", l: "Context per query", d: "Full inference at query time — zero preprocessing overhead" },
+    { value: 2, prefix: "~", suffix: "s", l: "Latency", d: "Complete search pipeline runs locally, no server roundtrips" },
+    { value: 90.6, prefix: "", suffix: "%", l: "LoCoMo accuracy", d: "Beats SotA RAG. Confidence-gated routing. No hallucination padding." },
     { value: 1, prefix: "", suffix: "", l: "Binary", d: "Everything embedded — DB, model, inference, compression" },
-    { value: 0, prefix: "", suffix: "", l: "Servers", d: "Data never leaves git and your machine" },
-    { value: 0, prefix: "", suffix: "", l: "API keys", d: "The embedding model ships in the binary" },
   ];
   return (
     <section className="py-20 px-6 border-y border-border">
