@@ -210,6 +210,7 @@ function Benchmarks() {
         stats={[
           { value: 7.5, prefix: "~", suffix: "K", l: "tokens / query" },
           { value: 150, prefix: "~", suffix: " ms", l: "recall" },
+          { value: 2, prefix: "~", suffix: "s", l: "end-to-end", detail: "query" },
         ]}
       />
     </div>
