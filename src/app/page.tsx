@@ -7,6 +7,9 @@ import CountUp from "@/components/CountUp";
 import Pipeline from "@/components/Pipeline";
 import Nav from "@/components/Nav";
 import Magnetic from "@/components/Magnetic";
+import AgentsStrip from "@/components/AgentsStrip";
+import CheckpointSync from "@/components/CheckpointSync";
+import RotatingWord from "@/components/RotatingWord";
 
 // Canonical home of the published paper. The /paper page on this site mirrors
 // it with the abstract, an inline PDF, and BibTeX.
@@ -14,7 +17,7 @@ const PAPER_URL = "https://arxiv.org/abs/2607.14390";
 
 function Hero() {
   return (
-    <section className="relative flex flex-col items-center px-6 pt-36 pb-24 sm:pt-44">
+    <section className="relative flex flex-col items-center px-6 pt-36 pb-20 sm:pt-44">
       <div className="relative z-10 w-full text-center max-w-3xl mx-auto">
         <FadeIn>
           <a
@@ -25,7 +28,9 @@ function Hero() {
           >
             <span className="chip-dot" />
             <span>
-              <span className="text-foreground">Zero preprocessing</span> · pure query-time inference{" "}
+              Memory that lives in <span className="text-foreground">git</span>
+              {" · "}
+              arXiv:2607.14390{" "}
               <span className="text-accent">{'->'}</span>
             </span>
           </a>
@@ -47,7 +52,10 @@ function Hero() {
         </h1>
         <FadeIn delay={0.12}>
           <p className="text-lg text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-            No preprocessing. No memory layers. No external service. <span className="text-foreground">Every query runs full inference locally</span> — lexical, graph, deep semantics, all at query time. Agents recall intent in seconds, with confidence. The why behind every change, stored in git.
+            Every session settles decisions — why this approach, what got tried and thrown away.
+            Then it ends, and that reasoning is gone.{" "}
+            <span className="text-foreground">Rekal captures the why at every commit</span>
+            {" "}and recalls it next session — in git, on your machine, not someone else&apos;s cloud.
           </p>
         </FadeIn>
         <FadeIn delay={0.2}>
@@ -64,13 +72,13 @@ function Hero() {
               </Magnetic>
             </div>
             <p className="text-xs font-mono text-faint tracking-wide">
-              Claude Code · Cursor · Copilot · Codex · Gemini · OpenCode. Zero preprocessing, pure query inference.
+              Works with Claude Code, Cursor, Copilot, Codex, Gemini &amp; OpenCode
             </p>
           </div>
         </FadeIn>
       </div>
 
-      <div className="relative z-10 w-full mt-16">
+      <div className="relative z-10 w-full mt-14">
         <Terminal />
       </div>
     </section>
@@ -99,7 +107,12 @@ function Problem() {
   return (
     <section className="py-28 px-6">
       <div className="max-w-3xl mx-auto text-center">
-        <SectionHead eyebrow="The gap" title="Code has git. Intent has nothing." />
+        <FadeIn>
+          <p className="eyebrow text-center mb-4">The gap</p>
+          <h2 className="text-3xl sm:text-[2.6rem] font-bold text-center tracking-tight leading-tight">
+            Code has git. <RotatingWord className="gradient-live" /> has nothing.
+          </h2>
+        </FadeIn>
         <FadeIn delay={0.1}>
           <p className="text-lg text-muted leading-relaxed mt-8">
             Every line, every author — recorded forever. But the reasoning behind the code has no
@@ -113,6 +126,60 @@ function Problem() {
             <span className="text-foreground font-medium">Rekal is the ledger for the why.</span>
           </p>
         </FadeIn>
+      </div>
+    </section>
+  );
+}
+
+function AttachedNotArchived() {
+  return (
+    <section className="py-8 px-6 pb-28">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-0 border border-border rounded-2xl overflow-hidden">
+        <div className="flex flex-col border-b md:border-b-0 md:border-r border-border">
+          <div className="flex-1 flex items-center justify-center px-6 py-12 bg-card/40 min-h-[280px]">
+            <CheckpointSync />
+          </div>
+          <div className="px-8 py-8 text-center border-t border-border">
+            <h3 className="font-semibold text-lg mb-2">Sessions sync with commits</h3>
+            <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
+              Every conversation is captured and linked to your git history automatically.
+              Context that&apos;s attached, not archived.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <div className="flex-1 flex items-center justify-center px-8 py-12 bg-card/40 min-h-[280px]">
+            <div className="w-full max-w-sm space-y-3 font-mono text-xs">
+              <div className="ring-grad px-4 py-3 flex items-center justify-between gap-3">
+                <span className="text-foreground truncate">should webhook retries use a fixed delay?</span>
+                <span className="text-accent shrink-0">INJECT</span>
+              </div>
+              <div className="ring-grad px-4 py-3 opacity-70">
+                <div className="flex justify-between text-faint mb-1">
+                  <span>01JNQX8F2K9M</span>
+                  <span className="text-green">conf=0.81</span>
+                </div>
+                <p className="text-muted leading-relaxed">
+                  no — a fixed 5s delay stampedes on recovery. Use exponential backoff with jitter…
+                </p>
+              </div>
+              <div className="ring-grad px-4 py-3 opacity-40">
+                <div className="flex justify-between text-faint mb-1">
+                  <span>01JNR2A7YQ4P</span>
+                  <span>conf=0.53</span>
+                </div>
+                <p className="text-muted leading-relaxed">capped retries at 5 then dead-letter…</p>
+              </div>
+            </div>
+          </div>
+          <div className="px-8 py-8 text-center border-t border-border">
+            <h3 className="font-semibold text-lg mb-2">Recall the intent, not just the diff</h3>
+            <p className="text-sm text-muted leading-relaxed max-w-md mx-auto">
+              Confidence-gated seeds your agent can act on — verdict, turn, provenance —
+              before it wastes a round re-proposing a dead-end.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -279,26 +346,44 @@ function WhyNot() {
 }
 
 function Beliefs() {
+  // Three pillars — not a six-card inventory. Matches README beliefs without the dashboard feel.
   const beliefs = [
-    { t: "Zero preprocessing", d: "No indexing pipeline. No embedding queue. No delays. Sessions stored raw, inference at query time." },
-    { t: "Query-time inference", d: "Full search stack runs locally on demand: lexical + graph + deep semantics. No preprocessing overhead, ever." },
-    { t: "Intent in git", d: "Decision ledger travels with the repo. No external service. No separate system. Team-wide, persistent." },
-    { t: "Local-only", d: "No API calls, no external embeddings, no servers. Everything embedded in the binary. Privacy native." },
-    { t: "Single binary", d: "Database, inference, graph engine, compression — all built in. Just init and commit. Zero config." },
-    { t: "Agent-native", d: "Scored JSON, drill-down interface, silence gates, confidence, provenance. Built for agent consumption." },
+    {
+      n: "01",
+      t: "Intent in git",
+      d: "Decision ledger travels with the repo on orphan branches. No external service, no separate system — team-wide and persistent.",
+    },
+    {
+      n: "02",
+      t: "Local-only recall",
+      d: "Lexical + graph + deep semantics run on your machine at query time. Sessions stay raw; nothing is sent to a memory SaaS.",
+    },
+    {
+      n: "03",
+      t: "Agent-native output",
+      d: "Compact digests with verdict, confidence, and drill pointers — silence when memory isn't the tool. JSON one flag away.",
+    },
   ];
   return (
     <section className="py-28 px-6">
       <div className="max-w-5xl mx-auto">
-        <SectionHead eyebrow="Beliefs" title="Opinionated by design" sub="Rekal is built on beliefs. When a choice conflicts with one, the choice loses." />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+        <SectionHead
+          eyebrow="Beliefs"
+          title="Opinionated by design"
+          sub="Rekal is built on beliefs. When a choice conflicts with one, the choice loses."
+        />
+        <div className="grid md:grid-cols-3 mt-14 border border-border rounded-2xl overflow-hidden">
           {beliefs.map((b, i) => (
-            <FadeIn key={b.t} delay={i * 0.06}>
-              <SpotlightCard className="p-6 h-full">
-                <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/15 flex items-center justify-center mb-4 text-accent text-sm">✦</div>
-                <h3 className="font-semibold mb-2">{b.t}</h3>
+            <FadeIn key={b.t} delay={i * 0.08}>
+              <article
+                className={`p-8 h-full ${
+                  i < beliefs.length - 1 ? "border-b md:border-b-0 md:border-r border-border" : ""
+                }`}
+              >
+                <p className="font-mono text-xs text-accent mb-4">{b.n}</p>
+                <h3 className="font-semibold text-lg mb-2">{b.t}</h3>
                 <p className="text-sm text-muted leading-relaxed">{b.d}</p>
-              </SpotlightCard>
+              </article>
             </FadeIn>
           ))}
         </div>
@@ -592,8 +677,10 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <AgentsStrip />
         <Flow />
         <Problem />
+        <AttachedNotArchived />
         <Stats />
         <HowItWorks />
         <Skills />

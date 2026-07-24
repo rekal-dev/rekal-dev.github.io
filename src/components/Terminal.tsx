@@ -1,59 +1,75 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 type Line =
   | { cmd: string; delay: number }
-  | { out: string; delay: number }
+  | { out: string; delay: number; tone?: "accent" | "green" | "amber" | "muted" }
   | { comment: string; delay: number };
 
 const lines: Line[] = [
   { cmd: 'git commit -m "webhooks: switch retries to exponential backoff"', delay: 0 },
-  { out: "rekal: captured 1 session, 214 turns", delay: 800 },
-  { out: "", delay: 1000 },
-  { comment: "next week — a different agent, same question", delay: 1500 },
-  { cmd: 'rekal "should webhook retries use a fixed delay?"', delay: 2600 },
-  { out: "", delay: 3300 },
-  { out: '{"session_id":"01JNQX8F2K9M","score":0.87,', delay: 3500 },
-  { out: '  "snippet":"no — a fixed 5s delay stampedes the downstream on', delay: 3750 },
-  { out: '            recovery. use exponential backoff with jitter.",', delay: 3950 },
-  { out: '  "snippet_role":"human_steering"}', delay: 4150 },
-  { out: "", delay: 4400 },
-  { cmd: "rekal query --session 01JNQX8F2K9M --role human_steering", delay: 5100 },
-  { out: "", delay: 5800 },
-  { out: '{"turns":[', delay: 6000 },
-  { out: '  {"role":"human_steering",', delay: 6200 },
-  { out: '   "content":"don’t retry on a fixed delay — it stampedes on recovery"},', delay: 6400 },
-  { out: '  {"role":"assistant",', delay: 6650 },
-  { out: '   "content":"switched to exponential backoff with full jitter"}]}', delay: 6850 },
-  { out: "", delay: 7150 },
-  { comment: "the dead-end was already ruled out — before it got re-proposed", delay: 7700 },
+  { out: "rekal: captured 1 session · 214 turns", delay: 700, tone: "muted" },
+  { out: "", delay: 950 },
+  { comment: "next week — a different agent, same question", delay: 1400 },
+  { cmd: 'rekal "should webhook retries use a fixed delay?"', delay: 2400 },
+  { out: "", delay: 3000 },
+  { out: "INJECT top=0.81 gap=0.28  2 seeds", delay: 3200, tone: "accent" },
+  {
+    out: '  01JNQX8F2K9M conf=0.81 t14 [reached 3× · "webhook retry policy"]',
+    delay: 3450,
+    tone: "green",
+  },
+  {
+    out: '  "no, a fixed 5s delay stampedes the downstream on recovery.',
+    delay: 3700,
+  },
+  { out: '   Use exponential backoff with jitter…"', delay: 3900 },
+  { out: "", delay: 4200 },
+  { cmd: "rekal query --session 01JNQX8F2K9M --role human_steering", delay: 4900 },
+  { out: "", delay: 5500 },
+  { out: "human_steering  t14", delay: 5700, tone: "amber" },
+  {
+    out: "don’t retry on a fixed delay — it stampedes on recovery",
+    delay: 5950,
+  },
+  { out: "", delay: 6300 },
+  { comment: "dead-end already ruled out — before it got re-proposed", delay: 6800 },
 ];
 
-function colorize(text: string): string {
-  return text
-    .replace(
-      /("session_id"|"score"|"snippet"|"snippet_role"|"turns"|"role"|"content")/g,
-      '<span class="text-accent">$1</span>',
-    )
-    .replace(/("human_steering"|"human"|"assistant")/g, '<span class="text-green">$1</span>')
-    .replace(/\b(0\.87|true)\b/g, '<span class="text-amber">$1</span>')
-    .replace(/(?<=[:,])(\d+)\b/g, '<span class="text-amber">$1</span>');
+function lineClass(line: Line): string {
+  if ("tone" in line && line.tone === "accent") return "text-accent";
+  if ("tone" in line && line.tone === "green") return "text-green";
+  if ("tone" in line && line.tone === "amber") return "text-amber";
+  if ("tone" in line && line.tone === "muted") return "text-faint";
+  return "text-muted";
 }
 
 export default function Terminal() {
   const [visible, setVisible] = useState(0);
   const [typing, setTyping] = useState<string | null>(null);
+  const [runId, setRunId] = useState(0);
+  const [done, setDone] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const reduceRef = useRef(false);
+
+  const replay = useCallback(() => {
+    setVisible(0);
+    setTyping(null);
+    setDone(false);
+    setRunId((n) => n + 1);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    reduceRef.current = reduce;
     const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
     (async () => {
       if (reduce) {
         setVisible(lines.length);
+        setDone(true);
         return;
       }
       let prev = 0;
@@ -64,21 +80,21 @@ export default function Terminal() {
         prev = line.delay;
         if (cancelled) return;
         if ("cmd" in line) {
-          // Type the command character by character, like a human at a prompt.
           for (let c = 1; c <= line.cmd.length; c++) {
             if (cancelled) return;
             setTyping(line.cmd.slice(0, c));
-            await sleep(13);
+            await sleep(12);
           }
           setTyping(null);
         }
         setVisible(i + 1);
       }
+      if (!cancelled) setDone(true);
     })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [runId]);
 
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -97,14 +113,22 @@ export default function Terminal() {
           <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
           <div className="w-3 h-3 rounded-full bg-[#28c840]" />
           <span className="ml-2 text-xs text-faint font-mono">rekal — recall</span>
-          <span className="ml-auto text-[10px] text-faint font-mono tracking-wider">git-native · local</span>
+          <button
+            type="button"
+            onClick={replay}
+            disabled={!done && !reduceRef.current}
+            className="ml-auto text-[10px] text-faint font-mono tracking-wider hover:text-accent transition-colors disabled:opacity-40 disabled:hover:text-faint cursor-pointer disabled:cursor-default"
+            aria-label="Replay demo"
+          >
+            {done ? "replay ↺" : "git-native · local"}
+          </button>
         </div>
         <div
           ref={scrollRef}
           className="p-4 sm:p-5 font-mono text-[13px] leading-6 h-[380px] overflow-y-auto overflow-x-auto scroll-smooth"
         >
           {lines.slice(0, visible).map((line, i) => (
-            <div key={i} className="whitespace-pre">
+            <div key={`${runId}-${i}`} className="whitespace-pre">
               {"comment" in line ? (
                 <span className="text-faint italic"># {line.comment}</span>
               ) : "cmd" in line ? (
@@ -113,10 +137,7 @@ export default function Terminal() {
                   <span className="text-foreground">{line.cmd}</span>
                 </span>
               ) : (
-                <span
-                  className="text-muted"
-                  dangerouslySetInnerHTML={{ __html: colorize(line.out) }}
-                />
+                <span className={lineClass(line)}>{line.out}</span>
               )}
             </div>
           ))}
