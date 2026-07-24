@@ -135,6 +135,21 @@ body {
   to { transform: translateY(0); }
 }
 
+/* Rotating headline word: clip-rise on each swap. */
+.rotate-word {
+  animation: rotate-word-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes rotate-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(55%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -415,5 +430,6 @@ a.chip:hover {
   .sync-dash,
   .sync-halo { animation: none !important; }
   .reveal-line { transform: none; animation: none; }
+  .rotate-word { animation: none; }
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }
