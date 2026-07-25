@@ -320,7 +320,7 @@ function Soul() {
     {
       tag: "Lazy inference",
       title: "Reason at ask-time",
-      d: "No write-time summaries. Retrieval, ranking, routing, and the agent's judgment run over the real record when you ask — compute on demand, nothing derived that can rot. What you reach is saved locally; next recall reuses it as a seed.",
+      d: "No write-time summaries. Retrieval, ranking, routing, and the agent's judgment run over the real record when you ask — compute on demand, nothing derived that can rot. That record rides git with the team, so the next recall — yours or a teammate's — can reuse those sessions as seeds.",
     },
     {
       tag: "Zero maintenance",
