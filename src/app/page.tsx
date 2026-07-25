@@ -258,7 +258,7 @@ function Team() {
           </h2>
           <p className="text-muted text-center leading-relaxed max-w-xl mx-auto mb-10">
             Shared over plain git — no memory server. Push on commit; sync when you want team context.
-            Agent-agnostic: the team doesn&apos;t lock into one coding agent — Rekal adapts.
+            Ranking adapts personally on your machine — the citation graph stays local and never rides the wire.
           </p>
         </FadeIn>
 
@@ -326,6 +326,11 @@ function Soul() {
       tag: "Zero maintenance",
       title: "Nothing to keep healthy",
       d: "Raw sessions are the truth. The index is a disposable accelerator — rebuild reconciles it. No consolidation pipeline, no memory tiers, no drift.",
+    },
+    {
+      tag: "Personalised ranking",
+      title: "Adapts as you recall",
+      d: "Your machine tracks which sessions you reach. Load-bearing memories get a usage hint and a gentle boost — private, never synced, inert until you build a history.",
     },
   ];
 
@@ -408,7 +413,7 @@ function Soul() {
         </FadeIn>
 
         {/* Trade */}
-        <div className="mt-4 grid md:grid-cols-2 border border-border rounded-2xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-border">
+        <div className="mt-4 grid md:grid-cols-3 border border-border rounded-2xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-border">
           {trade.map((t, i) => (
             <FadeIn key={t.tag} delay={0.08 + i * 0.06}>
               <article className="p-7 sm:p-8 h-full bg-card/40">
@@ -480,7 +485,7 @@ const FAQS = [
   },
   {
     q: "How does recall work?",
-    a: 'rekal "<problem>" returns scored seeds with confidence — drill, follow a pointer, or stay silent.',
+    a: 'rekal "<problem>" returns scored seeds with confidence — drill, follow a pointer, or stay silent. A personalised recall graph (local-only) adapts ranking to what you reach most — never synced to the team.',
   },
 ];
 
