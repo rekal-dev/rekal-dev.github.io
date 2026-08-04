@@ -1,4 +1,4 @@
-import Terminal from "@/components/Terminal";
+import DemoRecording from "@/components/DemoRecording";
 import InstallCommand from "@/components/InstallCommand";
 import GitHubButton from "@/components/GitHubButton";
 import FadeIn from "@/components/FadeIn";
@@ -71,7 +71,7 @@ function Hero() {
       </div>
 
       <div className="relative z-10 w-full mt-16">
-        <Terminal />
+        <DemoRecording />
       </div>
     </section>
   );
