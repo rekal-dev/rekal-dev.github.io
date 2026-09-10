@@ -23,6 +23,31 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      # rekal.dev/install.sh is a mirror of rekal-cli's scripts/install.sh.
+      # It once sat a full release behind and served an installer that still
+      # required Claude Code and still resolved versions through the
+      # rate-limited GitHub API. Pull the canonical copy at build time so what
+      # the site serves cannot fall behind the CLI, and warn when the
+      # committed file needs updating. A fetch failure falls back to the
+      # committed copy rather than blocking an unrelated site deploy.
+      - name: Sync install.sh from rekal-cli
+        env:
+          CANONICAL: https://raw.githubusercontent.com/rekal-dev/rekal-cli/main/scripts/install.sh
+        run: |
+          if curl -fsSL --retry 3 --retry-delay 2 "$CANONICAL" -o /tmp/install.sh \
+             && [ -s /tmp/install.sh ] && head -1 /tmp/install.sh | grep -q '^#!'; then
+            if diff -q /tmp/install.sh public/install.sh >/dev/null 2>&1; then
+              echo "public/install.sh matches rekal-cli"
+            else
+              echo "::warning::public/install.sh is behind rekal-cli; deploying the canonical copy. Commit the update."
+              diff -u public/install.sh /tmp/install.sh || true
+              cp /tmp/install.sh public/install.sh
+            fi
+          else
+            echo "::warning::Could not fetch the canonical install.sh; deploying the committed copy."
+          fi
+
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
