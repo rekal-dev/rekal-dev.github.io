@@ -1,6 +1,9 @@
 name: Deploy to GitHub Pages
 
 on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
   push:
     branches: [main]
 
@@ -47,6 +50,17 @@ jobs:
           else
             echo "::warning::Could not fetch the canonical install.sh; deploying the committed copy."
           fi
+
+      # Both renderers consume the CLI's canonical story at one checkout SHA.
+      # Fail on missing/invalid data rather than silently deploy an old story.
+      - uses: actions/checkout@v4
+        with:
+          repository: rekal-dev/rekal-cli
+          ref: main
+          path: .canonical-demo
+          persist-credentials: false
+      - name: Sync canonical demo
+        run: python3 scripts/sync-demo.py .canonical-demo
 
       - run: npm run build
       - name: Check exported marketing content

@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import story from "@/lib/demo-story.json";
 
-const duration = 28000;
+const duration = Math.max(...story.flatMap(person => person.rows.map(row => row.at))) * 1000 + 3000;
 const stages = [
-  { label: "Build", detail: "Alex + Claude Code", time: 4000 },
+  { label: "Build", detail: `${story[0].name} + ${story[0].agent}`, time: 4000 },
   { label: "Share", detail: "Your existing Git remote", time: 12000 },
-  { label: "Continue", detail: "Sam + Codex", time: duration },
+  { label: "Continue", detail: `${story[1].name} + ${story[1].agent}`, time: duration },
 ];
 
 export default function TerminalDemo() {
@@ -25,7 +25,7 @@ export default function TerminalDemo() {
   }, [paused, finished]);
 
   return (
-    <figure aria-label="Animated team handoff: Alex builds, Sam extends" className="handoff-demo w-full">
+    <figure aria-label={`Animated team handoff: ${story[0].name} builds, ${story[1].name} extends`} className="handoff-demo w-full">
       <div className="flex items-center justify-between gap-4 mb-4">
         <p className="text-sm text-muted">Two teammates. Different agents. Shared context.</p>
         <button type="button" className="min-h-11 px-3 text-sm text-cyan-300 rounded-md focus-visible:outline-2 focus-visible:outline-cyan-400"
@@ -44,8 +44,8 @@ export default function TerminalDemo() {
       </div>
       <div className="handoff-progress" aria-hidden="true"><span style={{ width: `${elapsed / duration * 100}%` }} /></div>
       <div className="grid md:grid-cols-2 gap-4" aria-live="off">
-        {story.map(person => (
-          <div key={person.name} className={`handoff-terminal ${person.name === "Alex" ? "terminal-alex" : "terminal-sam"}`}>
+        {story.map((person, personIndex) => (
+          <div key={person.name} className={`handoff-terminal ${personIndex === 0 ? "terminal-alex" : "terminal-sam"}`}>
             <div className="flex items-center gap-2 border-b border-border px-4 py-3">
               <span aria-hidden="true" className="flex gap-1.5"><i className="w-2 h-2 rounded-full bg-rose-400" /><i className="w-2 h-2 rounded-full bg-amber-400" /><i className="w-2 h-2 rounded-full bg-emerald-400" /></span>
               <span className="ml-2 text-sm font-mono">{person.name} · {person.agent}</span>
@@ -56,9 +56,9 @@ export default function TerminalDemo() {
                 const age = elapsed - row.at * 1000;
                 const shown = age >= 0;
                 const text = row.kind === "prompt" ? row.text.slice(0, Math.max(0, Math.floor(age / 28))) : row.text;
-                if (person.name === "Sam" && i === 2) return <div key={i} className={`handoff-source mb-4 ${shown ? "" : "invisible"}`}>
+                if (personIndex === 1 && i === 2) return <div key={i} className={`handoff-source mb-4 ${shown ? "" : "invisible"}`}>
                   <span className="handoff-source-label">RECALLED CONTEXT</span>
-                  <strong>Alex’s session · Claude Code</strong>
+                  <strong>{story[0].name}’s session · {story[0].agent}</strong>
                   <p>{row.text}</p>
                   <span className="handoff-source-origin">Shared through Git · original session read</span>
                 </div>;
