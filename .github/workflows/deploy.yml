@@ -62,6 +62,18 @@ jobs:
       - name: Sync canonical demo
         run: python3 scripts/sync-demo.py .canonical-demo
 
+      - name: Refresh downloads using the CLI-owned collector
+        run: |
+          python3 .canonical-demo/scripts/download-metrics.py
+          cp download-metrics.json public/download-metrics.json
+          cp downloads.json public/downloads.json
+          python3 - <<'PYCODE'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('download-metrics.json').read_text())
+          Path('src/lib/download-metrics.json').write_text(json.dumps({k: data[k] for k in ('archive_downloads', 'captured_at')}) + '\n')
+          PYCODE
+
       - run: npm run build
       - name: Check exported marketing content
         run: python3 scripts/check-marketing.py

@@ -1,3 +1,4 @@
+import downloads from "@/lib/download-metrics.json";
 import type { Metadata } from "next";
 import TerminalDemo from "@/components/TerminalDemo";
 import Nav from "@/components/Nav";
@@ -332,6 +333,13 @@ export default function Home() {
         </section>
       </main>
       <footer className="border-t border-border px-6 py-10">
+        <div id="downloads" className="max-w-5xl mx-auto mb-7 text-sm text-muted">
+          <a href="/download-metrics.json" className="inline-flex items-baseline gap-2" title="Release archive downloads, including repeats and tests; excludes checksum files">
+            <strong className="text-2xl font-mono text-foreground">{downloads.archive_downloads.toLocaleString("en-US")}</strong>
+            <span>downloads</span>
+          </a>
+          <p className="text-xs mt-2">Across all releases · updated {downloads.captured_at.slice(0, 10)} UTC · refreshed daily</p>
+        </div>
         <div className="max-w-5xl mx-auto flex flex-wrap gap-6 text-sm text-muted">
           <span className="font-mono text-accent">❯ rekal</span>
           <a href={REPO}>Source · Apache-2.0</a>

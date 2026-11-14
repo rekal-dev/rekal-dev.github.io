@@ -1,0 +1,2275 @@
+{
+  "archive_downloads": 540,
+  "captured_at": "2026-11-14T21:08:24.616446+00:00",
+  "repository": "rekal-dev/rekal-cli",
+  "assets": [
+    {
+      "tag": "v2.0.1",
+      "asset_id": 746248556,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-11-14T04:11:21Z"
+    },
+    {
+      "tag": "v2.0.1",
+      "asset_id": 746248549,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-11-14T04:11:21Z"
+    },
+    {
+      "tag": "v2.0.1",
+      "asset_id": 746248555,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-11-14T04:11:21Z"
+    },
+    {
+      "tag": "v2.0.1",
+      "asset_id": 746248554,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-11-14T04:11:21Z"
+    },
+    {
+      "tag": "v2.0.0",
+      "asset_id": 746131719,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-11-14T03:19:36Z"
+    },
+    {
+      "tag": "v2.0.0",
+      "asset_id": 746131720,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-11-14T03:19:36Z"
+    },
+    {
+      "tag": "v2.0.0",
+      "asset_id": 746131722,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-11-14T03:19:36Z"
+    },
+    {
+      "tag": "v2.0.0",
+      "asset_id": 746131718,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-11-14T03:19:36Z"
+    },
+    {
+      "tag": "v1.0.2",
+      "asset_id": 501153970,
+      "name": "checksums.txt",
+      "downloads": 33,
+      "created_at": "2026-08-04T09:35:55Z"
+    },
+    {
+      "tag": "v1.0.2",
+      "asset_id": 501153971,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 19,
+      "created_at": "2026-08-04T09:35:55Z"
+    },
+    {
+      "tag": "v1.0.2",
+      "asset_id": 501153972,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 25,
+      "created_at": "2026-08-04T09:35:55Z"
+    },
+    {
+      "tag": "v1.0.2",
+      "asset_id": 501153973,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 7,
+      "created_at": "2026-08-04T09:35:55Z"
+    },
+    {
+      "tag": "v1.0.1",
+      "asset_id": 501088943,
+      "name": "checksums.txt",
+      "downloads": 5,
+      "created_at": "2026-08-04T08:26:10Z"
+    },
+    {
+      "tag": "v1.0.1",
+      "asset_id": 501088946,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-04T08:26:10Z"
+    },
+    {
+      "tag": "v1.0.1",
+      "asset_id": 501088944,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 8,
+      "created_at": "2026-08-04T08:26:10Z"
+    },
+    {
+      "tag": "v1.0.1",
+      "asset_id": 501088947,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-04T08:26:10Z"
+    },
+    {
+      "tag": "v1.0.0",
+      "asset_id": 500998300,
+      "name": "checksums.txt",
+      "downloads": 14,
+      "created_at": "2026-08-04T06:44:54Z"
+    },
+    {
+      "tag": "v1.0.0",
+      "asset_id": 500998299,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-08-04T06:44:54Z"
+    },
+    {
+      "tag": "v1.0.0",
+      "asset_id": 500998301,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 18,
+      "created_at": "2026-08-04T06:44:54Z"
+    },
+    {
+      "tag": "v1.0.0",
+      "asset_id": 500998302,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-08-04T06:44:54Z"
+    },
+    {
+      "tag": "v0.2.64",
+      "asset_id": 499533377,
+      "name": "checksums.txt",
+      "downloads": 5,
+      "created_at": "2026-08-03T03:00:02Z"
+    },
+    {
+      "tag": "v0.2.64",
+      "asset_id": 499533376,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 6,
+      "created_at": "2026-08-03T03:00:02Z"
+    },
+    {
+      "tag": "v0.2.64",
+      "asset_id": 499533379,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 7,
+      "created_at": "2026-08-03T03:00:02Z"
+    },
+    {
+      "tag": "v0.2.64",
+      "asset_id": 499533378,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-03T03:00:02Z"
+    },
+    {
+      "tag": "v0.2.63",
+      "asset_id": 499372776,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-08-02T23:30:41Z"
+    },
+    {
+      "tag": "v0.2.63",
+      "asset_id": 499372775,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-02T23:30:41Z"
+    },
+    {
+      "tag": "v0.2.63",
+      "asset_id": 499372778,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-08-02T23:30:41Z"
+    },
+    {
+      "tag": "v0.2.63",
+      "asset_id": 499372777,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-02T23:30:41Z"
+    },
+    {
+      "tag": "v0.2.62",
+      "asset_id": 498812803,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-08-02T10:42:29Z"
+    },
+    {
+      "tag": "v0.2.62",
+      "asset_id": 498812804,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-02T10:42:29Z"
+    },
+    {
+      "tag": "v0.2.62",
+      "asset_id": 498812805,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-08-02T10:42:29Z"
+    },
+    {
+      "tag": "v0.2.62",
+      "asset_id": 498812806,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-02T10:42:29Z"
+    },
+    {
+      "tag": "v0.2.61",
+      "asset_id": 498644816,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-08-02T06:35:09Z"
+    },
+    {
+      "tag": "v0.2.61",
+      "asset_id": 498644814,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-02T06:35:09Z"
+    },
+    {
+      "tag": "v0.2.61",
+      "asset_id": 498644817,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-08-02T06:35:09Z"
+    },
+    {
+      "tag": "v0.2.61",
+      "asset_id": 498644815,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-02T06:35:09Z"
+    },
+    {
+      "tag": "v0.2.60",
+      "asset_id": 498421742,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-08-02T01:08:07Z"
+    },
+    {
+      "tag": "v0.2.60",
+      "asset_id": 498421745,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-02T01:08:07Z"
+    },
+    {
+      "tag": "v0.2.60",
+      "asset_id": 498421741,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-02T01:08:07Z"
+    },
+    {
+      "tag": "v0.2.60",
+      "asset_id": 498421743,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-02T01:08:07Z"
+    },
+    {
+      "tag": "v0.2.59",
+      "asset_id": 498392900,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-08-02T00:11:41Z"
+    },
+    {
+      "tag": "v0.2.59",
+      "asset_id": 498392896,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-02T00:11:41Z"
+    },
+    {
+      "tag": "v0.2.59",
+      "asset_id": 498392901,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-02T00:11:41Z"
+    },
+    {
+      "tag": "v0.2.59",
+      "asset_id": 498392902,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-02T00:11:41Z"
+    },
+    {
+      "tag": "v0.2.58",
+      "asset_id": 497928355,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-08-01T13:26:12Z"
+    },
+    {
+      "tag": "v0.2.58",
+      "asset_id": 497928357,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-01T13:26:12Z"
+    },
+    {
+      "tag": "v0.2.58",
+      "asset_id": 497928356,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-08-01T13:26:12Z"
+    },
+    {
+      "tag": "v0.2.58",
+      "asset_id": 497928358,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-08-01T13:26:12Z"
+    },
+    {
+      "tag": "v0.2.56",
+      "asset_id": 492708877,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-28T12:44:19Z"
+    },
+    {
+      "tag": "v0.2.56",
+      "asset_id": 492708881,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-28T12:44:19Z"
+    },
+    {
+      "tag": "v0.2.56",
+      "asset_id": 492708878,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-28T12:44:19Z"
+    },
+    {
+      "tag": "v0.2.56",
+      "asset_id": 492708880,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-28T12:44:19Z"
+    },
+    {
+      "tag": "v0.2.55",
+      "asset_id": 490985673,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-27T03:53:45Z"
+    },
+    {
+      "tag": "v0.2.55",
+      "asset_id": 490985672,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-27T03:53:45Z"
+    },
+    {
+      "tag": "v0.2.55",
+      "asset_id": 490985678,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-27T03:53:45Z"
+    },
+    {
+      "tag": "v0.2.55",
+      "asset_id": 490985677,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-27T03:53:45Z"
+    },
+    {
+      "tag": "v0.2.54",
+      "asset_id": 490817460,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-27T00:14:33Z"
+    },
+    {
+      "tag": "v0.2.54",
+      "asset_id": 490817455,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-27T00:14:33Z"
+    },
+    {
+      "tag": "v0.2.54",
+      "asset_id": 490817456,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-27T00:14:33Z"
+    },
+    {
+      "tag": "v0.2.54",
+      "asset_id": 490817454,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-27T00:14:33Z"
+    },
+    {
+      "tag": "v0.2.53",
+      "asset_id": 490757022,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-26T22:49:36Z"
+    },
+    {
+      "tag": "v0.2.53",
+      "asset_id": 490757023,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-26T22:49:36Z"
+    },
+    {
+      "tag": "v0.2.53",
+      "asset_id": 490757021,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-26T22:49:36Z"
+    },
+    {
+      "tag": "v0.2.53",
+      "asset_id": 490757020,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-26T22:49:36Z"
+    },
+    {
+      "tag": "v0.2.52",
+      "asset_id": 490378301,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-26T13:32:59Z"
+    },
+    {
+      "tag": "v0.2.52",
+      "asset_id": 490378296,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-26T13:32:59Z"
+    },
+    {
+      "tag": "v0.2.52",
+      "asset_id": 490378298,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-26T13:32:59Z"
+    },
+    {
+      "tag": "v0.2.52",
+      "asset_id": 490378302,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-26T13:32:59Z"
+    },
+    {
+      "tag": "v0.2.51",
+      "asset_id": 489408658,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-25T11:46:45Z"
+    },
+    {
+      "tag": "v0.2.51",
+      "asset_id": 489408659,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T11:46:45Z"
+    },
+    {
+      "tag": "v0.2.51",
+      "asset_id": 489408660,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-25T11:46:45Z"
+    },
+    {
+      "tag": "v0.2.51",
+      "asset_id": 489408661,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T11:46:45Z"
+    },
+    {
+      "tag": "v0.2.50",
+      "asset_id": 488987251,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-25T00:40:01Z"
+    },
+    {
+      "tag": "v0.2.50",
+      "asset_id": 488987252,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T00:40:01Z"
+    },
+    {
+      "tag": "v0.2.50",
+      "asset_id": 488987250,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-25T00:40:01Z"
+    },
+    {
+      "tag": "v0.2.50",
+      "asset_id": 488987249,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T00:40:01Z"
+    },
+    {
+      "tag": "v0.2.49",
+      "asset_id": 488963963,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-25T00:05:25Z"
+    },
+    {
+      "tag": "v0.2.49",
+      "asset_id": 488963965,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T00:05:25Z"
+    },
+    {
+      "tag": "v0.2.49",
+      "asset_id": 488963966,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T00:05:25Z"
+    },
+    {
+      "tag": "v0.2.49",
+      "asset_id": 488963964,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-25T00:05:25Z"
+    },
+    {
+      "tag": "v0.2.48",
+      "asset_id": 488914917,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T23:02:15Z"
+    },
+    {
+      "tag": "v0.2.48",
+      "asset_id": 488914915,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T23:02:15Z"
+    },
+    {
+      "tag": "v0.2.48",
+      "asset_id": 488914916,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T23:02:15Z"
+    },
+    {
+      "tag": "v0.2.48",
+      "asset_id": 488914914,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T23:02:15Z"
+    },
+    {
+      "tag": "v0.2.47",
+      "asset_id": 488903258,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T22:49:58Z"
+    },
+    {
+      "tag": "v0.2.47",
+      "asset_id": 488903257,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T22:49:58Z"
+    },
+    {
+      "tag": "v0.2.47",
+      "asset_id": 488903259,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T22:49:58Z"
+    },
+    {
+      "tag": "v0.2.47",
+      "asset_id": 488903260,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T22:49:58Z"
+    },
+    {
+      "tag": "v0.2.46",
+      "asset_id": 488411397,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:56:05Z"
+    },
+    {
+      "tag": "v0.2.46",
+      "asset_id": 488411396,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:56:05Z"
+    },
+    {
+      "tag": "v0.2.46",
+      "asset_id": 488411394,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:56:05Z"
+    },
+    {
+      "tag": "v0.2.46",
+      "asset_id": 488411395,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:56:05Z"
+    },
+    {
+      "tag": "v0.2.45",
+      "asset_id": 488370900,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:05:43Z"
+    },
+    {
+      "tag": "v0.2.45",
+      "asset_id": 488370899,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:05:43Z"
+    },
+    {
+      "tag": "v0.2.45",
+      "asset_id": 488370897,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:05:43Z"
+    },
+    {
+      "tag": "v0.2.45",
+      "asset_id": 488370898,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T12:05:43Z"
+    },
+    {
+      "tag": "v0.2.44",
+      "asset_id": 488363390,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:57:47Z"
+    },
+    {
+      "tag": "v0.2.44",
+      "asset_id": 488363394,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:57:48Z"
+    },
+    {
+      "tag": "v0.2.44",
+      "asset_id": 488363389,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:57:47Z"
+    },
+    {
+      "tag": "v0.2.44",
+      "asset_id": 488363391,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:57:47Z"
+    },
+    {
+      "tag": "v0.2.43",
+      "asset_id": 488351835,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:44:18Z"
+    },
+    {
+      "tag": "v0.2.43",
+      "asset_id": 488351836,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:44:18Z"
+    },
+    {
+      "tag": "v0.2.43",
+      "asset_id": 488351834,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:44:17Z"
+    },
+    {
+      "tag": "v0.2.43",
+      "asset_id": 488351833,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T11:44:17Z"
+    },
+    {
+      "tag": "v0.2.42",
+      "asset_id": 488068007,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:55:41Z"
+    },
+    {
+      "tag": "v0.2.42",
+      "asset_id": 488068005,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:55:41Z"
+    },
+    {
+      "tag": "v0.2.42",
+      "asset_id": 488068002,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:55:41Z"
+    },
+    {
+      "tag": "v0.2.42",
+      "asset_id": 488068004,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:55:41Z"
+    },
+    {
+      "tag": "v0.2.41",
+      "asset_id": 488055191,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:40:35Z"
+    },
+    {
+      "tag": "v0.2.41",
+      "asset_id": 488055190,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:40:35Z"
+    },
+    {
+      "tag": "v0.2.41",
+      "asset_id": 488055193,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:40:35Z"
+    },
+    {
+      "tag": "v0.2.41",
+      "asset_id": 488055192,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-24T05:40:35Z"
+    },
+    {
+      "tag": "v0.2.40",
+      "asset_id": 487069363,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-07-23T10:36:27Z"
+    },
+    {
+      "tag": "v0.2.40",
+      "asset_id": 487069365,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-23T10:36:27Z"
+    },
+    {
+      "tag": "v0.2.40",
+      "asset_id": 487069364,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T10:36:27Z"
+    },
+    {
+      "tag": "v0.2.40",
+      "asset_id": 487069366,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T10:36:27Z"
+    },
+    {
+      "tag": "v0.2.39",
+      "asset_id": 487048696,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-23T10:14:54Z"
+    },
+    {
+      "tag": "v0.2.39",
+      "asset_id": 487048700,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T10:14:54Z"
+    },
+    {
+      "tag": "v0.2.39",
+      "asset_id": 487048697,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T10:14:54Z"
+    },
+    {
+      "tag": "v0.2.39",
+      "asset_id": 487048698,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T10:14:54Z"
+    },
+    {
+      "tag": "v0.2.38",
+      "asset_id": 486835548,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-23T06:05:18Z"
+    },
+    {
+      "tag": "v0.2.38",
+      "asset_id": 486835549,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-23T06:05:18Z"
+    },
+    {
+      "tag": "v0.2.38",
+      "asset_id": 486835547,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T06:05:18Z"
+    },
+    {
+      "tag": "v0.2.38",
+      "asset_id": 486835550,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-23T06:05:18Z"
+    },
+    {
+      "tag": "v0.2.37",
+      "asset_id": 485625424,
+      "name": "checksums.txt",
+      "downloads": 7,
+      "created_at": "2026-07-22T06:50:56Z"
+    },
+    {
+      "tag": "v0.2.37",
+      "asset_id": 485625427,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-22T06:50:56Z"
+    },
+    {
+      "tag": "v0.2.37",
+      "asset_id": 485625425,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 7,
+      "created_at": "2026-07-22T06:50:56Z"
+    },
+    {
+      "tag": "v0.2.37",
+      "asset_id": 485625426,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-22T06:50:56Z"
+    },
+    {
+      "tag": "v0.2.36",
+      "asset_id": 485613249,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-22T06:37:54Z"
+    },
+    {
+      "tag": "v0.2.36",
+      "asset_id": 485613247,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-22T06:37:54Z"
+    },
+    {
+      "tag": "v0.2.36",
+      "asset_id": 485613244,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-22T06:37:54Z"
+    },
+    {
+      "tag": "v0.2.36",
+      "asset_id": 485613248,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-22T06:37:54Z"
+    },
+    {
+      "tag": "v0.2.35",
+      "asset_id": 484141886,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-07-21T02:14:39Z"
+    },
+    {
+      "tag": "v0.2.35",
+      "asset_id": 484141889,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-21T02:14:39Z"
+    },
+    {
+      "tag": "v0.2.35",
+      "asset_id": 484141887,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-21T02:14:39Z"
+    },
+    {
+      "tag": "v0.2.35",
+      "asset_id": 484141888,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-21T02:14:39Z"
+    },
+    {
+      "tag": "v0.2.34",
+      "asset_id": 484113198,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-21T01:37:44Z"
+    },
+    {
+      "tag": "v0.2.34",
+      "asset_id": 484113197,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-21T01:37:44Z"
+    },
+    {
+      "tag": "v0.2.34",
+      "asset_id": 484113199,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-21T01:37:44Z"
+    },
+    {
+      "tag": "v0.2.34",
+      "asset_id": 484113196,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-21T01:37:44Z"
+    },
+    {
+      "tag": "v0.2.33",
+      "asset_id": 483285768,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-20T09:20:23Z"
+    },
+    {
+      "tag": "v0.2.33",
+      "asset_id": 483285767,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T09:20:23Z"
+    },
+    {
+      "tag": "v0.2.33",
+      "asset_id": 483285770,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T09:20:23Z"
+    },
+    {
+      "tag": "v0.2.33",
+      "asset_id": 483285769,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T09:20:23Z"
+    },
+    {
+      "tag": "v0.2.32",
+      "asset_id": 483123617,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-20T06:04:09Z"
+    },
+    {
+      "tag": "v0.2.32",
+      "asset_id": 483123616,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T06:04:09Z"
+    },
+    {
+      "tag": "v0.2.32",
+      "asset_id": 483123618,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T06:04:09Z"
+    },
+    {
+      "tag": "v0.2.32",
+      "asset_id": 483123619,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T06:04:09Z"
+    },
+    {
+      "tag": "v0.2.31",
+      "asset_id": 483077120,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-20T04:58:41Z"
+    },
+    {
+      "tag": "v0.2.31",
+      "asset_id": 483077122,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T04:58:41Z"
+    },
+    {
+      "tag": "v0.2.31",
+      "asset_id": 483077123,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T04:58:41Z"
+    },
+    {
+      "tag": "v0.2.31",
+      "asset_id": 483077121,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T04:58:41Z"
+    },
+    {
+      "tag": "v0.2.30",
+      "asset_id": 482937264,
+      "name": "checksums.txt",
+      "downloads": 4,
+      "created_at": "2026-07-20T02:06:11Z"
+    },
+    {
+      "tag": "v0.2.30",
+      "asset_id": 482937270,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-07-20T02:06:11Z"
+    },
+    {
+      "tag": "v0.2.30",
+      "asset_id": 482937267,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T02:06:11Z"
+    },
+    {
+      "tag": "v0.2.30",
+      "asset_id": 482937265,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-20T02:06:11Z"
+    },
+    {
+      "tag": "v0.2.29",
+      "asset_id": 482781671,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-19T22:33:50Z"
+    },
+    {
+      "tag": "v0.2.29",
+      "asset_id": 482781669,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-19T22:33:50Z"
+    },
+    {
+      "tag": "v0.2.29",
+      "asset_id": 482781670,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-19T22:33:50Z"
+    },
+    {
+      "tag": "v0.2.29",
+      "asset_id": 482781668,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-19T22:33:50Z"
+    },
+    {
+      "tag": "v0.2.28",
+      "asset_id": 482276521,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-19T09:45:41Z"
+    },
+    {
+      "tag": "v0.2.28",
+      "asset_id": 482276524,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-19T09:45:41Z"
+    },
+    {
+      "tag": "v0.2.28",
+      "asset_id": 482276520,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-19T09:45:41Z"
+    },
+    {
+      "tag": "v0.2.28",
+      "asset_id": 482276522,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-19T09:45:41Z"
+    },
+    {
+      "tag": "v0.2.27",
+      "asset_id": 479958524,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-17T04:17:46Z"
+    },
+    {
+      "tag": "v0.2.27",
+      "asset_id": 479958526,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-17T04:17:46Z"
+    },
+    {
+      "tag": "v0.2.27",
+      "asset_id": 479958527,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T04:17:46Z"
+    },
+    {
+      "tag": "v0.2.27",
+      "asset_id": 479958525,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T04:17:46Z"
+    },
+    {
+      "tag": "v0.2.26",
+      "asset_id": 479775211,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:31:05Z"
+    },
+    {
+      "tag": "v0.2.26",
+      "asset_id": 479775206,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:31:05Z"
+    },
+    {
+      "tag": "v0.2.26",
+      "asset_id": 479775212,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:31:05Z"
+    },
+    {
+      "tag": "v0.2.26",
+      "asset_id": 479775213,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:31:05Z"
+    },
+    {
+      "tag": "v0.2.25",
+      "asset_id": 479761501,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:14:31Z"
+    },
+    {
+      "tag": "v0.2.25",
+      "asset_id": 479761502,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:14:31Z"
+    },
+    {
+      "tag": "v0.2.25",
+      "asset_id": 479761504,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:14:31Z"
+    },
+    {
+      "tag": "v0.2.25",
+      "asset_id": 479761505,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-17T00:14:31Z"
+    },
+    {
+      "tag": "v0.2.24",
+      "asset_id": 479175792,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-16T12:57:40Z"
+    },
+    {
+      "tag": "v0.2.24",
+      "asset_id": 479175794,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T12:57:40Z"
+    },
+    {
+      "tag": "v0.2.24",
+      "asset_id": 479175795,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T12:57:40Z"
+    },
+    {
+      "tag": "v0.2.24",
+      "asset_id": 479175793,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T12:57:40Z"
+    },
+    {
+      "tag": "v0.2.22",
+      "asset_id": 478850000,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-16T06:20:45Z"
+    },
+    {
+      "tag": "v0.2.22",
+      "asset_id": 478850001,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T06:20:45Z"
+    },
+    {
+      "tag": "v0.2.22",
+      "asset_id": 478850002,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T06:20:45Z"
+    },
+    {
+      "tag": "v0.2.22",
+      "asset_id": 478849998,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T06:20:45Z"
+    },
+    {
+      "tag": "v0.2.21",
+      "asset_id": 478772806,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-16T04:40:49Z"
+    },
+    {
+      "tag": "v0.2.21",
+      "asset_id": 478772803,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-16T04:40:49Z"
+    },
+    {
+      "tag": "v0.2.21",
+      "asset_id": 478772804,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T04:40:49Z"
+    },
+    {
+      "tag": "v0.2.21",
+      "asset_id": 478772805,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T04:40:49Z"
+    },
+    {
+      "tag": "v0.2.20",
+      "asset_id": 478746899,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-16T04:08:09Z"
+    },
+    {
+      "tag": "v0.2.20",
+      "asset_id": 478746896,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-16T04:08:09Z"
+    },
+    {
+      "tag": "v0.2.20",
+      "asset_id": 478746895,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T04:08:09Z"
+    },
+    {
+      "tag": "v0.2.20",
+      "asset_id": 478746897,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T04:08:09Z"
+    },
+    {
+      "tag": "v0.2.19",
+      "asset_id": 478707628,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-16T03:23:48Z"
+    },
+    {
+      "tag": "v0.2.19",
+      "asset_id": 478707631,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-16T03:23:48Z"
+    },
+    {
+      "tag": "v0.2.19",
+      "asset_id": 478707629,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T03:23:48Z"
+    },
+    {
+      "tag": "v0.2.19",
+      "asset_id": 478707633,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T03:23:48Z"
+    },
+    {
+      "tag": "v0.2.18",
+      "asset_id": 478598277,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-16T01:11:50Z"
+    },
+    {
+      "tag": "v0.2.18",
+      "asset_id": 478598279,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-16T01:11:50Z"
+    },
+    {
+      "tag": "v0.2.18",
+      "asset_id": 478598280,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T01:11:50Z"
+    },
+    {
+      "tag": "v0.2.18",
+      "asset_id": 478598276,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T01:11:50Z"
+    },
+    {
+      "tag": "v0.2.17",
+      "asset_id": 478557512,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-07-16T00:13:44Z"
+    },
+    {
+      "tag": "v0.2.17",
+      "asset_id": 478557510,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-16T00:13:44Z"
+    },
+    {
+      "tag": "v0.2.17",
+      "asset_id": 478557509,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T00:13:44Z"
+    },
+    {
+      "tag": "v0.2.17",
+      "asset_id": 478557511,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-16T00:13:44Z"
+    },
+    {
+      "tag": "v0.2.16",
+      "asset_id": 478482271,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-15T22:59:39Z"
+    },
+    {
+      "tag": "v0.2.16",
+      "asset_id": 478482273,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-15T22:59:39Z"
+    },
+    {
+      "tag": "v0.2.16",
+      "asset_id": 478482272,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-15T22:59:39Z"
+    },
+    {
+      "tag": "v0.2.16",
+      "asset_id": 478482276,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-15T22:59:39Z"
+    },
+    {
+      "tag": "v0.2.15",
+      "asset_id": 474061485,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-07-12T03:54:40Z"
+    },
+    {
+      "tag": "v0.2.15",
+      "asset_id": 474061487,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-12T03:54:40Z"
+    },
+    {
+      "tag": "v0.2.15",
+      "asset_id": 474061486,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-12T03:54:40Z"
+    },
+    {
+      "tag": "v0.2.15",
+      "asset_id": 474061484,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-12T03:54:40Z"
+    },
+    {
+      "tag": "v0.2.14",
+      "asset_id": 471975907,
+      "name": "checksums.txt",
+      "downloads": 4,
+      "created_at": "2026-07-10T01:37:04Z"
+    },
+    {
+      "tag": "v0.2.14",
+      "asset_id": 471975905,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-10T01:37:04Z"
+    },
+    {
+      "tag": "v0.2.14",
+      "asset_id": 471975904,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-10T01:37:03Z"
+    },
+    {
+      "tag": "v0.2.14",
+      "asset_id": 471975906,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-10T01:37:04Z"
+    },
+    {
+      "tag": "v0.2.13",
+      "asset_id": 470091187,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-07-08T08:57:52Z"
+    },
+    {
+      "tag": "v0.2.13",
+      "asset_id": 470091188,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-07-08T08:57:52Z"
+    },
+    {
+      "tag": "v0.2.13",
+      "asset_id": 470091189,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-08T08:57:52Z"
+    },
+    {
+      "tag": "v0.2.13",
+      "asset_id": 470091185,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-08T08:57:52Z"
+    },
+    {
+      "tag": "v0.2.12",
+      "asset_id": 468893356,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-07T06:48:36Z"
+    },
+    {
+      "tag": "v0.2.12",
+      "asset_id": 468893355,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-07T06:48:36Z"
+    },
+    {
+      "tag": "v0.2.12",
+      "asset_id": 468893357,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-07T06:48:36Z"
+    },
+    {
+      "tag": "v0.2.12",
+      "asset_id": 468893352,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-07T06:48:36Z"
+    },
+    {
+      "tag": "v0.2.11",
+      "asset_id": 465272678,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:54:26Z"
+    },
+    {
+      "tag": "v0.2.11",
+      "asset_id": 465272682,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:54:26Z"
+    },
+    {
+      "tag": "v0.2.11",
+      "asset_id": 465272679,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:54:26Z"
+    },
+    {
+      "tag": "v0.2.11",
+      "asset_id": 465272677,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:54:26Z"
+    },
+    {
+      "tag": "v0.2.10",
+      "asset_id": 465244582,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:19:00Z"
+    },
+    {
+      "tag": "v0.2.10",
+      "asset_id": 465244580,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:19:00Z"
+    },
+    {
+      "tag": "v0.2.10",
+      "asset_id": 465244583,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:19:00Z"
+    },
+    {
+      "tag": "v0.2.10",
+      "asset_id": 465244581,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T09:19:00Z"
+    },
+    {
+      "tag": "v0.2.9",
+      "asset_id": 465109726,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-07-03T06:21:12Z"
+    },
+    {
+      "tag": "v0.2.9",
+      "asset_id": 465109729,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T06:21:12Z"
+    },
+    {
+      "tag": "v0.2.9",
+      "asset_id": 465109727,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T06:21:12Z"
+    },
+    {
+      "tag": "v0.2.9",
+      "asset_id": 465109728,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-07-03T06:21:12Z"
+    },
+    {
+      "tag": "v0.2.8",
+      "asset_id": 464953898,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-03T02:40:33Z"
+    },
+    {
+      "tag": "v0.2.8",
+      "asset_id": 464953899,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-03T02:40:33Z"
+    },
+    {
+      "tag": "v0.2.8",
+      "asset_id": 464953900,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-03T02:40:33Z"
+    },
+    {
+      "tag": "v0.2.8",
+      "asset_id": 464953901,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-03T02:40:33Z"
+    },
+    {
+      "tag": "v0.2.7",
+      "asset_id": 464303444,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-07-02T12:31:52Z"
+    },
+    {
+      "tag": "v0.2.7",
+      "asset_id": 464303442,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-02T12:31:52Z"
+    },
+    {
+      "tag": "v0.2.7",
+      "asset_id": 464303440,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-02T12:31:52Z"
+    },
+    {
+      "tag": "v0.2.7",
+      "asset_id": 464303443,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-07-02T12:31:52Z"
+    },
+    {
+      "tag": "v0.2.6",
+      "asset_id": 368100273,
+      "name": "checksums.txt",
+      "downloads": 10,
+      "created_at": "2026-03-06T07:53:43Z"
+    },
+    {
+      "tag": "v0.2.6",
+      "asset_id": 368100272,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 12,
+      "created_at": "2026-03-06T07:53:43Z"
+    },
+    {
+      "tag": "v0.2.6",
+      "asset_id": 368100274,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-03-06T07:53:43Z"
+    },
+    {
+      "tag": "v0.2.5",
+      "asset_id": 367270513,
+      "name": "checksums.txt",
+      "downloads": 4,
+      "created_at": "2026-03-05T05:08:48Z"
+    },
+    {
+      "tag": "v0.2.5",
+      "asset_id": 367270512,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-03-05T05:08:48Z"
+    },
+    {
+      "tag": "v0.2.5",
+      "asset_id": 367270511,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-03-05T05:08:48Z"
+    },
+    {
+      "tag": "v0.2.4",
+      "asset_id": 363329477,
+      "name": "checksums.txt",
+      "downloads": 8,
+      "created_at": "2026-02-27T07:04:18Z"
+    },
+    {
+      "tag": "v0.2.4",
+      "asset_id": 363329478,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 9,
+      "created_at": "2026-02-27T07:04:18Z"
+    },
+    {
+      "tag": "v0.2.4",
+      "asset_id": 363329476,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-27T07:04:18Z"
+    },
+    {
+      "tag": "v0.2.2",
+      "asset_id": 363197851,
+      "name": "checksums.txt",
+      "downloads": 7,
+      "created_at": "2026-02-27T01:46:25Z"
+    },
+    {
+      "tag": "v0.2.2",
+      "asset_id": 363197852,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 7,
+      "created_at": "2026-02-27T01:46:25Z"
+    },
+    {
+      "tag": "v0.2.2",
+      "asset_id": 363197850,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-27T01:46:25Z"
+    },
+    {
+      "tag": "v0.2.1",
+      "asset_id": 363188750,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-27T01:25:58Z"
+    },
+    {
+      "tag": "v0.2.1",
+      "asset_id": 363188748,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-27T01:25:58Z"
+    },
+    {
+      "tag": "v0.2.1",
+      "asset_id": 363188749,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-27T01:25:58Z"
+    },
+    {
+      "tag": "v0.2.0",
+      "asset_id": 363180902,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-27T01:07:37Z"
+    },
+    {
+      "tag": "v0.2.0",
+      "asset_id": 363180903,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-27T01:07:37Z"
+    },
+    {
+      "tag": "v0.2.0",
+      "asset_id": 363180904,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-27T01:07:37Z"
+    },
+    {
+      "tag": "v0.1.9",
+      "asset_id": 363145160,
+      "name": "checksums.txt",
+      "downloads": 4,
+      "created_at": "2026-02-26T23:48:41Z"
+    },
+    {
+      "tag": "v0.1.9",
+      "asset_id": 363145159,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-26T23:48:41Z"
+    },
+    {
+      "tag": "v0.1.9",
+      "asset_id": 363145163,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-26T23:48:41Z"
+    },
+    {
+      "tag": "v0.1.7",
+      "asset_id": 362693973,
+      "name": "checksums.txt",
+      "downloads": 10,
+      "created_at": "2026-02-26T07:47:13Z"
+    },
+    {
+      "tag": "v0.1.7",
+      "asset_id": 362693974,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-26T07:47:13Z"
+    },
+    {
+      "tag": "v0.1.7",
+      "asset_id": 362693975,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 11,
+      "created_at": "2026-02-26T07:47:13Z"
+    },
+    {
+      "tag": "v0.1.6",
+      "asset_id": 362689824,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-26T07:38:22Z"
+    },
+    {
+      "tag": "v0.1.6",
+      "asset_id": 362689823,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 6,
+      "created_at": "2026-02-26T07:38:22Z"
+    },
+    {
+      "tag": "v0.1.6",
+      "asset_id": 362689825,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-26T07:38:22Z"
+    },
+    {
+      "tag": "v0.1.5",
+      "asset_id": 362681487,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-02-26T07:19:42Z"
+    },
+    {
+      "tag": "v0.1.5",
+      "asset_id": 362681486,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-26T07:19:42Z"
+    },
+    {
+      "tag": "v0.1.5",
+      "asset_id": 362681485,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-26T07:19:42Z"
+    },
+    {
+      "tag": "v0.1.4",
+      "asset_id": 362639992,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-02-26T05:48:45Z"
+    },
+    {
+      "tag": "v0.1.4",
+      "asset_id": 362639994,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-26T05:48:45Z"
+    },
+    {
+      "tag": "v0.1.4",
+      "asset_id": 362639993,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-26T05:48:45Z"
+    },
+    {
+      "tag": "v0.1.3",
+      "asset_id": 362587848,
+      "name": "checksums.txt",
+      "downloads": 4,
+      "created_at": "2026-02-26T04:27:36Z"
+    },
+    {
+      "tag": "v0.1.3",
+      "asset_id": 362587846,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 6,
+      "created_at": "2026-02-26T04:27:36Z"
+    },
+    {
+      "tag": "v0.1.3",
+      "asset_id": 362587847,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-26T04:27:36Z"
+    },
+    {
+      "tag": "v0.1.2",
+      "asset_id": 362567290,
+      "name": "checksums.txt",
+      "downloads": 5,
+      "created_at": "2026-02-26T03:36:58Z"
+    },
+    {
+      "tag": "v0.1.2",
+      "asset_id": 362567289,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 7,
+      "created_at": "2026-02-26T03:36:58Z"
+    },
+    {
+      "tag": "v0.1.2",
+      "asset_id": 362567291,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-26T03:36:58Z"
+    },
+    {
+      "tag": "v0.1.1",
+      "asset_id": 362548636,
+      "name": "checksums.txt",
+      "downloads": 5,
+      "created_at": "2026-02-26T02:57:40Z"
+    },
+    {
+      "tag": "v0.1.1",
+      "asset_id": 362548635,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 6,
+      "created_at": "2026-02-26T02:57:40Z"
+    },
+    {
+      "tag": "v0.1.1",
+      "asset_id": 362548637,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-26T02:57:40Z"
+    },
+    {
+      "tag": "v0.0.9",
+      "asset_id": 362497856,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-26T01:11:53Z"
+    },
+    {
+      "tag": "v0.0.9",
+      "asset_id": 362497855,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-26T01:11:53Z"
+    },
+    {
+      "tag": "v0.0.9",
+      "asset_id": 362497854,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-26T01:11:53Z"
+    },
+    {
+      "tag": "v0.0.8",
+      "asset_id": 362442484,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-25T23:26:45Z"
+    },
+    {
+      "tag": "v0.0.8",
+      "asset_id": 362442485,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T23:26:45Z"
+    },
+    {
+      "tag": "v0.0.8",
+      "asset_id": 362442483,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-25T23:26:45Z"
+    },
+    {
+      "tag": "v0.0.7",
+      "asset_id": 362422935,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-25T22:54:07Z"
+    },
+    {
+      "tag": "v0.0.7",
+      "asset_id": 362422933,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T22:54:07Z"
+    },
+    {
+      "tag": "v0.0.7",
+      "asset_id": 362422934,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-25T22:54:07Z"
+    },
+    {
+      "tag": "v0.0.6",
+      "asset_id": 361934780,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-25T05:49:13Z"
+    },
+    {
+      "tag": "v0.0.6",
+      "asset_id": 361934782,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-02-25T05:49:13Z"
+    },
+    {
+      "tag": "v0.0.6",
+      "asset_id": 361934781,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-25T05:49:13Z"
+    },
+    {
+      "tag": "v0.0.5",
+      "asset_id": 361906905,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-02-25T04:40:24Z"
+    },
+    {
+      "tag": "v0.0.5",
+      "asset_id": 361906901,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-25T04:40:24Z"
+    },
+    {
+      "tag": "v0.0.5",
+      "asset_id": 361906902,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T04:40:24Z"
+    },
+    {
+      "tag": "v0.0.4",
+      "asset_id": 361880466,
+      "name": "checksums.txt",
+      "downloads": 3,
+      "created_at": "2026-02-25T03:37:06Z"
+    },
+    {
+      "tag": "v0.0.4",
+      "asset_id": 361880465,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-25T03:37:06Z"
+    },
+    {
+      "tag": "v0.0.4",
+      "asset_id": 361880467,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T03:37:06Z"
+    },
+    {
+      "tag": "v0.0.3",
+      "asset_id": 361775839,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:35:12Z"
+    },
+    {
+      "tag": "v0.0.3",
+      "asset_id": 361775828,
+      "name": "rekal_darwin_amd64.tar.gz",
+      "downloads": 5,
+      "created_at": "2026-02-25T00:35:11Z"
+    },
+    {
+      "tag": "v0.0.3",
+      "asset_id": 361775827,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 6,
+      "created_at": "2026-02-25T00:35:11Z"
+    },
+    {
+      "tag": "v0.0.3",
+      "asset_id": 361775825,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 6,
+      "created_at": "2026-02-25T00:35:11Z"
+    },
+    {
+      "tag": "v0.0.3",
+      "asset_id": 361775826,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 4,
+      "created_at": "2026-02-25T00:35:11Z"
+    },
+    {
+      "tag": "v0.0.2",
+      "asset_id": 361771482,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:25:46Z"
+    },
+    {
+      "tag": "v0.0.2",
+      "asset_id": 361771477,
+      "name": "rekal_darwin_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-25T00:25:45Z"
+    },
+    {
+      "tag": "v0.0.2",
+      "asset_id": 361771475,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:25:45Z"
+    },
+    {
+      "tag": "v0.0.2",
+      "asset_id": 361771478,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-25T00:25:45Z"
+    },
+    {
+      "tag": "v0.0.2",
+      "asset_id": 361771474,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 1,
+      "created_at": "2026-02-25T00:25:45Z"
+    },
+    {
+      "tag": "v0.0.1",
+      "asset_id": 361767052,
+      "name": "checksums.txt",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:14:49Z"
+    },
+    {
+      "tag": "v0.0.1",
+      "asset_id": 361767046,
+      "name": "rekal_darwin_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:14:49Z"
+    },
+    {
+      "tag": "v0.0.1",
+      "asset_id": 361767048,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-25T00:14:49Z"
+    },
+    {
+      "tag": "v0.0.1",
+      "asset_id": 361767047,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:14:49Z"
+    },
+    {
+      "tag": "v0.0.1",
+      "asset_id": 361767049,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 2,
+      "created_at": "2026-02-25T00:14:49Z"
+    },
+    {
+      "tag": "v0.1.0",
+      "asset_id": 361758582,
+      "name": "checksums.txt",
+      "downloads": 1,
+      "created_at": "2026-02-24T23:56:10Z"
+    },
+    {
+      "tag": "v0.1.0",
+      "asset_id": 361758577,
+      "name": "rekal_darwin_amd64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-24T23:56:09Z"
+    },
+    {
+      "tag": "v0.1.0",
+      "asset_id": 361758580,
+      "name": "rekal_darwin_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-24T23:56:10Z"
+    },
+    {
+      "tag": "v0.1.0",
+      "asset_id": 361758579,
+      "name": "rekal_linux_amd64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-24T23:56:10Z"
+    },
+    {
+      "tag": "v0.1.0",
+      "asset_id": 361758578,
+      "name": "rekal_linux_arm64.tar.gz",
+      "downloads": 3,
+      "created_at": "2026-02-24T23:56:10Z"
+    }
+  ]
+}

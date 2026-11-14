@@ -17,14 +17,20 @@ No clipboard content, arbitrary link URL, or shell information is included.
 
 ## Release downloads
 
-The **Download metrics** Actions workflow snapshots GitHub's public release-asset
+The [CLI Download metrics workflow](https://github.com/rekal-dev/rekal-cli/actions/workflows/download-metrics.yml) snapshots GitHub's public release-asset
 counters daily. Each run has a summary and JSON artifact retained for 90 days.
 Compare counters by asset ID between snapshots to estimate download changes.
 Replacement/deletion of an asset resets/removes its counter; tag/name alone is
 not a stable identifier. Archive totals exclude checksums.txt. All totals can
 include bots, CI, repeat downloads and our own installation tests.
 
-Run locally: `python3 scripts/download-metrics.py`.
+Run in the CLI repository: `python3 scripts/download-metrics.py`.
+
+The website footer and README badge display archive downloads only, from the
+CLI-owned collector. Website deployments refresh the public JSON and date at
+least daily (the existing site schedule runs every six hours). If collection
+fails, deployment fails and the last published count and date remain visible.
+Old website workflow artifacts remain available until their original expiry.
 
 ## What is not measured
 
