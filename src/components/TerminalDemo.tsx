@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 const steps = [
-  { label: "1. Keep the decision", actor: "Dana · Claude Code · yesterday", command: 'git commit -m "Add jitter to webhook retries"', lines: ["Project conversation: fixed delays made retries arrive together.", "Project note: use jitter; preserve the retry budget.", "Rekal captures supported sessions and project notes at checkpoint."], outcome: "After merge and push, eligible records are available through Git." },
-  { label: "2. Find it again", actor: "Sam · Codex · today", command: 'rekal sync\nrekal "why do webhook retries use jitter?"', lines: ["Conversation lead → the retry design discussion", "Memory match → the project's retry note", "Choose a source reference returned by search."], outcome: "A teammate can discover the decision without knowing who made it." },
-  { label: "3. Read before changing", actor: "Sam · Codex · same task", command: "rekal query --ref <returned-reference>", lines: ["Original discussion: fixed delays synchronized failing deliveries.", "Decision: spread retries with jitter, within a bounded budget.", "Read the source; check today's implementation and tests."], outcome: "Continue the work with the reason in view—not just the final note." },
+  { label: "1. Capture", actor: "dana / webhook-service / Claude Code", command: 'git commit -m "Add jitter to webhook retries"', lines: ['# Earlier in this session', 'Dana: Fixed delays made retries arrive together.', 'Claude: Add jitter; keep the retry budget bounded.', '', '# Commit checkpoints the session and project notes.', '# Eligible records travel after merge and push.'] },
+  { label: "2. Search", actor: "sam / webhook-service / Codex", command: 'rekal sync\nrekal "why do webhook retries use jitter?"', lines: ['Conversation · Webhook retry design', '  "Fixed delays made retries arrive together."', '  ref: passage:demo-webhook:12-14', '', 'Memory · retry-policy.md', '  "Use jitter; preserve the retry budget."'] },
+  { label: "3. Read", actor: "sam / webhook-service / Codex", command: "rekal query --ref passage:demo-webhook:12-14", lines: ['[12] Dana: Fixed delays synchronized failing deliveries.', '[13] Claude: Spread retries with jitter.', '[14] Dana: Keep the total retry budget bounded.', '', '# Check the current implementation against this context.'] },
 ];
 
 export default function TerminalDemo() {
@@ -32,10 +32,9 @@ export default function TerminalDemo() {
       <div key={active} className="demo-frame p-5 sm:p-8 sm:min-h-80" aria-live={playing ? "off" : "polite"} aria-atomic="true">
         <p className="text-xs text-muted font-mono mb-5">{step.actor}</p>
         <pre className="text-sm text-cyan-300 whitespace-pre-wrap break-words leading-7"><code>{step.command.split("\n").map(l => "$ " + l).join("\n")}</code></pre>
-        <div className="mt-6 border-l-2 border-violet pl-4 space-y-3 text-sm text-muted leading-relaxed">{step.lines.map(l => <p key={l}>{l}</p>)}</div>
-        <p className="mt-7 text-foreground font-medium">{step.outcome}</p>
+        <div className="mt-5 font-mono text-[13px] leading-7 text-foreground/80 whitespace-pre-wrap break-words">{step.lines.map((line, i) => <div key={i} className={playing ? "terminal-line" : ""} style={playing ? { animationDelay: `${i * 280}ms` } : undefined}>{line || "\u00a0"}</div>)}</div>
       </div>
-      <figcaption className="px-5 sm:px-8 py-4 border-t border-border text-xs text-muted leading-relaxed">Illustrative walkthrough with synthetic project content. Commands are real; result descriptions are abbreviated, not a recording of CLI output. No automatic note-to-conversation link is implied.</figcaption>
+      <figcaption className="px-5 sm:px-8 py-4 border-t border-border text-xs text-muted leading-relaxed">Illustrative walkthrough with synthetic project content. Commands are real; output is abbreviated and references are illustrative. This is not a recording of CLI output.</figcaption>
     </figure>
   );
 }

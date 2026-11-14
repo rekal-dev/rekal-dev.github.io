@@ -474,3 +474,7 @@ main td { color: #b4b4be; } main caption { text-align: left; padding-block: 1rem
 .demo-frame { animation: demo-enter .25s ease-out; }
 @media (prefers-reduced-motion: reduce) { .demo-frame { animation: none; } }
 @media (max-width: 639px) { .section-wrap { padding-left: 1.25rem; padding-right: 1.25rem; } }
+
+@keyframes terminal-line { from { opacity: 0; } to { opacity: 1; } }
+.terminal-line { animation: terminal-line .18s both; }
+@media (prefers-reduced-motion: reduce) { .terminal-line { animation: none; } }

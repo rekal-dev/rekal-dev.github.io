@@ -216,19 +216,6 @@ export default function Home() {
             Understand storage, sharing and rebuilds →
           </a>
         </section>
-        <section id="compare" className="section-wrap border-t border-border">
-          <p className="eyebrow">Choose the memory that fits your workflow</p>
-          <h2>Already using Claude memory or Claude-mem?</h2>
-          <p className="section-copy">
-            Keep what works. Rekal’s focus is a Git-backed project record:
-            original conversation evidence, native note revisions and retrieval
-            across supported agents. You may not need another memory tool if
-            your existing setup already covers your work.
-          </p>
-          <a className="btn btn-primary mt-5" href="/compare/claude-mem">
-            Compare Rekal and Claude-mem →
-          </a>
-        </section>
         <section
           id="benchmarks"
           className="section-wrap border-t border-border"
