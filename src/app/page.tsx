@@ -58,17 +58,17 @@ export default function Home() {
           <div>
           <p className="eyebrow mb-6">Git-backed memory for AI coding agents</p>
           <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold tracking-tight leading-[1.06] max-w-4xl">
-            Carry the reasoning
+            Carry the context
             <br />
             <span className="gradient-text">forward.</span>
           </h1>
           <p className="text-xl text-muted leading-relaxed max-w-2xl mt-7">
-            Keep the why behind your code—across sessions, agents and
-            teammates. Find past conversations and project notes, then read the
-            original reasoning before changing the design.
+            Your project’s memory, across sessions, agents and teammates.
+            Find past conversations, decisions and project notes, with the
+            original sources ready to read.
           </p>
           <p className="mt-5 text-foreground">
-            Capture at commit time. Search locally. Share through Git.
+            Captured with commits. Searchable locally. Shared through Git.
           </p>
           <div className="flex flex-wrap gap-3 mt-8">
             <a href="#install" className="btn btn-primary">
@@ -298,9 +298,9 @@ export default function Home() {
             </code>
           </pre>
           <p className="section-copy">
-            Rekal 2.0.0 is published for macOS ARM64 and Linux AMD64/ARM64.
-            The Linux AMD64 archive requires GLIBC 2.43; it will not start on
-            older systems. See the upgrade guide for source-build instructions.
+            Rekal 2.0.1 is available for macOS ARM64 and Linux AMD64/ARM64.
+            Linux targets Ubuntu 24.04 / GLIBC 2.39 or newer with standard C++
+            and OpenMP runtimes. Older systems need a source build.
           </p>
           <p className="section-copy">
             Upgrading? Follow the migration guide and upgrade every writer of

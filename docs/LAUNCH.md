@@ -2,13 +2,11 @@
 
 ## Release status — 14 November 2026
 
-v2.0.0 is published at commit `8b3dfe74793c860abf17a7e06e5903b7abf7bf2a`.
-Release run 43550133449 succeeded; tag ancestry includes PRs #88, #89 and #90.
-All three platform archives and checksums.txt are present. The downloaded Linux
-AMD64 checksum matches, but execution on this environment fails because the
-archive requires GLIBC 2.43. The website discloses this compatibility limitation;
-full runtime verification remains blocked. Do not describe the release as fully
-smoke-tested or disable its watch until this is resolved.
+v2.0.1 is published at commit `986450cbf1ac428066131d229ceafd1f04200906`.
+Release run 43554344827 passed validation, all three builds, both Linux baseline
+container contract suites and archive checksums. Linux builds use Ubuntu 24.04
+and reject GLIBC symbol requirements above 2.39. The older v2.0.0 AMD64 binary
+required GLIBC 2.43; its immutable assets remain unchanged.
 
 The website's main branch deploys automatically through GitHub Pages.
 

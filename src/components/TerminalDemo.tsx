@@ -27,7 +27,7 @@ export default function TerminalDemo() {
       </div>
       <div className="flex items-center justify-between gap-3 px-5 pt-4 sm:px-8">
         <span className="text-xs font-mono text-muted">PROJECT HANDOFF · {active + 1} / 3</span>
-        <button type="button" className="min-h-11 px-3 text-sm text-cyan-300 rounded-md focus-visible:outline-2 focus-visible:outline-cyan-400" onClick={() => { if (!playing) setActive(0); setPlaying(!playing); }} aria-label={playing ? "Pause walkthrough" : "Play walkthrough"}>{playing ? "Ⅱ Pause" : "▶ Play story"}</button>
+        <button type="button" className="min-h-11 px-3 text-sm text-cyan-300 rounded-md focus-visible:outline-2 focus-visible:outline-cyan-400" onClick={() => { if (!playing) setActive(0); setPlaying(!playing); }} aria-label={playing ? "Pause walkthrough" : "Play walkthrough"}>{playing ? "Ⅱ Pause" : "Play story →"}</button>
       </div>
       <div key={active} className="demo-frame p-5 sm:p-8 sm:min-h-80" aria-live={playing ? "off" : "polite"} aria-atomic="true">
         <p className="text-xs text-muted font-mono mb-5">{step.actor}</p>
