@@ -75,7 +75,7 @@ export default function Home() {
               Get started
             </a>
             <a href="#demo" className="btn">
-              See the handoff ↓
+              See it in the terminal ↓
             </a>
           </div>
           <p className="text-sm text-muted mt-5">
