@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TerminalDemo from "@/components/TerminalDemo";
 import Nav from "@/components/Nav";
 import InstallCommand from "@/components/InstallCommand";
 import GitHubButton from "@/components/GitHubButton";
@@ -55,14 +56,14 @@ export default function Home() {
         <section className="px-6 pt-36 pb-16 max-w-6xl mx-auto">
           <p className="eyebrow mb-6">Git-backed memory for AI coding agents</p>
           <h1 className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.06] max-w-4xl">
-            Carry the reasoning
+            New session. New agent.
             <br />
-            <span className="gradient-text">forward.</span>
+            <span className="gradient-text">Same project memory.</span>
           </h1>
           <p className="text-xl text-muted leading-relaxed max-w-2xl mt-7">
-            The decision. The rejected approach. The note that explains why.
-            Keep them connected to your code, ready for the next agent and the
-            next teammate.
+            Your code has a history. So do the decisions behind it. Rekal
+            makes past conversations and project notes searchable across Claude
+            Code, Codex and your team—with the source ready to read.
           </p>
           <p className="mt-5 text-foreground">
             Capture at commit time. Search locally. Share through Git.
@@ -78,33 +79,7 @@ export default function Home() {
           <p className="text-sm text-muted mt-5">
             One binary · Local embeddings by default · Apache-2.0
           </p>
-          <div className="card mt-14 overflow-hidden">
-            <div className="border-b border-border px-6 py-3 text-xs font-mono text-muted">
-              Illustrative workflow · the same project, a different agent
-            </div>
-            <div className="grid md:grid-cols-2">
-              <div className="p-6 sm:p-8 border-b md:border-b-0 md:border-r border-border">
-                <p className="eyebrow">Yesterday · Claude Code</p>
-                <h2 className="text-xl font-semibold mt-4">
-                  “We tried fixed retries. They caused a thundering herd.”
-                </h2>
-                <p className="text-muted mt-4 leading-relaxed">
-                  The discussion and project note are captured with the commit.
-                  Eligible records travel on your next push.
-                </p>
-              </div>
-              <div className="p-6 sm:p-8">
-                <p className="eyebrow">Today · Codex + a teammate</p>
-                <h2 className="text-xl font-semibold mt-4">
-                  “Why did we choose jittered backoff?”
-                </h2>
-                <p className="text-muted mt-4 leading-relaxed">
-                  Sync the project history. Find the decision. Read the
-                  conversation behind it before changing the design.
-                </p>
-              </div>
-            </div>
-          </div>
+          <TerminalDemo />
         </section>
         <AgentsStrip />
         <section id="why" className="section-wrap">
@@ -191,7 +166,7 @@ export default function Home() {
             <pre className="overflow-x-auto text-sm sm:text-base leading-8">
               <code>
                 {
-                  'rekal "why did we drop batching?"\n\n# Copy a reference returned by search\nrekal query --ref <returned-reference>\n\n# Follow the printed more: command to continue'
+                  'rekal "why do webhook retries use jitter?"\n\n# Copy a reference returned by search\nrekal query --ref <returned-reference>\n\n# Follow the printed more: command to continue'
                 }
               </code>
             </pre>

@@ -1,8 +1,8 @@
 export const REPO = "https://github.com/rekal-dev/rekal-cli";
 export const DOCS = `${REPO}/blob/main/docs`;
-export const TITLE = "Rekal — Git-backed memory for AI coding agents";
+export const TITLE = "Rekal — AI coding agent memory for Claude Code & Codex";
 export const DESCRIPTION =
-  "Carry decisions, conversations and project notes across Claude Code, Codex and teammates. Local search, original evidence and team memory through Git.";
+  "Keep project memory across Claude Code, Codex and your team. Search past coding conversations and native notes locally, read original sources, and share via Git.";
 export const FAQS = [
   {
     q: "What does Rekal add when my agent already has memory?",
