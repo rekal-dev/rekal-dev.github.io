@@ -64,7 +64,8 @@ export default function Home() {
           </h1>
           <p className="text-xl text-muted leading-relaxed max-w-2xl mt-7">
             Your project’s memory, across sessions, agents and teammates.
-            Ask your agent to Rekal the context. Pick up where your team left off.
+            Ask your agent to Rekal context from your team and past work
+            for the task at hand.
           </p>
           <p className="mt-5 text-foreground">
             Captured with commits. Searchable locally. Shared through Git.
@@ -95,7 +96,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 mt-8">
             {[
               [
-                "Resume without re-investigating",
+                "Put past context to work",
                 "Recover constraints, attempted fixes and rejected alternatives from earlier sessions.",
               ],
               [
@@ -158,9 +159,9 @@ export default function Home() {
           <p className="eyebrow">Agent first</p>
           <h2>Just ask your agent.</h2>
           <p className="section-copy">
-            After setup, use the coding agent you already work with.
-            It can search Rekal, read original sources and bring the relevant
-            context into your next change.
+            Ask your coding agent to Rekal the context it needs for the job.
+            It searches your team’s shared history and your past work, reads
+            the original sources and uses what matters for the task at hand.
           </p>
           <blockquote className="ask-agent-card mt-8">
             <span className="eyebrow">Your next prompt</span>
