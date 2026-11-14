@@ -123,7 +123,7 @@ export default function Home() {
             Rekal keeps the trail.
           </h2>
           <p className="section-copy">
-            Claude’s project memory is useful working context. Rekal 2.0
+            Claude’s project memory is useful working context. Rekal
             captures its revisions alongside conversations, so a note can lead
             you back to the record. The agent decides what to read and what to
             conclude.
@@ -224,7 +224,7 @@ export default function Home() {
           <h2>Measured retrieval. Inspectable results.</h2>
           <p className="section-copy">
             Historical agent evaluations reported these results. They are not a
-            fresh 2.0 answer-quality benchmark or a head-to-head comparison with
+            fresh answer-quality benchmark or a head-to-head comparison with
             Claude-mem.
           </p>
           <div className="overflow-x-auto mt-6">
@@ -285,7 +285,7 @@ export default function Home() {
             </code>
           </pre>
           <p className="section-copy">
-            Rekal 2.0.1 is available for macOS ARM64 and Linux AMD64/ARM64.
+            Rekal is available for macOS ARM64 and Linux AMD64/ARM64.
           </p>
           <div className="flex flex-wrap gap-6 text-accent">
             <a href={`${REPO}/releases/latest`}>Downloads and checksums →</a>

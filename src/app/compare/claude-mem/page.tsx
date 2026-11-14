@@ -35,7 +35,7 @@ export default function Page() {
           <thead>
             <tr>
               <th>Question</th>
-              <th>Rekal 2.0</th>
+              <th>Rekal</th>
               <th>Claude-mem</th>
             </tr>
           </thead>

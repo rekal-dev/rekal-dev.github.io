@@ -24,7 +24,7 @@ export default function Guide({
         </nav>
       </header>
       <main id="main" className="guide max-w-4xl mx-auto px-6 py-16">
-        <p className="eyebrow">Rekal 2.0 guide</p>
+        <p className="eyebrow">Rekal guide</p>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mt-4 mb-6">
           {title}
         </h1>
