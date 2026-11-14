@@ -280,10 +280,22 @@ export default function Home() {
           <pre className="card p-6 overflow-x-auto leading-8">
             <code>
               {
-                'cd your-project\nrekal init\n# Work and commit normally\nrekal "why did we choose this approach?"'
+                'export PATH="$HOME/.local/bin:$PATH"\nrekal version\ncd your-project\nrekal init\n# Work with your coding agent, then commit normally\nrekal "what did we change and why?"'
               }
             </code>
           </pre>
+          <p className="section-copy">
+            The PATH line makes Rekal available immediately in Bash or Zsh.
+            In Fish, use <code>fish_add_path &quot;$HOME/.local/bin&quot;</code> instead.
+          </p>
+          <p className="section-copy">
+            Your first search needs captured context. Already have local agent
+            history in this repository? Run <code>rekal checkpoint</code> to
+            capture it now, or <code>rekal sync</code> for history shared by
+            teammates. Ask about your actual work, then open a returned source
+            with <code>rekal query --ref &lt;returned-reference&gt;</code>.
+            A new repository with no captured history can return no matches.
+          </p>
           <p className="section-copy">
             Rekal is available for macOS ARM64 and Linux AMD64/ARM64.
           </p>
