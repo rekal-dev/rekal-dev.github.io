@@ -286,17 +286,9 @@ export default function Home() {
           </pre>
           <p className="section-copy">
             Rekal 2.0.1 is available for macOS ARM64 and Linux AMD64/ARM64.
-            Linux targets Ubuntu 24.04 / GLIBC 2.39 or newer with standard C++
-            and OpenMP runtimes. Older systems need a source build.
-          </p>
-          <p className="section-copy">
-            Upgrading? Follow the migration guide and upgrade every writer of
-            memory-bearing branches. No force push or code-commit rewrite is
-            needed.
           </p>
           <div className="flex flex-wrap gap-6 text-accent">
             <a href={`${REPO}/releases/latest`}>Downloads and checksums →</a>
-            <a href={`${DOCS}/upgrading.md`}>Upgrade guide →</a>
             <a href="/install.sh">Inspect the installer →</a>
           </div>
         </section>
