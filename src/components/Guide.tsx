@@ -38,6 +38,7 @@ export default function Guide({
                 Claude Code memory and Rekal
               </Link>
             </li>
+            <li><Link href="/codex-memory">Project memory for Codex</Link></li>
             <li>
               <Link href="/compare/claude-mem">Rekal vs Claude-mem</Link>
             </li>

@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1] / "out"
-ROUTES = ["/", "/compare/claude-mem", "/claude-code-memory", "/git-agent-memory"]
+ROUTES = ["/", "/compare/claude-mem", "/claude-code-memory", "/git-agent-memory", "/codex-memory"]
 
 class Page(HTMLParser):
     def __init__(self):

@@ -53,17 +53,19 @@ export default function Home() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-        <section className="px-6 pt-36 pb-16 max-w-6xl mx-auto">
+        <section className="px-5 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr] items-center gap-8 lg:gap-12">
+          <div>
           <p className="eyebrow mb-6">Git-backed memory for AI coding agents</p>
-          <h1 className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.06] max-w-4xl">
-            New session. New agent.
+          <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold tracking-tight leading-[1.06] max-w-4xl">
+            Carry the reasoning
             <br />
-            <span className="gradient-text">Same project memory.</span>
+            <span className="gradient-text">forward.</span>
           </h1>
           <p className="text-xl text-muted leading-relaxed max-w-2xl mt-7">
-            Your code has a history. So do the decisions behind it. Rekal
-            makes past conversations and project notes searchable across Claude
-            Code, Codex and your team—with the source ready to read.
+            Keep the why behind your code—across sessions, agents and
+            teammates. Find past conversations and project notes, then read the
+            original reasoning before changing the design.
           </p>
           <p className="mt-5 text-foreground">
             Capture at commit time. Search locally. Share through Git.
@@ -72,14 +74,16 @@ export default function Home() {
             <a href="#install" className="btn btn-primary">
               Get started
             </a>
-            <a href="#read" className="btn">
-              See how recall works ↓
+            <a href="#demo" className="btn">
+              See the handoff ↓
             </a>
           </div>
           <p className="text-sm text-muted mt-5">
             One binary · Local embeddings by default · Apache-2.0
           </p>
-          <TerminalDemo />
+          </div>
+          <div id="demo" className="scroll-mt-20 min-w-0"><TerminalDemo /></div>
+          </div>
         </section>
         <AgentsStrip />
         <section id="why" className="section-wrap">
@@ -149,9 +153,7 @@ export default function Home() {
             memory. A remembered note is context, not proof of current code
             behavior.
           </p>
-          <a className="text-accent" href="/claude-code-memory">
-            How Claude Code memory works with Rekal →
-          </a>
+          <div className="flex flex-wrap gap-5"><a className="text-accent" href="/claude-code-memory">Claude Code memory →</a><a className="text-accent" href="/codex-memory">Project memory for Codex →</a></div>
         </section>
         <section id="read" className="section-wrap border-t border-border">
           <p className="eyebrow">Agent first</p>

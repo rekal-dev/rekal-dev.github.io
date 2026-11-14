@@ -468,3 +468,9 @@ main td { color: #b4b4be; } main caption { text-align: left; padding-block: 1rem
 .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .8rem; background: var(--color-background); color: var(--color-accent); }
 .skip-link:focus { top: 1rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Step transitions never hide content when motion is disabled. */
+@keyframes demo-enter { from { opacity: .35; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.demo-frame { animation: demo-enter .25s ease-out; }
+@media (prefers-reduced-motion: reduce) { .demo-frame { animation: none; } }
+@media (max-width: 639px) { .section-wrap { padding-left: 1.25rem; padding-right: 1.25rem; } }

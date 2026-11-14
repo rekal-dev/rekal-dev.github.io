@@ -62,6 +62,7 @@ export default function Nav() {
             </a>
           ))}
         </div>
+        <Link href="/#install" className="md:hidden min-h-11 flex items-center px-4 rounded-md border border-border text-sm text-accent">Install</Link>
         <a
           href="https://github.com/rekal-dev/rekal-cli"
           target="_blank"
