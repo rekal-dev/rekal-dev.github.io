@@ -49,6 +49,8 @@ jobs:
           fi
 
       - run: npm run build
+      - name: Check exported marketing content
+        run: python3 scripts/check-marketing.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

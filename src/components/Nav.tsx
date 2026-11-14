@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const LINKS = [
-  { href: "#why", label: "Why" },
-  { href: "#team", label: "Team" },
-  { href: "#soul", label: "Soul" },
-  { href: "/paper", label: "Paper" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#install", label: "Install" },
+  { href: "/#why", label: "Why Rekal" },
+  { href: "/#memory", label: "Memory" },
+  { href: "/#team", label: "Team" },
+  { href: "/compare/claude-mem", label: "Compare" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#install", label: "Install" },
 ];
 
 export default function Nav() {
