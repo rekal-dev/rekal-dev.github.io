@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const INSTALL_CMD = "curl -fsSL https://rekal.dev/install.sh | REKAL_VERSION=v2.0.1 bash";
+const INSTALL_CMD = "curl -fsSL https://rekal.dev/install.sh | bash";
 
 export default function InstallCommand() {
   const [copied, setCopied] = useState(false);
@@ -27,7 +27,7 @@ export default function InstallCommand() {
     >
       <span className="text-accent select-none">$</span>
       <span className="text-foreground break-all">
-        curl -fsSL <span className="text-muted">https://rekal.dev/install.sh</span> | REKAL_VERSION=v2.0.1 bash
+        curl -fsSL <span className="text-muted">https://rekal.dev/install.sh</span> | bash
       </span>
       <span className="ml-auto flex items-center gap-1.5 text-xs text-faint group-hover:text-accent transition-colors shrink-0">
         {copied ? (
