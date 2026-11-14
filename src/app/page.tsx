@@ -55,17 +55,16 @@ export default function Home() {
         />
         <section className="px-5 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 max-w-6xl mx-auto">
           <div className="grid gap-8 lg:gap-10">
-          <div>
+          <div className="hero-intro">
           <p className="eyebrow mb-6">Git-backed memory for AI coding agents</p>
-          <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold tracking-tight leading-[1.06] max-w-4xl">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.03] max-w-4xl">
             Carry the context
             <br />
             <span className="gradient-text">forward.</span>
           </h1>
           <p className="text-xl text-muted leading-relaxed max-w-2xl mt-7">
             Your project’s memory, across sessions, agents and teammates.
-            Ask your agent to Rekal the context, then keep building.
-            Your teammate’s next agent can pick up where you left off.
+            Ask your agent to Rekal the context. Pick up where your team left off.
           </p>
           <p className="mt-5 text-foreground">
             Captured with commits. Searchable locally. Shared through Git.
@@ -75,12 +74,12 @@ export default function Home() {
               Get started
             </a>
             <a href="#demo" className="btn">
-              See it in the terminal ↓
+              Watch the team handoff ↓
             </a>
           </div>
-          <p className="text-sm text-muted mt-5">
-            Open source · No Rekal subscription · No memory server to run
-          </p>
+          <ul className="hero-proof" aria-label="Built for your existing workflow">
+            <li>Apache-2.0</li><li>No Rekal subscription</li><li>No memory server</li>
+          </ul>
           </div>
           <div id="demo" className="scroll-mt-20 min-w-0"><TerminalDemo /></div>
           </div>
@@ -157,27 +156,25 @@ export default function Home() {
         </section>
         <section id="read" className="section-wrap border-t border-border">
           <p className="eyebrow">Agent first</p>
-          <h2>Search. Read. Continue.</h2>
+          <h2>Just ask your agent.</h2>
           <p className="section-copy">
-            A small starting point, with detail on demand. Search returns
-            conversation leads, matching notes and pointers to current project
-            prose. Read the source you need; follow its continuation when you
-            need more.
+            After setup, use the coding agent you already work with.
+            It can search Rekal, read original sources and bring the relevant
+            context into your next change.
           </p>
-          <div className="card p-6 sm:p-8 mt-8">
-            <pre className="overflow-x-auto text-sm sm:text-base leading-8">
-              <code>
-                {
-                  'rekal "why do webhook retries use jitter?"\n\n# Copy a reference returned by search\nrekal query --ref <returned-reference>\n\n# Follow the printed more: command to continue'
-                }
-              </code>
-            </pre>
-          </div>
+          <blockquote className="ask-agent-card mt-8">
+            <span className="eyebrow">Your next prompt</span>
+            <p>Please Rekal the context around invoice exports, then add date filters.</p>
+          </blockquote>
           <p className="section-copy">
-            References identify sources. Notes keep their source and scope
-            labels. Add <code>--json</code> for programs; advanced evidence
-            retrieval and SQL stay available when the task needs them.
+            Past decisions, project notes and original conversations stay within
+            reach. Your agent checks the current code and decides what matters.
           </p>
+          <details className="card p-5 my-6">
+            <summary className="cursor-pointer text-sm text-muted">Prefer the CLI? See the commands</summary>
+            <pre className="overflow-x-auto text-sm leading-8 mt-4"><code>{'rekal "invoice export conventions"\nrekal query --ref <returned-reference>'}</code></pre>
+            <p className="text-sm text-muted mt-3">Follow returned continuations for more context. JSON and SQL are available for advanced use.</p>
+          </details>
           <a className="text-accent" href={`${DOCS}/usage.md`}>
             Read the retrieval guide →
           </a>

@@ -1,8 +1,8 @@
 export const REPO = "https://github.com/rekal-dev/rekal-cli";
 export const DOCS = `${REPO}/blob/main/docs`;
-export const TITLE = "Rekal — AI coding agent memory for Claude Code & Codex";
+export const TITLE = "Rekal — Open-source memory for Claude Code, Codex & teams";
 export const DESCRIPTION =
-  "Keep project memory across Claude Code, Codex and your team. Search past coding conversations and native notes locally, read original sources, and share via Git.";
+  "Carry coding context across Claude Code, Codex and your team. Open-source agent memory with local search and Git sharing. No memory server or Rekal subscription.";
 export const FAQS = [
   {
     q: "What does Rekal add when my agent already has memory?",
@@ -13,8 +13,8 @@ export const FAQS = [
     a: "Session capture supports Claude Code, Cursor, Copilot, Codex, Gemini, Kiro and OpenCode. Native note discovery defaults to Claude project memory. Other Markdown note sources require configuration; session capture and note discovery are different capabilities.",
   },
   {
-    q: "Is Claude-mem the same as Claude Code memory?",
-    a: "No. Claude Code has its own instruction files and auto memory. Claude-mem is a separate open-source memory project. Rekal adds a Git-backed record and source retrieval; it does not require either a Claude-mem installation or a hosted memory account.",
+    q: "Do I need a memory server or subscription?",
+    a: "No. Rekal is Apache-2.0 open-source software with no Rekal subscription. Search and default embeddings run locally; eligible context is shared through your existing Git remote. Your coding agent, Git hosting or optional external embedding provider may have their own costs.",
   },
   {
     q: "What is shared with my team?",
