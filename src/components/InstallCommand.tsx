@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackInstallAction } from "@/lib/analytics";
 
 const INSTALL_CMD = "curl -fsSL https://rekal.dev/install.sh | bash";
 
@@ -11,6 +12,7 @@ export default function InstallCommand() {
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(INSTALL_CMD);
+      trackInstallAction("command_copy");
       setCopied(true);
       setError(false);
       setTimeout(() => setCopied(false), 2000);
