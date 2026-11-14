@@ -54,7 +54,7 @@ export default function Home() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
         <section className="px-5 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] items-center gap-8 lg:gap-12">
+          <div className="grid gap-8 lg:gap-10">
           <div>
           <p className="eyebrow mb-6">Git-backed memory for AI coding agents</p>
           <h1 className="text-4xl sm:text-6xl lg:text-6xl font-bold tracking-tight leading-[1.06] max-w-4xl">
@@ -64,8 +64,8 @@ export default function Home() {
           </h1>
           <p className="text-xl text-muted leading-relaxed max-w-2xl mt-7">
             Your project’s memory, across sessions, agents and teammates.
-            Find past conversations, decisions and project notes, with the
-            original sources ready to read.
+            Ask your agent to Rekal the context, then keep building.
+            Your teammate’s next agent can pick up where you left off.
           </p>
           <p className="mt-5 text-foreground">
             Captured with commits. Searchable locally. Shared through Git.
@@ -79,7 +79,7 @@ export default function Home() {
             </a>
           </div>
           <p className="text-sm text-muted mt-5">
-            One binary · Local embeddings by default · Apache-2.0
+            Open source · No Rekal subscription · No memory server to run
           </p>
           </div>
           <div id="demo" className="scroll-mt-20 min-w-0"><TerminalDemo /></div>
